@@ -1,0 +1,86 @@
+---
+import { getLangFromUrl, getTranslations } from '../../i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = getTranslations(lang);
+const about = t.about;
+const details = about.details;
+---
+
+<section id="about" class="py-20 px-4 w-full max-w-6xl mx-auto">
+  <!-- Section Header -->
+  <div class="text-center mb-16">
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+      <span class="material-symbols-outlined align-middle text-primary mr-2" style="font-size:1.8rem;">{about.sectionIcon}</span>
+      {about.sectionTitle}
+    </h2>
+    <div class="w-20 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-10 items-start">
+    <!-- Profile Photo -->
+    <div class="flex flex-col items-center gap-6">
+      <div class="relative">
+        <div class="w-52 h-52 rounded-2xl overflow-hidden border-4 border-primary/30 shadow-glow">
+          <img src="/images/PHOTO.webp" alt="Steven Lema" class="w-full h-full object-cover" loading="lazy" />
+        </div>
+        <div class="absolute -bottom-3 -right-3 w-10 h-10 bg-green-500 rounded-full border-4 border-background-light dark:border-background-dark flex items-center justify-center">
+          <span class="material-symbols-outlined text-white" style="font-size:1rem;">check</span>
+        </div>
+      </div>
+
+      <!-- Interests -->
+      <div class="glass-panel rounded-xl p-4 w-full">
+        <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">{about.interestsTitle}</h3>
+        <div class="flex flex-wrap gap-2">
+          {about.interests.map((interest: string) => (
+            <span class="px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20">
+              {interest}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Bio -->
+    <div class="md:col-span-2 space-y-6">
+      <div class="space-y-4 text-gray-600 dark:text-gray-300 leading-relaxed">
+        <p class="text-lg">{about.bio1}</p>
+        <p>{about.bio2}</p>
+        <p class="font-medium text-primary">{about.bio3}</p>
+      </div>
+
+      <!-- Details Grid -->
+      <div class="grid sm:grid-cols-2 gap-4 mt-8">
+        <div class="glass-panel rounded-xl p-4 flex items-center gap-3">
+          <span class="material-symbols-outlined text-primary">location_on</span>
+          <div>
+            <p class="text-xs text-gray-500 dark:text-gray-400">{details.locationLabel}</p>
+            <p class="text-sm font-medium text-gray-900 dark:text-white">{details.location}</p>
+          </div>
+        </div>
+        <div class="glass-panel rounded-xl p-4 flex items-center gap-3">
+          <span class="material-symbols-outlined text-primary">school</span>
+          <div>
+            <p class="text-xs text-gray-500 dark:text-gray-400">{details.universityLabel}</p>
+            <p class="text-sm font-medium text-gray-900 dark:text-white">{details.university}</p>
+          </div>
+        </div>
+        <div class="glass-panel rounded-xl p-4 flex items-center gap-3">
+          <span class="material-symbols-outlined text-primary">badge</span>
+          <div>
+            <p class="text-xs text-gray-500 dark:text-gray-400">{details.degreeLabel}</p>
+            <p class="text-sm font-medium text-gray-900 dark:text-white">{details.degree}</p>
+          </div>
+        </div>
+        <div class="glass-panel rounded-xl p-4 flex items-center gap-3">
+          <span class="material-symbols-outlined text-primary">mail</span>
+          <div>
+            <p class="text-xs text-gray-500 dark:text-gray-400">{details.emailLabel}</p>
+            <a href={`mailto:${details.email}`} class="text-sm font-medium text-primary hover:underline">{details.email}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

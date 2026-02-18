@@ -3,10 +3,12 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Hero from '../../components/sections/Hero.astro';
+import About from '../../components/sections/About.astro';
 import Stats from '../../components/sections/Stats.astro';
 import Experience from '../../components/sections/Experience.astro';
 import Projects from '../../components/sections/Projects.astro';
 import Skills from '../../components/sections/Skills.astro';
+import Certifications from '../../components/sections/Certifications.astro';
 import Contact from '../../components/sections/Contact.astro';
 
 export function getStaticPaths() {
@@ -19,12 +21,14 @@ export function getStaticPaths() {
 
 <Layout>
   <Header />
-  <main class="flex-grow flex flex-col items-center w-full">
+  <main class="flex-grow flex flex-col items-center w-full pt-16">
     <Hero />
     <Stats />
     <Experience />
     <Projects />
     <Skills />
+    <Certifications />
+    <About />
     <Contact />
   </main>
   <Footer />

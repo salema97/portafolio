@@ -6,7 +6,7 @@ import '@fontsource/space-grotesk/600.css';
 import '@fontsource/space-grotesk/700.css';
 import '../styles/global.css';
 
-import { getLangFromUrl } from '../i18n/index';
+import { getLangFromUrl, getTranslations } from '../i18n/index';
 
 interface Props {
   title?: string;
@@ -14,11 +14,10 @@ interface Props {
 }
 
 const lang = getLangFromUrl(Astro.url);
+const t = getTranslations(lang);
 const { 
-  title = lang === 'es' ? 'DevName | Portafolio' : 'DevName | Portfolio',
-  description = lang === 'es' 
-    ? 'Ingeniero de Software Full-Stack creando experiencias web inmersivas con tecnologías modernas.'
-    : 'Full-Stack Software Engineer building immersive web experiences with modern technologies.'
+  title = t.site.title,
+  description = t.site.description
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -30,7 +29,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- SEO -->

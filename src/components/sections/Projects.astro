@@ -1,55 +1,26 @@
 ---
-import { getLangFromUrl, getTranslations } from '../../i18n/index';
+import { getLangFromUrl, getTranslations } from '../../i18n';
+import ProjectGallery from '../ProjectGallery';
 
 const lang = getLangFromUrl(Astro.url);
 const t = getTranslations(lang);
+const proj = t.projects;
 ---
 
-<section class="w-full dark:bg-surface-dark/20 bg-slate-50 py-20 border-y dark:border-white/5 border-slate-200" id="work">
-  <div class="max-w-7xl mx-auto px-4">
-    <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-      <div class="flex flex-col items-start gap-2">
-        <h2 class="text-3xl md:text-4xl font-bold dark:text-white text-slate-900 flex items-center gap-3">
-          <span class="text-primary material-symbols-outlined text-4xl">rocket_launch</span>
-          {t.projects.title}
-        </h2>
-        <div class="h-1 w-20 bg-primary rounded-full"></div>
-      </div>
-      <a class="text-primary hover:text-primary-glow font-medium flex items-center gap-2 transition-colors group no-underline" href="#">
-        {t.projects.viewAll}
-        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
-      </a>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {t.projects.items.map((project) => (
-        <div class="group glass-panel rounded-xl overflow-hidden hover:-translate-y-2 transition-all duration-300 hover:shadow-glow-sm">
-          {/* Project Image */}
-          <div class="h-48 w-full dark:bg-slate-800 bg-slate-200 overflow-hidden relative">
-            <div class="w-full h-full bg-gradient-to-br from-primary/30 via-purple-500/20 to-primary-glow/30 group-hover:scale-105 transition-transform duration-500"></div>
-            {/* Hover overlay */}
-            <div class="absolute inset-0 dark:bg-background-dark/60 bg-white/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4 backdrop-blur-sm">
-              <a class="p-2 dark:bg-white bg-slate-800 dark:text-background-dark text-white rounded-full hover:bg-primary hover:text-white transition-colors" href="#" title={t.projects.viewCode}>
-                <span class="material-symbols-outlined">code</span>
-              </a>
-              <a class="p-2 dark:bg-white bg-slate-800 dark:text-background-dark text-white rounded-full hover:bg-primary hover:text-white transition-colors" href="#" title={t.projects.liveDemo}>
-                <span class="material-symbols-outlined">visibility</span>
-              </a>
-            </div>
-          </div>
-
-          {/* Project Info */}
-          <div class="p-6">
-            <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
-            <p class="dark:text-slate-400 text-slate-500 text-sm mb-4 line-clamp-2">{project.description}</p>
-            <div class="flex flex-wrap gap-2 mt-auto">
-              {project.tags.map((tag: string) => (
-                <span class="text-xs font-mono text-primary bg-primary/10 px-2 py-1 rounded">{tag}</span>
-              ))}
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
+<section id="work" class="py-20 px-4 w-full max-w-6xl mx-auto">
+  <!-- Section Header -->
+  <div class="text-center mb-16">
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+      <span class="material-symbols-outlined align-middle text-primary mr-2" style="font-size:1.8rem;">{proj.sectionIcon}</span>
+      {proj.sectionTitle}
+    </h2>
+    <div class="w-20 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
   </div>
+
+  <!-- Interactive Preact Gallery with filtering -->
+  <ProjectGallery client:load projects={proj.items} labels={{
+    filterAll: proj.filterAll,
+    showMore: proj.showMore,
+    showLess: proj.showLess
+  }} />
 </section>

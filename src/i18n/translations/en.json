@@ -1,134 +1,388 @@
 {
+  "site": {
+    "title": "Steven Lema | Portfolio",
+    "description": "Full-Stack Software Engineer building immersive web experiences with modern technologies."
+  },
   "nav": {
+    "home": "Home",
     "about": "About",
-    "work": "Work",
+    "work": "Projects",
+    "experience": "Experience",
     "skills": "Skills",
+    "certifications": "Certifications",
     "contact": "Contact",
-    "resume": "Resume"
+    "resume": "Resume",
+    "switchLang": "ES"
   },
   "hero": {
-    "available": "Available for new projects",
+    "badge": "Available for new projects",
     "greeting": "Hello, I'm",
-    "name": "<DevName />",
-    "description": "Full-Stack Software Engineer building immersive web experiences with modern technologies. I turn complex problems into elegant code.",
-    "viewProjects": "View Projects",
-    "contactMe": "Contact Me",
-    "currentStatus": "Current Status",
-    "codingFuture": "Coding the future..."
+    "name": "Steven Lema",
+    "description": "Full-Stack Software Engineer. My passion for Back-End development doesn't limit me from excelling in other areas. Committed to delivering innovative, high-quality solutions.",
+    "cta1": "View Projects",
+    "cta2": "Contact Me",
+    "statusTitle": "Current Status",
+    "statusText": "Coding the future..."
+  },
+  "about": {
+    "sectionTitle": "About Me",
+    "sectionIcon": "person",
+    "bio1": "💻 Although I'm a Full-Stack developer, my passion lies especially in Back-End development. However, this doesn't limit me at all from working in other areas of development.",
+    "bio2": "🩵 My passion for Software drives me to continuously develop my skills and keep up with the latest technologies. I'm committed to delivering innovative, high-quality solutions in every project I participate in.",
+    "bio3": "✨ I'd love to collaborate with you to take your ideas to the next level!",
+    "details": {
+      "locationLabel": "Location",
+      "universityLabel": "University",
+      "degreeLabel": "Degree",
+      "emailLabel": "Email",
+      "location": "Cotopaxi - Ecuador",
+      "university": "Universidad de las Fuerzas Armadas - ESPE",
+      "degree": "Software Engineer",
+      "email": "salemavelasquez97@gmail.com",
+      "phone": "+593 988237106"
+    },
+    "interests": ["Reading", "Programming", "Music", "Videogames"],
+    "interestsTitle": "Interests"
   },
   "stats": {
-    "experience": "Years Experience",
-    "projects": "Projects Done",
-    "clients": "Happy Clients",
-    "commitment": "Commitment"
+    "items": [
+      { "value": "3+", "label": "Years Experience" },
+      { "value": "12+", "label": "Projects Done" },
+      { "value": "14", "label": "Certifications" },
+      { "value": "100%", "label": "Commitment" }
+    ]
   },
   "experience": {
-    "title": "Experience",
+    "sectionTitle": "Experience",
+    "sectionIcon": "history_edu",
     "items": [
       {
-        "period": "2021 - Present",
-        "role": "Senior Full Stack Engineer",
-        "company": "TechCorp Inc.",
-        "description": "Leading a team of 5 developers to build scalable microservices. Optimized database queries reducing latency by 40%. Implemented CI/CD pipelines.",
-        "tags": ["React", "Node.js", "AWS"]
+        "date": "November 2023 - Present",
+        "title": "Freelance",
+        "role": "Software Developer",
+        "description": "Developed diverse projects across multiple areas, including web development using Vite, e-commerce applications in Flutter, and Node.js APIs integrating these applications with MySQL databases. Followed the entire development process, from requirements gathering to final deployment.",
+        "tags": [
+          "Flutter",
+          "Dart",
+          "Node.js",
+          "API REST",
+          "JavaScript",
+          "MySQL",
+          "React",
+          "Vite",
+          "TypeScript"
+        ]
       },
       {
-        "period": "2019 - 2021",
-        "role": "Frontend Developer",
-        "company": "WebSolutions Agency",
-        "description": "Developed responsive UI components for over 20 client projects. Collaborated with designers to implement pixel-perfect interfaces using Vue.js.",
-        "tags": ["Vue.js", "Sass", "Figma"]
+        "date": "March 2022 - June 2022",
+        "title": "ADS Software",
+        "role": "Intern - Software Developer",
+        "description": "My experience focused on the design and development of Dynamic Link Libraries (DLLs) to facilitate the migration of legacy systems based on Visual FoxPro to the modern Firebase platform.",
+        "tags": ["C#", "Visual FoxPro", "Firebase", "API", "Desktop"]
       },
       {
-        "period": "2018 - 2019",
-        "role": "Junior Developer",
-        "company": "StartUp Inc.",
-        "description": "Assisted in backend API development. Wrote unit tests and maintained documentation for legacy codebase.",
-        "tags": ["Python", "Django", "PostgreSQL"]
+        "date": "December 2021 - February 2022",
+        "title": "UNHCR (ACNUR)",
+        "role": "Intern - Software Developer",
+        "description": "Participated in a Social Project for Technical Assistance for Strengthening Enterprises of Refugees in collaboration with UNHCR-HIAS-ESPE. Performed monitoring, maintenance, and development of the Prowessec website.",
+        "tags": ["HTML", "CSS", "JavaScript", "SQL", "PHP", "Web"]
       }
     ]
   },
   "projects": {
-    "title": "Featured Projects",
+    "sectionTitle": "Featured Projects",
+    "sectionIcon": "rocket_launch",
     "viewAll": "View All Projects",
-    "viewCode": "View Code",
-    "liveDemo": "Live Demo",
+    "filterAll": "All",
+    "showMore": "Show All",
+    "showLess": "Show Less",
     "items": [
       {
-        "title": "E-Commerce Dashboard",
-        "description": "A comprehensive admin dashboard for managing products, orders, and analytics. Built with performance in mind.",
-        "tags": ["React", "Tailwind", "Redux"],
-        "image": "/images/project-1.webp"
+        "title": "Corporate Website",
+        "description": "Corporate website for a software development company, featuring company info, services, portfolio, and contact.",
+        "image": "/projects/Kaizen.webp",
+        "link": "https://kaizensoftware.com.ec",
+        "tags": ["Vite", "React", "TypeScript"]
       },
       {
-        "title": "Crypto Finance Tracker",
-        "description": "Real-time cryptocurrency tracking application featuring live charts, price alerts, and portfolio management.",
-        "tags": ["Next.js", "Chart.js", "API"],
-        "image": "/images/project-2.webp"
+        "title": "Admin Dashboard",
+        "description": "Administration panel for managing users, products, and orders of an online store.",
+        "image": "/projects/Panel.webp",
+        "tags": ["Vite", "React", "TypeScript"]
       },
       {
-        "title": "TaskMaster App",
-        "description": "A collaborative task management tool for remote teams with drag-and-drop kanban boards.",
-        "tags": ["Vue 3", "Firebase", "PWA"],
-        "image": "/images/project-3.webp"
+        "title": "API - Node.js",
+        "description": "Documented API for a system handling product purchases from an online store, with user authentication and roles.",
+        "image": "/projects/API_Corazon.webp",
+        "tags": ["Node.js", "JavaScript", "API REST"]
+      },
+      {
+        "title": "CopyXpress",
+        "description": "Mobile application for the CopyXpress online store, allowing users to purchase stationery products and printing services.",
+        "image": "/projects/CopyXpress.webp",
+        "tags": ["Flutter", "Dart", "Android", "iOS"]
+      },
+      {
+        "title": "Person Re-Identification",
+        "description": "Thesis project for person re-identification based on biometric and soft biometric characteristics using high-performance architectures.",
+        "image": "/projects/ProyectoTesis_1.webp",
+        "link": "https://repositorio.espe.edu.ec/handle/21000/37249",
+        "github": "https://github.com/salema97/RE-ID",
+        "tags": ["Python", "YOLO", "Security", "Thesis"]
+      },
+      {
+        "title": "Personal Data Query",
+        "description": "API for querying personal data from public websites of Ecuadorian entities using WebScraping.",
+        "image": "/projects/ProyectoWebScraping_2.webp",
+        "github": "https://github.com/salema97/API-WebScraping",
+        "tags": ["API", "Python", "Web Scraping"]
+      },
+      {
+        "title": "SQLMap Practice",
+        "description": "Web page for vulnerability testing with SQLMap and other security auditing techniques.",
+        "image": "/projects/ProyectoSeguridadWeb_2.webp",
+        "github": "https://github.com/salema97/DSS_injectionSQL",
+        "tags": ["HTML", "CSS", "JavaScript", "SQL", "Security"]
+      },
+      {
+        "title": "Chat Room",
+        "description": "Real-time web application with Socket.io that allows multiple users to communicate in a live chat environment.",
+        "image": "/projects/ProyectoChat_2.webp",
+        "github": "https://github.com/salema97/SocketsChatRoom",
+        "tags": ["Node.js", "HTML", "CSS", "JavaScript"]
+      },
+      {
+        "title": "Photography & Illustration Service",
+        "description": "Static website for photography and illustration services.",
+        "image": "/projects/ProyectoWeb_1.webp",
+        "github": "https://github.com/salema97/dwap2-lema-steven",
+        "tags": ["Node.js", "HTML", "CSS", "JavaScript"]
+      },
+      {
+        "title": "SCAFEL ECommerce",
+        "description": "E-commerce website under development for the SCAFEL handmade knitted shoe brand.",
+        "image": "/projects/ProyectoSeguridadWeb_1.webp",
+        "github": "https://github.com/salema97/ECommerceSCAFEL",
+        "tags": ["Angular", "Spring Boot", "Java", "PostgreSQL"]
+      },
+      {
+        "title": "App - Kaizen Novel",
+        "description": "Mobile application for reading and publishing novels or books, with language selection support.",
+        "image": "/projects/ProyectoMovil_1.webp",
+        "github": "https://github.com/salema97/novelkaizen-frontend",
+        "tags": ["Flutter", "Dart", "Android"]
+      },
+      {
+        "title": "Backend - Kaizen Novel",
+        "description": "Cloud functions for novel and book identification.",
+        "image": "/projects/ProyectoBackendMovil_1.webp",
+        "github": "https://github.com/salema97/novelkaizen-backend",
+        "tags": ["Node.js", "Firebase", "Firestore"]
       }
     ]
   },
   "skills": {
-    "title": "Technical Skills",
-    "subtitle": "I constantly learn new technologies to stay ahead in the industry. Here are the tools I work with most frequently.",
+    "sectionTitle": "Technical Skills",
+    "sectionSubtitle": "I constantly learn new technologies to stay ahead in the industry. Here are the tools I work with most frequently.",
     "categories": [
       {
         "name": "Frontend",
         "icon": "html",
-        "bgIcon": "devices",
-        "items": [
-          { "name": "React / Next.js", "level": 95 },
-          { "name": "Tailwind CSS", "level": 90 },
+        "skills": [
+          { "name": "React", "level": 90 },
+          { "name": "Angular", "level": 70 },
+          { "name": "Flutter", "level": 85 },
+          { "name": "HTML/CSS", "level": 95 },
+          { "name": "JavaScript", "level": 90 },
           { "name": "TypeScript", "level": 85 }
         ]
       },
       {
         "name": "Backend",
         "icon": "dns",
-        "bgIcon": "database",
-        "items": [
+        "skills": [
           { "name": "Node.js", "level": 90 },
-          { "name": "PostgreSQL", "level": 80 },
-          { "name": "Python", "level": 75 }
+          { "name": "Python", "level": 70 },
+          { "name": "C#", "level": 65 },
+          { "name": "Java/Spring Boot", "level": 60 },
+          { "name": "PHP", "level": 55 },
+          { "name": "API REST", "level": 90 }
         ]
       },
       {
-        "name": "DevOps",
+        "name": "Databases & DevOps",
         "icon": "settings_system_daydream",
-        "bgIcon": "cloud",
-        "items": [
-          { "name": "Docker", "level": 85 },
-          { "name": "AWS", "level": 70 },
-          { "name": "CI/CD", "level": 80 }
+        "skills": [
+          { "name": "MySQL", "level": 85 },
+          { "name": "PostgreSQL", "level": 75 },
+          { "name": "Firebase/Firestore", "level": 80 },
+          { "name": "Advanced SQL", "level": 85 },
+          { "name": "Git/CI-CD", "level": 80 },
+          { "name": "Vite", "level": 85 }
         ]
       }
     ]
   },
+  "certifications": {
+    "sectionTitle": "Certifications",
+    "sectionIcon": "workspace_premium",
+    "verify": "Verify",
+    "items": [
+      {
+        "name": "Software Engineering Degree Registration",
+        "issuer": "SENESCYT",
+        "date": "November 2023",
+        "credentialId": "1079-2023-2776775",
+        "description": "Information and Communication Technologies (ICT).",
+        "image": "/images/SOFTWARE_ENGINEERING_DEGREE.webp",
+        "tags": ["Software Eng.", "Full-Stack", "Leadership"]
+      },
+      {
+        "name": "Intermediate English Level",
+        "issuer": "Universidad de las Fuerzas Armadas - ESPE",
+        "date": "March 2023",
+        "credentialId": "PZSH0014",
+        "description": "Equivalent to B1 of the Common European Framework.",
+        "image": "/images/CERTIFICATE_ENGLISH.webp",
+        "tags": ["English", "B1"]
+      },
+      {
+        "name": "Scientific Article Writing",
+        "issuer": "Universidad de las Fuerzas Armadas - ESPE",
+        "date": "April 2023",
+        "credentialId": "CEC-2023-206",
+        "description": "Seminar/Workshop with a duration of 80 hours.",
+        "image": "/images/CERTIFICATE_WORKSHOP_SCIENTIFIC_ARTICLES.webp",
+        "tags": ["Reading", "Scientific Writing"]
+      },
+      {
+        "name": "Software Engineering",
+        "issuer": "HackerRank",
+        "date": "March 2024",
+        "credentialId": "DE3FAF7F6F67",
+        "url": "https://www.hackerrank.com/certificates/de3faf7f6f67",
+        "description": "Problem Solving, SQL and REST API.",
+        "image": "/images/SOFTWARE_ENGINEER.webp",
+        "tags": ["SQL", "API REST"]
+      },
+      {
+        "name": "Frontend Developer (React)",
+        "issuer": "HackerRank",
+        "date": "March 2025",
+        "credentialId": "D702F2BC41AD",
+        "url": "https://www.hackerrank.com/certificates/d702f2bc41ad",
+        "description": "React, CSS and JavaScript.",
+        "image": "/images/FRONTEND_DEVELOPER.webp",
+        "tags": ["React", "CSS", "JavaScript"]
+      },
+      {
+        "name": "SQL (Advanced)",
+        "issuer": "HackerRank",
+        "date": "March 2025",
+        "credentialId": "217D29E4F83C",
+        "url": "https://www.hackerrank.com/certificates/217d29e4f83c",
+        "description": "Query optimization, data modeling, indexing, window functions and pivots.",
+        "image": "/images/SQL.webp",
+        "tags": ["SQL"]
+      },
+      {
+        "name": "Angular (Intermediate)",
+        "issuer": "HackerRank",
+        "date": "April 2024",
+        "credentialId": "82D2A78EE957",
+        "url": "https://www.hackerrank.com/certificates/82d2a78ee957",
+        "description": "Routing, NgModules, Observables, Dependency Injection, and APIs.",
+        "image": "/images/ANGULAR.webp",
+        "tags": ["Angular"]
+      },
+      {
+        "name": "JavaScript (Intermediate)",
+        "issuer": "HackerRank",
+        "date": "April 2024",
+        "credentialId": "8B05437ED77E",
+        "url": "https://www.hackerrank.com/certificates/8b05437ed77e",
+        "description": "Design patterns, memory management, concurrency model, and event loops.",
+        "image": "/images/JAVASCRIPT.webp",
+        "tags": ["JavaScript"]
+      },
+      {
+        "name": "REST API (Intermediate)",
+        "issuer": "HackerRank",
+        "date": "May 2024",
+        "credentialId": "20E17EB954D2",
+        "url": "https://www.hackerrank.com/certificates/20e17eb954d2",
+        "description": "Fetching data from an API and processing using parameters or pagination.",
+        "image": "/images/API_REST.webp",
+        "tags": ["Node.js", "API", "API REST"]
+      },
+      {
+        "name": "Problem Solving (Intermediate)",
+        "issuer": "HackerRank",
+        "date": "May 2024",
+        "credentialId": "26339B8212F1",
+        "url": "https://www.hackerrank.com/certificates/26339b8212f1",
+        "description": "Data Structures (HashMaps, Stacks, Queues) and Algorithms.",
+        "image": "/images/PROBLEM_SOLVING.webp",
+        "tags": ["SQL", "Algorithms"]
+      },
+      {
+        "name": "Node (Basic)",
+        "issuer": "HackerRank",
+        "date": "April 2024",
+        "credentialId": "B665979B48A9",
+        "url": "https://www.hackerrank.com/certificates/b665979b48a9",
+        "description": "Package Management, Callbacks, Event Loop, Streams, and File Systems.",
+        "image": "/images/NODE.webp",
+        "tags": ["Node.js"]
+      },
+      {
+        "name": "Python (Basic)",
+        "issuer": "HackerRank",
+        "date": "April 2024",
+        "credentialId": "F32CAF197F02",
+        "url": "https://www.hackerrank.com/certificates/f32caf197f02",
+        "description": "Scalar Types, Collections, Modularity, Objects, and Classes.",
+        "image": "/images/PYTHON.webp",
+        "tags": ["Python"]
+      },
+      {
+        "name": "CSS (Basic)",
+        "issuer": "HackerRank",
+        "date": "March 2024",
+        "credentialId": "E659EE967953",
+        "url": "https://www.hackerrank.com/certificates/e659ee967953",
+        "description": "Cascade and Inheritance, text styling, layouts, and box model.",
+        "image": "/images/CSS.webp",
+        "tags": ["CSS"]
+      },
+      {
+        "name": "C# (Basic)",
+        "issuer": "HackerRank",
+        "date": "March 2024",
+        "credentialId": "03CAE47D240B",
+        "url": "https://www.hackerrank.com/certificates/03cae47d240b",
+        "description": "C# program structure, basic OOP, Properties, Collections, and Exception Handling.",
+        "image": "/images/C_SHARP.webp",
+        "tags": ["C#", "OOP"]
+      }
+    ]
+  },
   "contact": {
-    "title": "Let's work together!",
-    "subtitle": "Have a project in mind or just want to say hi? I'd love to hear from you.",
-    "name": "Name",
-    "namePlaceholder": "John Doe",
-    "email": "Email",
-    "emailPlaceholder": "john@example.com",
-    "subject": "Subject",
-    "subjectOptions": [
-      "Project Inquiry",
-      "Job Opportunity",
-      "General Question"
-    ],
-    "message": "Message",
+    "sectionTitle": "Let's work together!",
+    "sectionSubtitle": "Have a project in mind or just want to say hi? I'd love to hear from you.",
+    "nameLabel": "Full Name",
+    "namePlaceholder": "Your name",
+    "emailLabel": "Email",
+    "emailPlaceholder": "your@email.com",
+    "subjectLabel": "Subject",
+    "subjectPlaceholder": "Select a subject",
+    "subjectOptions": ["Web Project", "Mobile App", "Consulting", "Other"],
+    "messageLabel": "Message",
     "messagePlaceholder": "Tell me about your project...",
-    "send": "Send Message"
+    "submit": "Send Message"
   },
   "footer": {
-    "rights": "All rights reserved.",
-    "backToTop": "Back to Top"
+    "copyright": "© 2026 Steven Lema. All rights reserved.",
+    "backToTop": "Back to top"
   }
 }

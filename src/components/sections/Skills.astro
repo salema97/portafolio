@@ -1,45 +1,57 @@
 ---
-import { getLangFromUrl, getTranslations } from '../../i18n/index';
+import { getLangFromUrl, getTranslations } from '../../i18n';
 
 const lang = getLangFromUrl(Astro.url);
 const t = getTranslations(lang);
+const skills = t.skills;
 ---
 
-<section class="w-full max-w-7xl mx-auto px-4 py-20" id="skills">
-  <div class="flex flex-col items-center text-center gap-2 mb-16">
-    <h2 class="text-3xl md:text-4xl font-bold dark:text-white text-slate-900">{t.skills.title}</h2>
-    <div class="h-1 w-20 bg-primary rounded-full"></div>
-    <p class="dark:text-slate-400 text-slate-500 mt-4 max-w-2xl">{t.skills.subtitle}</p>
+<section id="skills" class="py-20 px-4 w-full max-w-6xl mx-auto">
+  <!-- Section Header -->
+  <div class="text-center mb-16">
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+      {skills.sectionTitle}
+    </h2>
+    <div class="w-20 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
+    <p class="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">{skills.sectionSubtitle}</p>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    {t.skills.categories.map((category) => (
-      <div class="glass-panel p-8 rounded-2xl relative overflow-hidden">
-        {/* Background decorative icon */}
-        <div class="absolute -right-4 -top-4 dark:text-slate-800/30 text-slate-200/50">
-          <span class="material-symbols-outlined text-[150px]">{category.bgIcon}</span>
-        </div>
+  <!-- Categories Grid -->
+  <div class="grid md:grid-cols-3 gap-8">
+    {skills.categories.map((cat: any) => (
+      <div class="glass-panel rounded-xl p-6 hover:border-primary/30 transition-all duration-300 relative overflow-hidden group">
+        {/* Decorative bg icon */}
+        <span
+          class="material-symbols-outlined absolute -bottom-4 -right-4 text-primary/5 group-hover:text-primary/10 transition-colors"
+          style="font-size:6rem;"
+        >
+          {cat.icon}
+        </span>
 
-        <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-6 flex items-center gap-2 relative z-10">
-          <span class="material-symbols-outlined text-primary">{category.icon}</span>
-          {category.name}
-        </h3>
-
-        <div class="space-y-6 relative z-10">
-          {category.items.map((skill) => (
-            <div>
-              <div class="flex justify-between mb-1">
-                <span class="text-sm font-medium dark:text-slate-300 text-slate-600">{skill.name}</span>
-                <span class="text-sm font-medium text-primary">{skill.level}%</span>
-              </div>
-              <div class="w-full dark:bg-slate-700 bg-slate-200 rounded-full h-2">
-                <div
-                  class="bg-primary h-2 rounded-full shadow-[0_0_10px_rgba(19,91,236,0.6)] skill-bar"
-                  style={`width: ${skill.level}%`}
-                ></div>
-              </div>
+        <div class="relative">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
+              <span class="material-symbols-outlined text-primary">{cat.icon}</span>
             </div>
-          ))}
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white">{cat.name}</h3>
+          </div>
+
+          <div class="space-y-4">
+            {cat.skills.map((skill: any) => (
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-sm text-gray-700 dark:text-gray-300">{skill.name}</span>
+                  <span class="text-xs text-primary font-medium">{skill.level}%</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-gray-200 dark:bg-gray-800 overflow-hidden">
+                  <div
+                    class="h-full rounded-full bg-gradient-to-r from-primary to-primary-glow skill-bar"
+                    style={`width: ${skill.level}%`}
+                  ></div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     ))}
