@@ -1,74 +1,11 @@
 ---
-import AboutMe from '../components/AboutMe.astro'
-import Degrees from '../components/Degrees.astro'
-import Experience from '../components/Experience.astro'
-import Hero from '../components/Hero.astro'
-import ProjectsGallery from '../components/ProjectsGallery.astro'
-import SectionContainer from '../components/SectionContainer.astro'
-import SocialPill from '../components/SocialPill.astro'
-import BriefcaseIcon from '../icons/Briefcase.astro'
-import CodeIcon from '../icons/Code.astro'
-import EmailIcon from '../icons/Email.astro'
-import GitHubIcon from '../icons/GitHub.astro'
-import LinkedInIcon from '../icons/LinkedIn.astro'
-import PhoneIcon from '../icons/Phone.astro'
-import UserIcon from '../icons/User.astro'
-import Layout from '../layouts/Layout.astro'
+import Welcome from '../components/Welcome.astro';
+import Layout from '../layouts/Layout.astro';
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout
-	title=`Porfolio "Steven Lema" - Ingeniero de Software y Desarrollador Full-Stack`
-	description="¡Te contactaré tan pronto como sea posible! Soy un apasionado Ingeniero de Software y Desarrollador Full-Stack ¡Espero poder ayudarte con tus proyectos y desafíos tecnológicos!"
->
-	<main class="px-4">
-		<SectionContainer id="hero" class="pt-44 md:pt-72">
-			<Hero />
-			<nav class="mt-12 flex flex-col flex-wrap justify-center gap-x-4 gap-y-2 sm:flex-row">
-				<SocialPill href="https://github.com/salema97">
-					<GitHubIcon class="size-5" />
-					GitHub
-				</SocialPill>
-				<SocialPill href="https://www.linkedin.com/in/salema97">
-					<LinkedInIcon class="size-5" />
-					LinkedIn
-				</SocialPill>
-				<SocialPill href="tel:+593988237106">
-					<PhoneIcon class="size-6" />
-					+593 98 823 7106
-				</SocialPill>
-				<SocialPill href="mailto:salemavelasquez97@gmail.com">
-					<EmailIcon class="size-6" />
-					salemavelasquez97@gmail.com
-				</SocialPill>
-			</nav>
-		</SectionContainer>
-		<SectionContainer id="experience">
-			<h2 class="mb-6 flex items-center gap-x-3 text-3xl font-semibold">
-				<BriefcaseIcon class="size-8" />
-				Experiencia laboral
-			</h2>
-			<Experience />
-		</SectionContainer>
-		<SectionContainer id="degree">
-			<h2 class="mb-6 flex items-center gap-x-3 text-3xl font-semibold">
-				<UserIcon class="size-8" />
-				Títulos y Certificaciones
-			</h2>
-			<Degrees />
-		</SectionContainer>
-		<SectionContainer id="projects">
-			<h2 class="mb-6 flex items-center gap-x-3 text-3xl font-semibold">
-				<CodeIcon class="size-8" />
-				Proyectos
-			</h2>
-			<ProjectsGallery />
-		</SectionContainer>
-		<SectionContainer id="about">
-			<h2 class="mb-6 flex items-center gap-x-3 text-3xl font-semibold">
-				<UserIcon class="size-8" />
-				Acerca de mí
-			</h2>
-			<AboutMe />
-		</SectionContainer>
-	</main>
+<Layout>
+	<Welcome />
 </Layout>

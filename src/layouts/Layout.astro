@@ -1,53 +1,23 @@
----
-import '@fontsource/fira-sans-condensed'
-import Footer from '../components/Footer.astro'
-import NavBar from '../components/NavBar.astro'
-
-interface Props {
-	title: string
-	description: string
-}
-
-const { description, title } = Astro.props
----
-
 <!doctype html>
-<html lang="es">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+		<title>Astro Basics</title>
 	</head>
-	<body class="relative text-black dark:text-white">
-		<div
-			class="fixed inset-0 -z-20 flex h-screen w-screen items-center justify-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#FFF_40%,#638ECB_100%)] dark:[background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#022B42_100%)]"
-		>
-		</div>
-		<NavBar />
+	<body>
 		<slot />
-		<Footer />
 	</body>
-	<script src="flowbite/dist/flowbite.min.js"></script>
 </html>
-<style is:global>
-	:root {
-		color-scheme: light dark;
-	}
-	html {
-		font-family: 'Fira Sans Condensed', system-ui, sans-serif;
-		scroll-behavior: smooth;
-	}
+
+<style>
+	html,
 	body {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-	}
-	@media (prefers-reduced-motion: reduce) {
-		html {
-			scroll-behavior: smooth;
-		}
+		margin: 0;
+		width: 100%;
+		height: 100%;
 	}
 </style>
