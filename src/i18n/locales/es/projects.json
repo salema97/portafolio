@@ -1,0 +1,92 @@
+{
+  "sectionTitle": "Proyectos Destacados",
+  "sectionIcon": "rocket_launch",
+  "viewAll": "Ver Todos los Proyectos",
+  "filterAll": "Todos",
+  "showMore": "Ver Todos",
+  "showLess": "Ver Menos",
+  "items": [
+    {
+      "title": "Pagina Web Empresarial",
+      "description": "Pagina web empresarial para una empresa de desarrollo de software, con información de la empresa, servicios, portafolio y contacto.",
+      "image": "/projects/Kaizen.webp",
+      "link": "https://kaizensoftware.com.ec",
+      "tags": ["Vite", "React", "TypeScript"]
+    },
+    {
+      "title": "Panel Administrativo",
+      "description": "Panel de administración para la gestión de usuarios, productos y pedidos de una tienda en línea.",
+      "image": "/projects/Panel.webp",
+      "tags": ["Vite", "React", "TypeScript"]
+    },
+    {
+      "title": "API - Node.js",
+      "description": "API documentada de un sistema que maneja compras de productos de una tienda en línea, con autenticación de usuarios y roles.",
+      "image": "/projects/API_Corazon.webp",
+      "tags": ["Node.js", "JavaScript", "API REST"]
+    },
+    {
+      "title": "CopyXpress",
+      "description": "Aplicación Móvil para la tienda en línea CopyXpress, que permite a los usuarios realizar compras de productos de papelería y servicios de impresión.",
+      "image": "/projects/CopyXpress.webp",
+      "tags": ["Flutter", "Dart", "Android", "iOS"]
+    },
+    {
+      "title": "Re-Identificación de Personas",
+      "description": "Proyecto de tesis para la re-identificación de personas basada en características biométricas y softbiométricas, mediante el uso de arquitecturas de altas prestaciones.",
+      "image": "/projects/ProyectoTesis_1.webp",
+      "link": "https://repositorio.espe.edu.ec/handle/21000/37249",
+      "github": "https://github.com/salema97/RE-ID",
+      "tags": ["Python", "YOLO", "Seguridad", "Tesis"]
+    },
+    {
+      "title": "Consulta de Datos Personales",
+      "description": "API para la consulta de datos personales de páginas web públicas de entidades del Ecuador mediante WebScraping.",
+      "image": "/projects/ProyectoWebScraping_2.webp",
+      "github": "https://github.com/salema97/API-WebScraping",
+      "tags": ["API", "Python", "Web Scraping"]
+    },
+    {
+      "title": "Practica con SQLMap",
+      "description": "Página web para pruebas de vulnerabilidad con SQLMap y otras técnicas de auditoría de seguridad.",
+      "image": "/projects/ProyectoSeguridadWeb_2.webp",
+      "github": "https://github.com/salema97/DSS_injectionSQL",
+      "tags": ["HTML", "CSS", "JavaScript", "SQL", "Seguridad"]
+    },
+    {
+      "title": "Sala de Chat",
+      "description": "Página web para una sala de chat con Socket.io, una aplicación web en tiempo real que permite a múltiples usuarios comunicarse entre sí en un entorno de chat en vivo.",
+      "image": "/projects/ProyectoChat_2.webp",
+      "github": "https://github.com/salema97/SocketsChatRoom",
+      "tags": ["Node.js", "HTML", "CSS", "JavaScript"]
+    },
+    {
+      "title": "Servicio de Fotografía e Ilustración",
+      "description": "Página web estática para la prestación de servicios de fotografía e ilustración.",
+      "image": "/projects/ProyectoWeb_1.webp",
+      "github": "https://github.com/salema97/dwap2-lema-steven",
+      "tags": ["Node.js", "HTML", "CSS", "JavaScript"]
+    },
+    {
+      "title": "SCAFEL ECommerce",
+      "description": "Página web en desarrollo para la tienda de zapatos artesanales tejidos de la marca SCAFEL.",
+      "image": "/projects/ProyectoSeguridadWeb_1.webp",
+      "github": "https://github.com/salema97/ECommerceSCAFEL",
+      "tags": ["Angular", "Spring Boot", "Java", "PostgreSQL"]
+    },
+    {
+      "title": "App - Kaizen Novel",
+      "description": "Aplicación Móvil para lectura y publicación de novelas o de libros, con la opción de elegir el idioma.",
+      "image": "/projects/ProyectoMovil_1.webp",
+      "github": "https://github.com/salema97/novelkaizen-frontend",
+      "tags": ["Flutter", "Dart", "Android"]
+    },
+    {
+      "title": "Backend - Kaizen Novel",
+      "description": "Cloud functions para la identificación de las novelas o libros.",
+      "image": "/projects/ProyectoBackendMovil_1.webp",
+      "github": "https://github.com/salema97/novelkaizen-backend",
+      "tags": ["Node.js", "Firebase", "Firestore"]
+    }
+  ]
+}

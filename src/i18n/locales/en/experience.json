@@ -1,0 +1,37 @@
+{
+  "sectionTitle": "Experience",
+  "sectionIcon": "history_edu",
+  "items": [
+    {
+      "date": "November 2023 - Present",
+      "title": "Freelance",
+      "role": "Software Developer",
+      "description": "Developed diverse projects across multiple areas, including web development using Vite, e-commerce applications in Flutter, and Node.js APIs integrating these applications with MySQL databases. Followed the entire development process, from requirements gathering to final deployment.",
+      "tags": [
+        "Flutter",
+        "Dart",
+        "Node.js",
+        "API REST",
+        "JavaScript",
+        "MySQL",
+        "React",
+        "Vite",
+        "TypeScript"
+      ]
+    },
+    {
+      "date": "March 2022 - June 2022",
+      "title": "ADS Software",
+      "role": "Intern - Software Developer",
+      "description": "My experience focused on the design and development of Dynamic Link Libraries (DLLs) to facilitate the migration of legacy systems based on Visual FoxPro to the modern Firebase platform.",
+      "tags": ["C#", "Visual FoxPro", "Firebase", "API", "Desktop"]
+    },
+    {
+      "date": "December 2021 - February 2022",
+      "title": "UNHCR (ACNUR)",
+      "role": "Intern - Software Developer",
+      "description": "Participated in a Social Project for Technical Assistance for Strengthening Enterprises of Refugees in collaboration with UNHCR-HIAS-ESPE. Performed monitoring, maintenance, and development of the Prowessec website.",
+      "tags": ["HTML", "CSS", "JavaScript", "SQL", "PHP", "Web"]
+    }
+  ]
+}

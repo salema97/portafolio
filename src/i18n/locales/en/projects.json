@@ -1,0 +1,92 @@
+{
+  "sectionTitle": "Featured Projects",
+  "sectionIcon": "rocket_launch",
+  "viewAll": "View All Projects",
+  "filterAll": "All",
+  "showMore": "Show All",
+  "showLess": "Show Less",
+  "items": [
+    {
+      "title": "Corporate Website",
+      "description": "Corporate website for a software development company, featuring company info, services, portfolio, and contact.",
+      "image": "/projects/Kaizen.webp",
+      "link": "https://kaizensoftware.com.ec",
+      "tags": ["Vite", "React", "TypeScript"]
+    },
+    {
+      "title": "Admin Dashboard",
+      "description": "Administration panel for managing users, products, and orders of an online store.",
+      "image": "/projects/Panel.webp",
+      "tags": ["Vite", "React", "TypeScript"]
+    },
+    {
+      "title": "API - Node.js",
+      "description": "Documented API for a system handling product purchases from an online store, with user authentication and roles.",
+      "image": "/projects/API_Corazon.webp",
+      "tags": ["Node.js", "JavaScript", "API REST"]
+    },
+    {
+      "title": "CopyXpress",
+      "description": "Mobile application for the CopyXpress online store, allowing users to purchase stationery products and printing services.",
+      "image": "/projects/CopyXpress.webp",
+      "tags": ["Flutter", "Dart", "Android", "iOS"]
+    },
+    {
+      "title": "Person Re-Identification",
+      "description": "Thesis project for person re-identification based on biometric and soft biometric characteristics using high-performance architectures.",
+      "image": "/projects/ProyectoTesis_1.webp",
+      "link": "https://repositorio.espe.edu.ec/handle/21000/37249",
+      "github": "https://github.com/salema97/RE-ID",
+      "tags": ["Python", "YOLO", "Security", "Thesis"]
+    },
+    {
+      "title": "Personal Data Query",
+      "description": "API for querying personal data from public websites of Ecuadorian entities using WebScraping.",
+      "image": "/projects/ProyectoWebScraping_2.webp",
+      "github": "https://github.com/salema97/API-WebScraping",
+      "tags": ["API", "Python", "Web Scraping"]
+    },
+    {
+      "title": "SQLMap Practice",
+      "description": "Web page for vulnerability testing with SQLMap and other security auditing techniques.",
+      "image": "/projects/ProyectoSeguridadWeb_2.webp",
+      "github": "https://github.com/salema97/DSS_injectionSQL",
+      "tags": ["HTML", "CSS", "JavaScript", "SQL", "Security"]
+    },
+    {
+      "title": "Chat Room",
+      "description": "Real-time web application with Socket.io that allows multiple users to communicate in a live chat environment.",
+      "image": "/projects/ProyectoChat_2.webp",
+      "github": "https://github.com/salema97/SocketsChatRoom",
+      "tags": ["Node.js", "HTML", "CSS", "JavaScript"]
+    },
+    {
+      "title": "Photography & Illustration Service",
+      "description": "Static website for photography and illustration services.",
+      "image": "/projects/ProyectoWeb_1.webp",
+      "github": "https://github.com/salema97/dwap2-lema-steven",
+      "tags": ["Node.js", "HTML", "CSS", "JavaScript"]
+    },
+    {
+      "title": "SCAFEL ECommerce",
+      "description": "E-commerce website under development for the SCAFEL handmade knitted shoe brand.",
+      "image": "/projects/ProyectoSeguridadWeb_1.webp",
+      "github": "https://github.com/salema97/ECommerceSCAFEL",
+      "tags": ["Angular", "Spring Boot", "Java", "PostgreSQL"]
+    },
+    {
+      "title": "App - Kaizen Novel",
+      "description": "Mobile application for reading and publishing novels or books, with language selection support.",
+      "image": "/projects/ProyectoMovil_1.webp",
+      "github": "https://github.com/salema97/novelkaizen-frontend",
+      "tags": ["Flutter", "Dart", "Android"]
+    },
+    {
+      "title": "Backend - Kaizen Novel",
+      "description": "Cloud functions for novel and book identification.",
+      "image": "/projects/ProyectoBackendMovil_1.webp",
+      "github": "https://github.com/salema97/novelkaizen-backend",
+      "tags": ["Node.js", "Firebase", "Firestore"]
+    }
+  ]
+}

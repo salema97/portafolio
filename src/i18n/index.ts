@@ -1,5 +1,54 @@
-import en from './translations/en.json';
-import es from './translations/es.json';
+import aboutEn from './locales/en/about.json';
+import certificationsEn from './locales/en/certifications.json';
+import contactEn from './locales/en/contact.json';
+import experienceEn from './locales/en/experience.json';
+import footerEn from './locales/en/footer.json';
+import heroEn from './locales/en/hero.json';
+import navEn from './locales/en/nav.json';
+import projectsEn from './locales/en/projects.json';
+import siteEn from './locales/en/site.json';
+import skillsEn from './locales/en/skills.json';
+import statsEn from './locales/en/stats.json';
+
+import aboutEs from './locales/es/about.json';
+import certificationsEs from './locales/es/certifications.json';
+import contactEs from './locales/es/contact.json';
+import experienceEs from './locales/es/experience.json';
+import footerEs from './locales/es/footer.json';
+import heroEs from './locales/es/hero.json';
+import navEs from './locales/es/nav.json';
+import projectsEs from './locales/es/projects.json';
+import siteEs from './locales/es/site.json';
+import skillsEs from './locales/es/skills.json';
+import statsEs from './locales/es/stats.json';
+
+const en = {
+  site: siteEn,
+  nav: navEn,
+  hero: heroEn,
+  about: aboutEn,
+  stats: statsEn,
+  experience: experienceEn,
+  projects: projectsEn,
+  skills: skillsEn,
+  certifications: certificationsEn,
+  contact: contactEn,
+  footer: footerEn,
+};
+
+const es = {
+  site: siteEs,
+  nav: navEs,
+  hero: heroEs,
+  about: aboutEs,
+  stats: statsEs,
+  experience: experienceEs,
+  projects: projectsEs,
+  skills: skillsEs,
+  certifications: certificationsEs,
+  contact: contactEs,
+  footer: footerEs,
+};
 
 export type Lang = 'en' | 'es';
 export type TranslationKeys = typeof en;

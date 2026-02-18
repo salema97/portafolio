@@ -1,0 +1,144 @@
+{
+  "sectionTitle": "Certificaciones",
+  "sectionIcon": "workspace_premium",
+  "verify": "Verificar",
+  "items": [
+    {
+      "name": "Registro de título de \"Ingeniero de Software\"",
+      "issuer": "SENESCYT",
+      "date": "Noviembre 2023",
+      "credentialId": "1079-2023-2776775",
+      "description": "Tecnologías de la Información y la Comunicación (TIC).",
+      "image": "/images/SOFTWARE_ENGINEERING_DEGREE.webp",
+      "tags": ["Ing. Software", "Full-Stack", "Liderazgo"]
+    },
+    {
+      "name": "Nivel Intermedio de Inglés",
+      "issuer": "Universidad de las Fuerzas Armadas - ESPE",
+      "date": "Marzo 2023",
+      "credentialId": "PZSH0014",
+      "description": "Equivalente al B1 del marco común europeo.",
+      "image": "/images/CERTIFICATE_ENGLISH.webp",
+      "tags": ["Inglés", "B1"]
+    },
+    {
+      "name": "Elaboración de artículos científicos",
+      "issuer": "Universidad de las Fuerzas Armadas - ESPE",
+      "date": "Abril 2023",
+      "credentialId": "CEC-2023-206",
+      "description": "Seminario/Taller con una duración de 80 horas.",
+      "image": "/images/CERTIFICATE_WORKSHOP_SCIENTIFIC_ARTICLES.webp",
+      "tags": ["Lectura", "Redacción científica"]
+    },
+    {
+      "name": "Ingeniería de Software",
+      "issuer": "HackerRank",
+      "date": "Marzo 2024",
+      "credentialId": "DE3FAF7F6F67",
+      "url": "https://www.hackerrank.com/certificates/de3faf7f6f67",
+      "description": "Resolución de problemas, SQL y API REST.",
+      "image": "/images/SOFTWARE_ENGINEER.webp",
+      "tags": ["SQL", "API REST"]
+    },
+    {
+      "name": "Desarrollador Frontend (React)",
+      "issuer": "HackerRank",
+      "date": "Marzo 2025",
+      "credentialId": "D702F2BC41AD",
+      "url": "https://www.hackerrank.com/certificates/d702f2bc41ad",
+      "description": "React, CSS y JavaScript.",
+      "image": "/images/FRONTEND_DEVELOPER.webp",
+      "tags": ["React", "CSS", "JavaScript"]
+    },
+    {
+      "name": "SQL (Avanzado)",
+      "issuer": "HackerRank",
+      "date": "Marzo 2025",
+      "credentialId": "217D29E4F83C",
+      "url": "https://www.hackerrank.com/certificates/217d29e4f83c",
+      "description": "Optimización de consultas, modelado de datos, indexación, funciones de ventana y pivotes.",
+      "image": "/images/SQL.webp",
+      "tags": ["SQL"]
+    },
+    {
+      "name": "Angular (Intermedio)",
+      "issuer": "HackerRank",
+      "date": "Abril 2024",
+      "credentialId": "82D2A78EE957",
+      "url": "https://www.hackerrank.com/certificates/82d2a78ee957",
+      "description": "Routing, NgModules, Observables, Inyecciones de Dependencia y APIs.",
+      "image": "/images/ANGULAR.webp",
+      "tags": ["Angular"]
+    },
+    {
+      "name": "JavaScript (Intermedio)",
+      "issuer": "HackerRank",
+      "date": "Abril 2024",
+      "credentialId": "8B05437ED77E",
+      "url": "https://www.hackerrank.com/certificates/8b05437ed77e",
+      "description": "Patrones de diseño, gestión de memoria, modelo de concurrencia y bucles de eventos.",
+      "image": "/images/JAVASCRIPT.webp",
+      "tags": ["JavaScript"]
+    },
+    {
+      "name": "API Rest (Intermedio)",
+      "issuer": "HackerRank",
+      "date": "Mayo 2024",
+      "credentialId": "20E17EB954D2",
+      "url": "https://www.hackerrank.com/certificates/20e17eb954d2",
+      "description": "Obtener datos de una API y procesar usando parámetros o paginación.",
+      "image": "/images/API_REST.webp",
+      "tags": ["Node.js", "API", "API REST"]
+    },
+    {
+      "name": "Resolución de Problemas (Intermedio)",
+      "issuer": "HackerRank",
+      "date": "Mayo 2024",
+      "credentialId": "26339B8212F1",
+      "url": "https://www.hackerrank.com/certificates/26339b8212f1",
+      "description": "Estructuras de Datos (HashMaps, Pilas y Colas) y Algoritmos.",
+      "image": "/images/PROBLEM_SOLVING.webp",
+      "tags": ["SQL", "Algoritmos"]
+    },
+    {
+      "name": "Node (Básico)",
+      "issuer": "HackerRank",
+      "date": "Abril 2024",
+      "credentialId": "B665979B48A9",
+      "url": "https://www.hackerrank.com/certificates/b665979b48a9",
+      "description": "Gestión de Paquetes, Callbacks, Bucle de Eventos, Streams y Sistemas de Archivos.",
+      "image": "/images/NODE.webp",
+      "tags": ["Node.js"]
+    },
+    {
+      "name": "Python (Básico)",
+      "issuer": "HackerRank",
+      "date": "Abril 2024",
+      "credentialId": "F32CAF197F02",
+      "url": "https://www.hackerrank.com/certificates/f32caf197f02",
+      "description": "Tipos Escalares, Colecciones, Modularidad, Objetos y Clases.",
+      "image": "/images/PYTHON.webp",
+      "tags": ["Python"]
+    },
+    {
+      "name": "CSS (Básico)",
+      "issuer": "HackerRank",
+      "date": "Marzo 2024",
+      "credentialId": "E659EE967953",
+      "url": "https://www.hackerrank.com/certificates/e659ee967953",
+      "description": "Cascada y Herencia, estilizado de texto, diseños y encajonado de elementos.",
+      "image": "/images/CSS.webp",
+      "tags": ["CSS"]
+    },
+    {
+      "name": "C# (Básico)",
+      "issuer": "HackerRank",
+      "date": "Marzo 2024",
+      "credentialId": "03CAE47D240B",
+      "url": "https://www.hackerrank.com/certificates/03cae47d240b",
+      "description": "Estructura de programas C#, POO básica, Propiedades, Colecciones y Manejo de Excepciones.",
+      "image": "/images/C_SHARP.webp",
+      "tags": ["C#", "POO"]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "sectionTitle": "¡Trabajemos juntos!",
+  "sectionSubtitle": "¿Tienes un proyecto en mente o solo quieres saludar? Me encantaría saber de ti.",
+  "nameLabel": "Nombre completo",
+  "namePlaceholder": "Tu nombre",
+  "emailLabel": "Email",
+  "emailPlaceholder": "tu@correo.com",
+  "subjectLabel": "Asunto",
+  "subjectPlaceholder": "Selecciona un asunto",
+  "subjectOptions": ["Proyecto Web", "Aplicación Móvil", "Consultoría", "Otro"],
+  "messageLabel": "Mensaje",
+  "messagePlaceholder": "Cuéntame sobre tu proyecto...",
+  "submit": "Enviar Mensaje"
+}

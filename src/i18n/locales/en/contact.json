@@ -1,0 +1,14 @@
+{
+  "sectionTitle": "Let's work together!",
+  "sectionSubtitle": "Have a project in mind or just want to say hi? I'd love to hear from you.",
+  "nameLabel": "Full Name",
+  "namePlaceholder": "Your name",
+  "emailLabel": "Email",
+  "emailPlaceholder": "your@email.com",
+  "subjectLabel": "Subject",
+  "subjectPlaceholder": "Select a subject",
+  "subjectOptions": ["Web Project", "Mobile App", "Consulting", "Other"],
+  "messageLabel": "Message",
+  "messagePlaceholder": "Tell me about your project...",
+  "submit": "Send Message"
+}
