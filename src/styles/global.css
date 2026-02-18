@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+/* ===== Custom Theme (Tailwind v4) ===== */
+@theme {
+  --color-primary: #135bec;
+  --color-primary-glow: #3b82f6;
+  --color-background-light: #f6f6f8;
+  --color-background-dark: #101622;
+  --color-surface-dark: #1a212e;
+  --color-surface-light: #ffffff;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Space Grotesk', sans-serif;
+
+  --shadow-glow: 0 0 15px rgba(19, 91, 236, 0.5);
+  --shadow-glow-sm: 0 0 10px rgba(19, 91, 236, 0.3);
+  --shadow-glow-lg: 0 0 25px rgba(19, 91, 236, 0.6);
+}
+
+/* ===== Dark Mode ===== */
+@variant dark (&:where(.dark, .dark *));
+
+/* ===== Glass Panel Utility ===== */
+@layer components {
+  .glass-panel {
+    background: rgba(26, 33, 46, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* ===== Light mode glass override ===== */
+html:not(.dark) .glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== Text Glow ===== */
+.text-glow {
+  text-shadow: 0 0 20px rgba(19, 91, 236, 0.4);
+}
+
+/* ===== Custom Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dark ::-webkit-scrollbar-track,
+:root.dark ::-webkit-scrollbar-track {
+  background: #101622;
+}
+
+.dark ::-webkit-scrollbar-thumb,
+:root.dark ::-webkit-scrollbar-thumb {
+  background: #282e39;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover,
+:root.dark ::-webkit-scrollbar-thumb:hover {
+  background: #135bec;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #135bec;
+}
+
+/* ===== Smooth scroll ===== */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+/* ===== Selection color ===== */
+::selection {
+  background: #135bec;
+  color: white;
+}
+
+/* ===== Skill bar animation ===== */
+@keyframes skillFill {
+  from { width: 0; }
+}
+
+.skill-bar {
+  animation: skillFill 1.2s ease-out forwards;
+}

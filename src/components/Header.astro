@@ -1,0 +1,125 @@
+---
+import { getLangFromUrl, getTranslations, getAlternateLocaleUrl, type Lang } from '../i18n/index';
+
+const lang = getLangFromUrl(Astro.url);
+const t = getTranslations(lang);
+const alternateLang: Lang = lang === 'en' ? 'es' : 'en';
+const alternateUrl = getAlternateLocaleUrl(Astro.url, alternateLang);
+---
+
+<header class="sticky top-0 z-50 glass-panel border-b border-white/5 dark:border-white/5 w-full" id="site-header">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href={`/${lang}/`} class="flex items-center gap-2 group cursor-pointer no-underline">
+        <span class="material-symbols-outlined text-primary text-3xl group-hover:rotate-12 transition-transform duration-300">terminal</span>
+        <h1 class="text-xl font-bold tracking-tight dark:text-white text-slate-900">&lt;DevName /&gt;</h1>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a class="text-sm font-medium dark:text-slate-300 text-slate-600 hover:text-primary transition-colors" href="#about">{t.nav.about}</a>
+        <a class="text-sm font-medium dark:text-slate-300 text-slate-600 hover:text-primary transition-colors" href="#work">{t.nav.work}</a>
+        <a class="text-sm font-medium dark:text-slate-300 text-slate-600 hover:text-primary transition-colors" href="#skills">{t.nav.skills}</a>
+        <a class="text-sm font-medium dark:text-slate-300 text-slate-600 hover:text-primary transition-colors" href="#contact">{t.nav.contact}</a>
+      </nav>
+
+      <!-- Actions -->
+      <div class="hidden md:flex items-center gap-4">
+        <div class="h-4 w-[1px] dark:bg-slate-700 bg-slate-300"></div>
+
+        <!-- Language Toggle -->
+        <a href={alternateUrl} class="text-xs font-bold dark:text-slate-400 text-slate-500 hover:text-primary dark:hover:text-white transition-colors uppercase no-underline" id="lang-toggle">
+          {alternateLang.toUpperCase()}
+        </a>
+
+        <!-- Theme Toggle -->
+        <button class="dark:text-slate-400 text-slate-500 hover:text-primary transition-colors" id="theme-toggle" aria-label="Toggle theme">
+          <span class="material-symbols-outlined text-[20px] dark:hidden">dark_mode</span>
+          <span class="material-symbols-outlined text-[20px] hidden dark:inline">light_mode</span>
+        </button>
+
+        <!-- Resume Button -->
+        <a class="px-4 py-2 bg-primary hover:bg-blue-600 text-white text-sm font-bold rounded-lg transition-all shadow-glow-sm hover:shadow-glow flex items-center gap-2 no-underline" href="#">
+          <span>{t.nav.resume}</span>
+          <span class="material-symbols-outlined text-[16px]">download</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden dark:text-white text-slate-900 p-2" id="mobile-menu-btn" aria-label="Open menu">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="hidden md:hidden fixed inset-0 top-16 z-40 bg-background-dark/95 dark:bg-background-dark/95 bg-white/95 backdrop-blur-lg" id="mobile-menu">
+    <nav class="flex flex-col items-center justify-center gap-8 h-full">
+      <a class="text-2xl font-medium dark:text-slate-300 text-slate-600 hover:text-primary transition-colors mobile-nav-link" href="#about">{t.nav.about}</a>
+      <a class="text-2xl font-medium dark:text-slate-300 text-slate-600 hover:text-primary transition-colors mobile-nav-link" href="#work">{t.nav.work}</a>
+      <a class="text-2xl font-medium dark:text-slate-300 text-slate-600 hover:text-primary transition-colors mobile-nav-link" href="#skills">{t.nav.skills}</a>
+      <a class="text-2xl font-medium dark:text-slate-300 text-slate-600 hover:text-primary transition-colors mobile-nav-link" href="#contact">{t.nav.contact}</a>
+
+      <div class="flex items-center gap-6 mt-4">
+        <a href={alternateUrl} class="text-sm font-bold dark:text-slate-400 text-slate-500 hover:text-primary transition-colors uppercase no-underline">
+          {alternateLang.toUpperCase()}
+        </a>
+        <button class="dark:text-slate-400 text-slate-500 hover:text-primary transition-colors" id="theme-toggle-mobile" aria-label="Toggle theme">
+          <span class="material-symbols-outlined text-[24px] dark:hidden">dark_mode</span>
+          <span class="material-symbols-outlined text-[24px] hidden dark:inline">light_mode</span>
+        </button>
+      </div>
+
+      <a class="px-6 py-3 bg-primary hover:bg-blue-600 text-white text-sm font-bold rounded-lg transition-all shadow-glow flex items-center gap-2 no-underline mt-4" href="#">
+        <span>{t.nav.resume}</span>
+        <span class="material-symbols-outlined text-[16px]">download</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Theme Toggle
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isDark = html.classList.contains('dark');
+    if (isDark) {
+      html.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    } else {
+      html.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    }
+  }
+
+  document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
+  document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggleTheme);
+
+  // Mobile Menu
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = menuBtn?.querySelector('.material-symbols-outlined');
+
+  menuBtn?.addEventListener('click', () => {
+    const isHidden = mobileMenu?.classList.contains('hidden');
+    if (isHidden) {
+      mobileMenu?.classList.remove('hidden');
+      if (menuIcon) menuIcon.textContent = 'close';
+      document.body.style.overflow = 'hidden';
+    } else {
+      mobileMenu?.classList.add('hidden');
+      if (menuIcon) menuIcon.textContent = 'menu';
+      document.body.style.overflow = '';
+    }
+  });
+
+  // Close mobile menu on nav link click
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+      if (menuIcon) menuIcon.textContent = 'menu';
+      document.body.style.overflow = '';
+    });
+  });
+</script>

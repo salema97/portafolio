@@ -1,0 +1,90 @@
+---
+import { getLangFromUrl, getTranslations } from '../../i18n/index';
+
+const lang = getLangFromUrl(Astro.url);
+const t = getTranslations(lang);
+---
+
+<section class="w-full max-w-7xl mx-auto px-4 py-20 md:py-32 flex flex-col md:flex-row items-center gap-12 relative overflow-hidden" id="about">
+  <!-- Background Decorative Blur -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+
+  <div class="flex-1 space-y-6 z-10">
+    <!-- Available Badge -->
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
+      <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+      {t.hero.available}
+    </div>
+
+    <!-- Headline -->
+    <h2 class="text-5xl md:text-7xl font-black leading-tight tracking-tight dark:text-white text-slate-900">
+      {t.hero.greeting} <br />
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-glow text-glow">
+        {t.hero.name}
+      </span>
+    </h2>
+
+    <!-- Description -->
+    <p class="text-lg md:text-xl dark:text-slate-400 text-slate-500 max-w-lg leading-relaxed">
+      {t.hero.description}
+    </p>
+
+    <!-- CTAs -->
+    <div class="flex flex-wrap gap-4 pt-4">
+      <a
+        class="px-8 py-3 bg-primary hover:bg-blue-600 text-white font-bold rounded-lg transition-all shadow-glow hover:shadow-glow-lg hover:-translate-y-1 flex items-center gap-2 no-underline"
+        href="#work"
+      >
+        {t.hero.viewProjects}
+        <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+      </a>
+      <a
+        class="px-8 py-3 bg-transparent border dark:border-slate-700 border-slate-300 hover:border-primary hover:text-primary dark:text-white text-slate-700 font-bold rounded-lg transition-all hover:-translate-y-1 flex items-center gap-2 no-underline"
+        href="#contact"
+      >
+        {t.hero.contactMe}
+      </a>
+    </div>
+
+    <!-- Social Links -->
+    <div class="flex items-center gap-6 pt-8 dark:text-slate-500 text-slate-400">
+      <a class="hover:text-primary dark:hover:text-white transition-colors" href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <span class="material-symbols-outlined text-2xl">code</span>
+      </a>
+      <a class="hover:text-primary dark:hover:text-white transition-colors" href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <span class="material-symbols-outlined text-2xl">work</span>
+      </a>
+      <a class="hover:text-primary dark:hover:text-white transition-colors" href="mailto:dev@example.com" aria-label="Email">
+        <span class="material-symbols-outlined text-2xl">alternate_email</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Hero Image -->
+  <div class="flex-1 w-full max-w-md md:max-w-full flex justify-center z-10">
+    <div class="relative w-full aspect-square max-w-[400px]">
+      <!-- Decorative gradient -->
+      <div class="absolute inset-0 bg-gradient-to-tr from-primary to-purple-600 rounded-2xl rotate-6 opacity-20 blur-xl"></div>
+      <div class="absolute inset-0 border-2 border-primary/30 rounded-2xl rotate-3"></div>
+
+      <!-- Image container -->
+      <div class="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl dark:bg-surface-dark bg-slate-100 border dark:border-white/10 border-slate-200">
+        <div class="w-full h-full bg-gradient-to-br from-primary/20 via-purple-500/10 to-primary-glow/20"></div>
+        <div class="absolute inset-0 bg-gradient-to-t dark:from-background-dark/80 from-white/60 via-transparent to-transparent"></div>
+
+        <!-- Status card -->
+        <div class="absolute bottom-4 left-4 right-4 p-4 glass-panel rounded-xl">
+          <div class="flex items-center gap-3">
+            <div class="p-2 rounded-lg bg-primary/20 text-primary">
+              <span class="material-symbols-outlined">terminal</span>
+            </div>
+            <div>
+              <p class="text-xs dark:text-slate-400 text-slate-500 font-mono">{t.hero.currentStatus}</p>
+              <p class="text-sm font-bold dark:text-white text-slate-800">{t.hero.codingFuture}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

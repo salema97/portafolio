@@ -1,0 +1,24 @@
+---
+import { getLangFromUrl, getTranslations } from '../../i18n/index';
+
+const lang = getLangFromUrl(Astro.url);
+const t = getTranslations(lang);
+
+const stats = [
+  { value: '5+', label: t.stats.experience },
+  { value: '50+', label: t.stats.projects },
+  { value: '20+', label: t.stats.clients },
+  { value: '100%', label: t.stats.commitment },
+];
+---
+
+<div class="w-full border-y dark:border-white/5 border-slate-200 dark:bg-surface-dark/30 bg-slate-50 backdrop-blur-sm">
+  <div class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+    {stats.map((stat) => (
+      <div class="text-center">
+        <p class="text-3xl font-black dark:text-white text-slate-900">{stat.value}</p>
+        <p class="text-sm dark:text-slate-400 text-slate-500 uppercase tracking-wider font-medium">{stat.label}</p>
+      </div>
+    ))}
+  </div>
+</div>

@@ -1,0 +1,40 @@
+---
+import { getLangFromUrl, getTranslations } from '../i18n/index';
+
+const lang = getLangFromUrl(Astro.url);
+const t = getTranslations(lang);
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="w-full border-t dark:border-white/5 border-slate-200 dark:bg-background-dark bg-white py-8 px-4">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+    <div class="flex flex-col items-center md:items-start">
+      <h2 class="text-lg font-bold tracking-tight dark:text-white text-slate-900 mb-1">&lt;DevName /&gt;</h2>
+      <p class="dark:text-slate-500 text-slate-400 text-sm">&copy; {currentYear} {t.footer.rights}</p>
+    </div>
+    <div class="flex items-center gap-6">
+      <a class="dark:text-slate-400 text-slate-500 hover:text-primary transition-colors" href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <span class="material-symbols-outlined">code</span>
+      </a>
+      <a class="dark:text-slate-400 text-slate-500 hover:text-primary transition-colors" href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <span class="material-symbols-outlined">work</span>
+      </a>
+      <a class="dark:text-slate-400 text-slate-500 hover:text-primary transition-colors" href="mailto:dev@example.com" aria-label="Email">
+        <span class="material-symbols-outlined">alternate_email</span>
+      </a>
+    </div>
+    <button
+      class="flex items-center gap-2 text-sm font-medium dark:text-slate-400 text-slate-500 hover:text-primary dark:hover:text-white transition-colors"
+      id="back-to-top"
+    >
+      {t.footer.backToTop}
+      <span class="material-symbols-outlined text-[18px]">arrow_upward</span>
+    </button>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('back-to-top')?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>

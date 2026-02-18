@@ -1,0 +1,134 @@
+{
+  "nav": {
+    "about": "Sobre mí",
+    "work": "Proyectos",
+    "skills": "Habilidades",
+    "contact": "Contacto",
+    "resume": "Currículum"
+  },
+  "hero": {
+    "available": "Disponible para nuevos proyectos",
+    "greeting": "Hola, soy",
+    "name": "<DevName />",
+    "description": "Ingeniero de Software Full-Stack creando experiencias web inmersivas con tecnologías modernas. Transformo problemas complejos en código elegante.",
+    "viewProjects": "Ver Proyectos",
+    "contactMe": "Contáctame",
+    "currentStatus": "Estado Actual",
+    "codingFuture": "Programando el futuro..."
+  },
+  "stats": {
+    "experience": "Años de Experiencia",
+    "projects": "Proyectos Realizados",
+    "clients": "Clientes Satisfechos",
+    "commitment": "Compromiso"
+  },
+  "experience": {
+    "title": "Experiencia",
+    "items": [
+      {
+        "period": "2021 - Presente",
+        "role": "Ingeniero Full Stack Senior",
+        "company": "TechCorp Inc.",
+        "description": "Liderando un equipo de 5 desarrolladores para construir microservicios escalables. Optimicé consultas de base de datos reduciendo la latencia en un 40%. Implementé pipelines CI/CD.",
+        "tags": ["React", "Node.js", "AWS"]
+      },
+      {
+        "period": "2019 - 2021",
+        "role": "Desarrollador Frontend",
+        "company": "WebSolutions Agency",
+        "description": "Desarrollé componentes UI responsivos para más de 20 proyectos de clientes. Colaboré con diseñadores para implementar interfaces pixel-perfect usando Vue.js.",
+        "tags": ["Vue.js", "Sass", "Figma"]
+      },
+      {
+        "period": "2018 - 2019",
+        "role": "Desarrollador Junior",
+        "company": "StartUp Inc.",
+        "description": "Asistí en el desarrollo de APIs backend. Escribí pruebas unitarias y mantuve la documentación del código legado.",
+        "tags": ["Python", "Django", "PostgreSQL"]
+      }
+    ]
+  },
+  "projects": {
+    "title": "Proyectos Destacados",
+    "viewAll": "Ver Todos los Proyectos",
+    "viewCode": "Ver Código",
+    "liveDemo": "Demo en Vivo",
+    "items": [
+      {
+        "title": "Dashboard E-Commerce",
+        "description": "Un panel de administración completo para gestionar productos, pedidos y análisis. Construido pensando en el rendimiento.",
+        "tags": ["React", "Tailwind", "Redux"],
+        "image": "/images/project-1.webp"
+      },
+      {
+        "title": "Rastreador de Criptofinanzas",
+        "description": "Aplicación de seguimiento de criptomonedas en tiempo real con gráficos en vivo, alertas de precios y gestión de portafolio.",
+        "tags": ["Next.js", "Chart.js", "API"],
+        "image": "/images/project-2.webp"
+      },
+      {
+        "title": "TaskMaster App",
+        "description": "Una herramienta colaborativa de gestión de tareas para equipos remotos con tableros kanban de arrastrar y soltar.",
+        "tags": ["Vue 3", "Firebase", "PWA"],
+        "image": "/images/project-3.webp"
+      }
+    ]
+  },
+  "skills": {
+    "title": "Habilidades Técnicas",
+    "subtitle": "Constantemente aprendo nuevas tecnologías para mantenerme a la vanguardia en la industria. Estas son las herramientas con las que trabajo más frecuentemente.",
+    "categories": [
+      {
+        "name": "Frontend",
+        "icon": "html",
+        "bgIcon": "devices",
+        "items": [
+          { "name": "React / Next.js", "level": 95 },
+          { "name": "Tailwind CSS", "level": 90 },
+          { "name": "TypeScript", "level": 85 }
+        ]
+      },
+      {
+        "name": "Backend",
+        "icon": "dns",
+        "bgIcon": "database",
+        "items": [
+          { "name": "Node.js", "level": 90 },
+          { "name": "PostgreSQL", "level": 80 },
+          { "name": "Python", "level": 75 }
+        ]
+      },
+      {
+        "name": "DevOps",
+        "icon": "settings_system_daydream",
+        "bgIcon": "cloud",
+        "items": [
+          { "name": "Docker", "level": 85 },
+          { "name": "AWS", "level": 70 },
+          { "name": "CI/CD", "level": 80 }
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "title": "¡Trabajemos juntos!",
+    "subtitle": "¿Tienes un proyecto en mente o solo quieres saludar? Me encantaría saber de ti.",
+    "name": "Nombre",
+    "namePlaceholder": "Juan Pérez",
+    "email": "Correo",
+    "emailPlaceholder": "juan@ejemplo.com",
+    "subject": "Asunto",
+    "subjectOptions": [
+      "Consulta de Proyecto",
+      "Oportunidad Laboral",
+      "Pregunta General"
+    ],
+    "message": "Mensaje",
+    "messagePlaceholder": "Cuéntame sobre tu proyecto...",
+    "send": "Enviar Mensaje"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados.",
+    "backToTop": "Volver Arriba"
+  }
+}

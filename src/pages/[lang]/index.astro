@@ -1,0 +1,39 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/sections/Hero.astro';
+import Stats from '../../components/sections/Stats.astro';
+import Experience from '../../components/sections/Experience.astro';
+import Projects from '../../components/sections/Projects.astro';
+import Skills from '../../components/sections/Skills.astro';
+import Contact from '../../components/sections/Contact.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'es' } },
+  ];
+}
+---
+
+<Layout>
+  <Header />
+  <main class="flex-grow flex flex-col items-center w-full">
+    <Hero />
+    <Stats />
+    <Experience />
+    <Projects />
+    <Skills />
+    <Contact />
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  // Save language preference when visiting a locale page
+  const lang = document.documentElement.lang;
+  if (lang) {
+    localStorage.setItem('preferred-lang', lang);
+  }
+</script>

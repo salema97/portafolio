@@ -1,0 +1,134 @@
+{
+  "nav": {
+    "about": "About",
+    "work": "Work",
+    "skills": "Skills",
+    "contact": "Contact",
+    "resume": "Resume"
+  },
+  "hero": {
+    "available": "Available for new projects",
+    "greeting": "Hello, I'm",
+    "name": "<DevName />",
+    "description": "Full-Stack Software Engineer building immersive web experiences with modern technologies. I turn complex problems into elegant code.",
+    "viewProjects": "View Projects",
+    "contactMe": "Contact Me",
+    "currentStatus": "Current Status",
+    "codingFuture": "Coding the future..."
+  },
+  "stats": {
+    "experience": "Years Experience",
+    "projects": "Projects Done",
+    "clients": "Happy Clients",
+    "commitment": "Commitment"
+  },
+  "experience": {
+    "title": "Experience",
+    "items": [
+      {
+        "period": "2021 - Present",
+        "role": "Senior Full Stack Engineer",
+        "company": "TechCorp Inc.",
+        "description": "Leading a team of 5 developers to build scalable microservices. Optimized database queries reducing latency by 40%. Implemented CI/CD pipelines.",
+        "tags": ["React", "Node.js", "AWS"]
+      },
+      {
+        "period": "2019 - 2021",
+        "role": "Frontend Developer",
+        "company": "WebSolutions Agency",
+        "description": "Developed responsive UI components for over 20 client projects. Collaborated with designers to implement pixel-perfect interfaces using Vue.js.",
+        "tags": ["Vue.js", "Sass", "Figma"]
+      },
+      {
+        "period": "2018 - 2019",
+        "role": "Junior Developer",
+        "company": "StartUp Inc.",
+        "description": "Assisted in backend API development. Wrote unit tests and maintained documentation for legacy codebase.",
+        "tags": ["Python", "Django", "PostgreSQL"]
+      }
+    ]
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "viewAll": "View All Projects",
+    "viewCode": "View Code",
+    "liveDemo": "Live Demo",
+    "items": [
+      {
+        "title": "E-Commerce Dashboard",
+        "description": "A comprehensive admin dashboard for managing products, orders, and analytics. Built with performance in mind.",
+        "tags": ["React", "Tailwind", "Redux"],
+        "image": "/images/project-1.webp"
+      },
+      {
+        "title": "Crypto Finance Tracker",
+        "description": "Real-time cryptocurrency tracking application featuring live charts, price alerts, and portfolio management.",
+        "tags": ["Next.js", "Chart.js", "API"],
+        "image": "/images/project-2.webp"
+      },
+      {
+        "title": "TaskMaster App",
+        "description": "A collaborative task management tool for remote teams with drag-and-drop kanban boards.",
+        "tags": ["Vue 3", "Firebase", "PWA"],
+        "image": "/images/project-3.webp"
+      }
+    ]
+  },
+  "skills": {
+    "title": "Technical Skills",
+    "subtitle": "I constantly learn new technologies to stay ahead in the industry. Here are the tools I work with most frequently.",
+    "categories": [
+      {
+        "name": "Frontend",
+        "icon": "html",
+        "bgIcon": "devices",
+        "items": [
+          { "name": "React / Next.js", "level": 95 },
+          { "name": "Tailwind CSS", "level": 90 },
+          { "name": "TypeScript", "level": 85 }
+        ]
+      },
+      {
+        "name": "Backend",
+        "icon": "dns",
+        "bgIcon": "database",
+        "items": [
+          { "name": "Node.js", "level": 90 },
+          { "name": "PostgreSQL", "level": 80 },
+          { "name": "Python", "level": 75 }
+        ]
+      },
+      {
+        "name": "DevOps",
+        "icon": "settings_system_daydream",
+        "bgIcon": "cloud",
+        "items": [
+          { "name": "Docker", "level": 85 },
+          { "name": "AWS", "level": 70 },
+          { "name": "CI/CD", "level": 80 }
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "title": "Let's work together!",
+    "subtitle": "Have a project in mind or just want to say hi? I'd love to hear from you.",
+    "name": "Name",
+    "namePlaceholder": "John Doe",
+    "email": "Email",
+    "emailPlaceholder": "john@example.com",
+    "subject": "Subject",
+    "subjectOptions": [
+      "Project Inquiry",
+      "Job Opportunity",
+      "General Question"
+    ],
+    "message": "Message",
+    "messagePlaceholder": "Tell me about your project...",
+    "send": "Send Message"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "backToTop": "Back to Top"
+  }
+}
