@@ -1,9 +1,9 @@
 {
   "sectionTitle": "About Me",
   "sectionIcon": "person",
-  "bio1": "💻 Although I'm a Full-Stack developer, my passion lies especially in Back-End development. However, this doesn't limit me at all from working in other areas of development.",
-  "bio2": "🩵 My passion for Software drives me to continuously develop my skills and keep up with the latest technologies. I'm committed to delivering innovative, high-quality solutions in every project I participate in.",
-  "bio3": "✨ I'd love to collaborate with you to take your ideas to the next level!",
+  "bio1": "Although I'm a Full-Stack developer, my passion lies especially in Back-End development. However, this doesn't limit me at all from working in other areas of development.",
+  "bio2": "My passion for Software drives me to continuously develop my skills and keep up with the latest technologies. I'm committed to delivering innovative, high-quality solutions in every project I participate in.",
+  "bio3": "I'd love to collaborate with you to take your ideas to the next level!",
   "details": {
     "locationLabel": "Location",
     "universityLabel": "University",

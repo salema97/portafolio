@@ -1,4 +1,9 @@
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { AnimatePresence, motion } from 'framer-motion';
 import { useMemo, useState } from 'react';
+import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
 
 interface Project {
   title: string;
@@ -9,125 +14,155 @@ interface Project {
   tags: string[];
 }
 
-interface Props {
+interface ProjectGalleryProps {
   projects: Project[];
   labels: {
+    viewAll: string;
     filterAll: string;
     showMore: string;
     showLess: string;
   };
 }
 
-export default function ProjectGallery({ projects, labels }: Props) {
-  const [activeFilter, setActiveFilter] = useState(labels?.filterAll || 'All');
-  const [showAll, setShowAll] = useState(false);
+export default function ProjectGallery({ projects, labels }: ProjectGalleryProps) {
+  const [filter, setFilter] = useState('All');
+  const [visibleCount, setVisibleCount] = useState(6);
 
-  // Extract unique tags across all projects
   const allTags = useMemo(() => {
-    const tags = new Set<string>();
-    projects.forEach((p) => p.tags.forEach((t) => tags.add(t)));
-    return [labels?.filterAll || 'All', ...Array.from(tags).sort()];
-  }, [projects, labels]);
+    const capsTags = new Set<string>();
+    projects.forEach(p => p.tags.forEach(t => capsTags.add(t)));
+    return Array.from(capsTags).sort();
+  }, [projects]);
 
-  const filtered = useMemo(() => {
-    if (activeFilter === (labels?.filterAll || 'All')) return projects;
-    return projects.filter((p) => p.tags.includes(activeFilter));
-  }, [projects, activeFilter, labels]);
+  const filteredProjects = useMemo(() => {
+    if (filter === 'All') return projects;
+    return projects.filter(p => p.tags.includes(filter));
+  }, [projects, filter]);
 
-  const visible = showAll ? filtered : filtered.slice(0, 6);
+  const displayedProjects = filteredProjects.slice(0, visibleCount);
+  const hasMore = visibleCount < filteredProjects.length;
+
+  const handleShowMore = () => {
+    setVisibleCount(prev => prev + 6);
+  };
+
+  const handleShowLess = () => {
+    setVisibleCount(6);
+    const element = document.getElementById('work');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
-    <div>
-      {/* Filter chips */}
-      <div className="flex flex-wrap justify-center gap-2 mb-10">
-        {allTags.map((tag) => (
-          <button
+    <div className="space-y-8">
+      {/* Filter Tabs */}
+      <div className="flex flex-wrap justify-center gap-2">
+        <Button
+          variant={filter === 'All' ? "default" : "outline"}
+          onClick={() => { setFilter('All'); setVisibleCount(6); }}
+          className="rounded-full"
+        >
+          {labels.filterAll}
+        </Button>
+        {allTags.map(tag => (
+          <Button
             key={tag}
-            onClick={() => { setActiveFilter(tag); setShowAll(false); }}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer ${
-              activeFilter === tag
-                ? 'bg-primary text-white shadow-glow-sm'
-                : 'glass-panel text-gray-600 dark:text-gray-400 hover:text-primary hover:border-primary/30'
-            }`}
+            variant={filter === tag ? "default" : "outline"}
+            onClick={() => { setFilter(tag); setVisibleCount(6); }}
+            className="rounded-full"
           >
             {tag}
-          </button>
+          </Button>
         ))}
       </div>
 
-      {/* Project Grid */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {visible.map((project) => (
-          <div
-            key={project.title}
-            className="group glass-panel rounded-xl overflow-hidden hover:border-primary/30 transition-all duration-300 hover:-translate-y-1"
-          >
-            {/* Image */}
-            <div className="relative h-48 overflow-hidden">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-              />
-              {/* Overlay with links */}
-              <div className="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                {project.github && (
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener"
-                    className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-white/40 transition-colors"
-                    aria-label="Source code"
-                  >
-                    <span className="material-symbols-outlined">code</span>
-                  </a>
-                )}
-                {project.link && (
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener"
-                    className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-white/40 transition-colors"
-                    aria-label="Live demo"
-                  >
-                    <span className="material-symbols-outlined">visibility</span>
-                  </a>
-                )}
-              </div>
-            </div>
+      {/* Projects Grid */}
+      <motion.div 
+        layout
+        className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+      >
+        <AnimatePresence>
+          {displayedProjects.map((project, index) => (
+            <motion.div
+              layout
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.2 }}
+              key={project.title}
+            >
+              <Card className="h-full flex flex-col glass-panel overflow-hidden border-transparent hover:border-primary/30 transition-all duration-300 hover:-translate-y-1">
+                <div className="relative aspect-video overflow-hidden">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                    {project.github && (
+                      <a 
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 bg-white/10 rounded-full hover:bg-primary hover:text-white transition-colors backdrop-blur-sm"
+                        aria-label="View Code"
+                      >
+                        <FaGithub className="text-xl" />
+                      </a>
+                    )}
+                    {project.link && (
+                      <a 
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 bg-white/10 rounded-full hover:bg-primary hover:text-white transition-colors backdrop-blur-sm"
+                        aria-label="View Project"
+                      >
+                        <FaExternalLinkAlt className="text-xl" />
+                      </a>
+                    )}
+                  </div>
+                </div>
 
-            {/* Content */}
-            <div className="p-5">
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{project.title}</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">{project.description}</p>
-              <div className="flex flex-wrap gap-1.5">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-2 py-0.5 text-xs font-medium rounded-md bg-primary/10 text-primary border border-primary/20"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+                <CardHeader>
+                  <CardTitle className="text-xl">{project.title}</CardTitle>
+                </CardHeader>
 
-      {/* Show More / Show Less */}
-      {filtered.length > 6 && (
-        <div className="text-center mt-10">
-          <button
-            onClick={() => setShowAll(!showAll)}
-            className="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-xl font-medium hover:border-primary hover:text-primary transition-all duration-300 cursor-pointer"
+                <CardContent className="flex-grow">
+                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                    {project.description}
+                  </p>
+                </CardContent>
+
+                <CardFooter className="flex flex-wrap gap-2 pt-0">
+                  {project.tags.map(tag => (
+                    <Badge key={tag} variant="secondary" className="bg-primary/5 text-primary hover:bg-primary/10 border-transparent">
+                      {tag}
+                    </Badge>
+                  ))}
+                </CardFooter>
+              </Card>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
+
+      {/* Show More/Less Button */}
+      {(hasMore || (visibleCount > 6 && filteredProjects.length > 6)) && (
+        <div className="flex justify-center pt-8">
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={hasMore ? handleShowMore : handleShowLess}
+            className="group gap-2 rounded-full px-8 border-primary/20 hover:border-primary text-primary hover:bg-primary/5"
           >
-            {showAll ? (labels?.showLess || 'Show Less') : `${labels?.showMore || 'Show All'} (${filtered.length})`}
-            <span className="material-symbols-outlined text-lg">
-              {showAll ? 'expand_less' : 'expand_more'}
+            {hasMore ? labels.showMore : labels.showLess}
+            <span className={`transition-transform duration-300 ${hasMore ? 'rotate-0' : 'rotate-180'}`}>
+              ▼
             </span>
-          </button>
+          </Button>
         </div>
       )}
     </div>

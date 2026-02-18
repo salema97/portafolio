@@ -1,68 +1,36 @@
 ---
-import { getLangFromUrl, getTranslations } from '../../i18n';
+import { getLangFromUrl, getTranslations } from "../../i18n";
+import { IconMapper } from "../IconMapper";
+import CertificationsCarousel from "./Certifications.tsx";
 
 const lang = getLangFromUrl(Astro.url);
 const t = getTranslations(lang);
 const certs = t.certifications;
 ---
 
-<section id="certifications" class="py-20 px-4 w-full max-w-6xl mx-auto">
+<section id="certifications" class="py-20 w-full max-w-7xl mx-auto">
   <!-- Section Header -->
-  <div class="text-center mb-16">
-    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-      <span class="material-symbols-outlined align-middle text-primary mr-2" style="font-size:1.8rem;">{certs.sectionIcon}</span>
+  <div class="text-center mb-16 px-4">
+    <h2
+      class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white flex items-center justify-center gap-3"
+    >
+      <IconMapper
+        name={certs.sectionIcon}
+        className="text-primary text-3xl md:text-4xl"
+      />
       {certs.sectionTitle}
     </h2>
-    <div class="w-20 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
+    <div
+      class="w-20 h-1 bg-primary mx-auto mt-4 rounded-full shadow-[0_0_10px_var(--color-primary)]"
+    >
+    </div>
   </div>
 
-  <!-- Certifications Grid -->
-  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-    {certs.items.map((cert: any) => (
-      <div class="group glass-panel rounded-xl overflow-hidden hover:border-primary/30 transition-all duration-300 hover:-translate-y-1">
-        {/* Certificate Image */}
-        <div class="relative h-40 overflow-hidden">
-          <img
-            src={cert.image}
-            alt={cert.name}
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            loading="lazy"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-          <div class="absolute bottom-3 left-4 right-4">
-            <p class="text-xs text-white/80">{cert.issuer}</p>
-          </div>
-        </div>
-
-        {/* Content */}
-        <div class="p-5">
-          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1 line-clamp-2">{cert.name}</h3>
-          <p class="text-xs text-gray-500 dark:text-gray-400 mb-2">{cert.date} · {cert.credentialId}</p>
-          <p class="text-xs text-gray-600 dark:text-gray-400 mb-3 line-clamp-2">{cert.description}</p>
-
-          {/* Tags */}
-          <div class="flex flex-wrap gap-1.5 mb-3">
-            {cert.tags.map((tag: string) => (
-              <span class="px-2 py-0.5 text-[10px] font-medium rounded-md bg-primary/10 text-primary border border-primary/20">
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          {/* Credential URL */}
-          {cert.url && (
-            <a
-              href={cert.url}
-              target="_blank"
-              rel="noopener"
-              class="inline-flex items-center gap-1 text-xs text-primary hover:underline font-medium"
-            >
-              <span class="material-symbols-outlined" style="font-size:14px;">open_in_new</span>
-              {certs.verify}
-            </a>
-          )}
-        </div>
-      </div>
-    ))}
-  </div>
+  <!-- Certifications Carousel -->
+  <CertificationsCarousel
+    client:visible
+    items={certs.items}
+    title={certs.sectionTitle}
+    verifyText={certs.verify}
+  />
 </section>

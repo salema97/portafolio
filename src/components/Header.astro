@@ -1,86 +1,201 @@
 ---
-import { getLangFromUrl, getTranslations, getAlternateLocaleUrl } from '../i18n';
+import {
+  getLangFromUrl,
+  getTranslations,
+  getAlternateLocaleUrl,
+} from "../i18n";
+import { FaTerminal } from "react-icons/fa";
+import {
+  MdDarkMode,
+  MdLightMode,
+  MdMenu,
+  MdClose,
+  MdDownload,
+} from "react-icons/md";
 
 const lang = getLangFromUrl(Astro.url);
 const t = getTranslations(lang);
 const nav = t.nav;
-const altLang = lang === 'en' ? 'es' : 'en';
-const altUrl = getAlternateLocaleUrl(Astro.url, altLang as 'en' | 'es');
+const altLang = lang === "en" ? "es" : "en";
+const altUrl = getAlternateLocaleUrl(Astro.url, altLang as "en" | "es");
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-white/5" id="main-header">
+<header
+  class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-white/5"
+  id="main-header"
+>
   <nav class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
     <!-- Logo -->
-    <a href={`/${lang}/`} class="flex items-center gap-2 text-lg font-bold text-gray-900 dark:text-white hover:text-primary transition-colors">
-      <span class="material-symbols-outlined text-primary">terminal</span>
+    <a
+      href={`/${lang}/`}
+      class="flex items-center gap-2 text-lg font-bold text-gray-900 dark:text-white hover:text-primary transition-colors"
+    >
+      <FaTerminal className="text-primary text-xl" />
       Steven Lema
     </a>
 
     <!-- Desktop nav -->
     <div class="hidden md:flex items-center gap-6">
-      <a href={`/${lang}/#hero`} class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">{nav.home}</a>
-      <a href={`/${lang}/#experience`} class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">{nav.experience}</a>
-      <a href={`/${lang}/#work`} class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">{nav.work}</a>
-      <a href={`/${lang}/#skills`} class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">{nav.skills}</a>
-      <a href={`/${lang}/#certifications`} class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">{nav.certifications}</a>
-      <a href={`/${lang}/#about`} class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">{nav.about}</a>
-      <a href={`/${lang}/#contact`} class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">{nav.contact}</a>
+      <a
+        href={`/${lang}/#hero`}
+        class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
+        >{nav.home}</a
+      >
+      <a
+        href={`/${lang}/#experience`}
+        class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
+        >{nav.experience}</a
+      >
+      <a
+        href={`/${lang}/#work`}
+        class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
+        >{nav.work}</a
+      >
+      <a
+        href={`/${lang}/#skills`}
+        class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
+        >{nav.skills}</a
+      >
+      <a
+        href={`/${lang}/#certifications`}
+        class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
+        >{nav.certifications}</a
+      >
+      <a
+        href={`/${lang}/#about`}
+        class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
+        >{nav.about}</a
+      >
+      <a
+        href={`/${lang}/#contact`}
+        class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
+        >{nav.contact}</a
+      >
     </div>
 
     <!-- Right controls -->
     <div class="hidden md:flex items-center gap-3">
       <!-- Language toggle -->
-      <a href={altUrl} class="px-3 py-1.5 rounded-lg text-sm font-medium glass-panel text-gray-600 dark:text-gray-400 hover:text-primary hover:border-primary/30 transition-colors">
+      <a
+        href={altUrl}
+        class="px-3 py-1.5 rounded-lg text-sm font-medium glass-panel text-gray-600 dark:text-gray-400 hover:text-primary hover:border-primary/30 transition-colors"
+      >
         {nav.switchLang}
       </a>
 
       <!-- Theme toggle -->
-      <button id="theme-toggle" aria-label="Toggle theme"
-        class="group w-9 h-9 rounded-lg glass-panel flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-primary transition-colors cursor-pointer ring-0 focus:outline-none">
-        <div class="relative w-5 h-5 flex items-center justify-center overflow-hidden">
-          <span class="material-symbols-outlined absolute transition-all duration-300 rotate-0 scale-100 dark:-rotate-90 dark:scale-0">dark_mode</span>
-          <span class="material-symbols-outlined absolute transition-all duration-300 rotate-90 scale-0 dark:rotate-0 dark:scale-100 text-yellow-400">light_mode</span>
+      <button
+        id="theme-toggle"
+        aria-label="Toggle theme"
+        class="group w-9 h-9 rounded-lg glass-panel flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-primary transition-colors cursor-pointer ring-0 focus:outline-none"
+      >
+        <div
+          class="relative w-5 h-5 flex items-center justify-center overflow-hidden"
+        >
+          <MdDarkMode
+            className="absolute transition-all duration-300 rotate-0 scale-100 dark:-rotate-90 dark:scale-0 w-5 h-5"
+          />
+          <MdLightMode
+            className="absolute transition-all duration-300 rotate-90 scale-0 dark:rotate-0 dark:scale-100 text-yellow-400 w-5 h-5"
+          />
         </div>
       </button>
 
       <!-- Resume -->
-      <a href="/files/CV - Steven Lema Velásquez.pdf" target="_blank" rel="noopener"
-        class="inline-flex items-center gap-1.5 px-4 py-2 bg-primary text-white text-sm rounded-lg font-medium hover:bg-primary-glow transition-colors shadow-glow-sm">
+      <a
+        href="/files/CV - Steven Lema Velásquez.pdf"
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-1.5 px-4 py-2 bg-primary text-white text-sm rounded-lg font-medium hover:bg-primary-glow transition-colors shadow-glow-sm"
+      >
         {nav.resume}
-        <span class="material-symbols-outlined" style="font-size:1rem;">download</span>
+        <MdDownload className="text-xl" />
       </a>
     </div>
 
     <!-- Mobile hamburger -->
-    <button id="mobile-menu-btn" aria-label="Menu" class="md:hidden w-9 h-9 rounded-lg glass-panel flex items-center justify-center text-gray-600 dark:text-gray-400 cursor-pointer">
-      <span class="material-symbols-outlined" id="menu-icon">menu</span>
+    <button
+      id="mobile-menu-btn"
+      aria-label="Menu"
+      class="md:hidden w-9 h-9 rounded-lg glass-panel flex items-center justify-center text-gray-600 dark:text-gray-400 cursor-pointer"
+    >
+      <MdMenu id="menu-icon-open" className="w-6 h-6" />
+      <MdClose id="menu-icon-close" className="w-6 h-6 hidden" />
     </button>
   </nav>
 
   <!-- Mobile menu overlay -->
-  <div id="mobile-menu" class="hidden md:hidden fixed inset-0 top-16 glass-panel z-40">
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden fixed inset-0 top-16 glass-panel z-40"
+  >
     <div class="flex flex-col items-center gap-6 pt-10 text-lg">
-      <a href={`/${lang}/#hero`} class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors mobile-link">{nav.home}</a>
-      <a href={`/${lang}/#experience`} class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors mobile-link">{nav.experience}</a>
-      <a href={`/${lang}/#work`} class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors mobile-link">{nav.work}</a>
-      <a href={`/${lang}/#skills`} class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors mobile-link">{nav.skills}</a>
-      <a href={`/${lang}/#certifications`} class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors mobile-link">{nav.certifications}</a>
-      <a href={`/${lang}/#about`} class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors mobile-link">{nav.about}</a>
-      <a href={`/${lang}/#contact`} class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors mobile-link">{nav.contact}</a>
+      <a
+        href={`/${lang}/#hero`}
+        class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors mobile-link"
+        >{nav.home}</a
+      >
+      <a
+        href={`/${lang}/#experience`}
+        class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors mobile-link"
+        >{nav.experience}</a
+      >
+      <a
+        href={`/${lang}/#work`}
+        class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors mobile-link"
+        >{nav.work}</a
+      >
+      <a
+        href={`/${lang}/#skills`}
+        class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors mobile-link"
+        >{nav.skills}</a
+      >
+      <a
+        href={`/${lang}/#certifications`}
+        class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors mobile-link"
+        >{nav.certifications}</a
+      >
+      <a
+        href={`/${lang}/#about`}
+        class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors mobile-link"
+        >{nav.about}</a
+      >
+      <a
+        href={`/${lang}/#contact`}
+        class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors mobile-link"
+        >{nav.contact}</a
+      >
       <div class="flex items-center gap-4 mt-4">
-        <a href={altUrl} class="px-4 py-2 rounded-lg glass-panel text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary">{nav.switchLang}</a>
-        <button id="theme-toggle-mobile" aria-label="Toggle theme"
-          class="w-10 h-10 rounded-lg glass-panel flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-primary cursor-pointer">
-          <div class="relative w-6 h-6 flex items-center justify-center overflow-hidden">
-            <span class="material-symbols-outlined absolute transition-all duration-300 rotate-0 scale-100 dark:-rotate-90 dark:scale-0">dark_mode</span>
-            <span class="material-symbols-outlined absolute transition-all duration-300 rotate-90 scale-0 dark:rotate-0 dark:scale-100 text-yellow-400">light_mode</span>
+        <a
+          href={altUrl}
+          class="px-4 py-2 rounded-lg glass-panel text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary"
+          >{nav.switchLang}</a
+        >
+        <button
+          id="theme-toggle-mobile"
+          aria-label="Toggle theme"
+          class="w-10 h-10 rounded-lg glass-panel flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-primary cursor-pointer"
+        >
+          <div
+            class="relative w-6 h-6 flex items-center justify-center overflow-hidden"
+          >
+            <MdDarkMode
+              className="absolute transition-all duration-300 rotate-0 scale-100 dark:-rotate-90 dark:scale-0 w-6 h-6"
+            />
+            <MdLightMode
+              className="absolute transition-all duration-300 rotate-90 scale-0 dark:rotate-0 dark:scale-100 text-yellow-400 w-6 h-6"
+            />
           </div>
         </button>
       </div>
-      <a href="/files/CV - Steven Lema Velásquez.pdf" target="_blank" rel="noopener"
-        class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-xl font-medium hover:bg-primary-glow transition-colors shadow-glow-sm mt-2">
+      <a
+        href="/files/CV - Steven Lema Velásquez.pdf"
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-xl font-medium hover:bg-primary-glow transition-colors shadow-glow-sm mt-2"
+      >
         {nav.resume}
-        <span class="material-symbols-outlined" style="font-size:1rem;">download</span>
+        <MdDownload className="text-xl" />
       </a>
     </div>
   </div>
@@ -88,31 +203,46 @@ const altUrl = getAlternateLocaleUrl(Astro.url, altLang as 'en' | 'es');
 
 <script>
   // Mobile menu toggle
-  const menuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const menuIcon = document.getElementById('menu-icon');
+  const menuBtn = document.getElementById("mobile-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const menuIconOpen = document.getElementById("menu-icon-open");
+  const menuIconClose = document.getElementById("menu-icon-close");
 
-  menuBtn?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
-    if (menuIcon) {
-      menuIcon.textContent = mobileMenu?.classList.contains('hidden') ? 'menu' : 'close';
+  menuBtn?.addEventListener("click", () => {
+    mobileMenu?.classList.toggle("hidden");
+    if (menuIconOpen && menuIconClose) {
+      const isHidden = mobileMenu?.classList.contains("hidden");
+      if (isHidden) {
+        menuIconOpen.classList.remove("hidden");
+        menuIconClose.classList.add("hidden");
+      } else {
+        menuIconOpen.classList.add("hidden");
+        menuIconClose.classList.remove("hidden");
+      }
     }
   });
 
   // Close mobile menu on link click
-  document.querySelectorAll('.mobile-link').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu?.classList.add('hidden');
-      if (menuIcon) menuIcon.textContent = 'menu';
+  document.querySelectorAll(".mobile-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileMenu?.classList.add("hidden");
+      if (menuIconOpen && menuIconClose) {
+        menuIconOpen.classList.remove("hidden");
+        menuIconClose.classList.add("hidden");
+      }
     });
   });
 
   // Theme toggle
   function toggleTheme() {
-    const isDark = document.documentElement.classList.toggle('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    const isDark = document.documentElement.classList.toggle("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
   }
 
-  document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
-  document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggleTheme);
+  document
+    .getElementById("theme-toggle")
+    ?.addEventListener("click", toggleTheme);
+  document
+    .getElementById("theme-toggle-mobile")
+    ?.addEventListener("click", toggleTheme);
 </script>

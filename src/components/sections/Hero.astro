@@ -1,68 +1,130 @@
 ---
-import { getLangFromUrl, getTranslations } from '../../i18n';
+import {
+  FaArrowRight,
+  FaCode,
+  FaGithub,
+  FaLinkedin,
+  FaTerminal,
+  FaWhatsapp,
+} from "react-icons/fa";
+import { MdCall, MdEmail } from "react-icons/md";
+import { getLangFromUrl, getTranslations } from "../../i18n";
 
 const lang = getLangFromUrl(Astro.url);
 const t = getTranslations(lang);
 const hero = t.hero;
 ---
 
-<section id="hero" class="relative py-20 md:py-32 px-4 w-full max-w-6xl mx-auto">
+<section
+  id="hero"
+  class="relative py-20 md:py-32 px-4 w-full max-w-6xl mx-auto"
+>
   <!-- Decorative bg glow -->
-  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+  <div
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl pointer-events-none"
+  >
+  </div>
 
   <div class="relative grid md:grid-cols-2 gap-12 items-center">
     <!-- Left: Text content -->
     <div class="space-y-6">
       <!-- Availability badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel text-sm">
+      <div
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel text-sm"
+      >
         <span class="relative flex h-2.5 w-2.5">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+          <span
+            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"
+          ></span>
+          <span
+            class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"
+          ></span>
         </span>
         <span class="text-gray-600 dark:text-gray-300">{hero.badge}</span>
       </div>
 
       <!-- Headline -->
       <div>
-        <p class="text-lg md:text-xl text-gray-500 dark:text-gray-400 mb-2">{hero.greeting}</p>
+        <p class="text-lg md:text-xl text-gray-500 dark:text-gray-400 mb-2">
+          {hero.greeting}
+        </p>
         <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold">
-          <span class="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent text-glow">
+          <span
+            class="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent text-glow"
+          >
             {hero.name}
           </span>
         </h1>
       </div>
 
       <!-- Description -->
-      <p class="text-lg text-gray-600 dark:text-gray-400 max-w-lg leading-relaxed">
+      <p
+        class="text-lg text-gray-600 dark:text-gray-400 max-w-lg leading-relaxed"
+      >
         {hero.description}
       </p>
 
       <!-- CTAs -->
       <div class="flex flex-wrap gap-4">
-        <a href={`/${lang}/#work`}
-          class="group inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-xl font-medium hover:bg-primary-glow transition-all duration-300 shadow-glow-sm hover:shadow-glow">
+        <a
+          href={`/${lang}/#work`}
+          class="group inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-xl font-medium hover:bg-primary-glow transition-all duration-300 shadow-glow-sm hover:shadow-glow"
+        >
           {hero.cta1}
-          <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+          <FaArrowRight
+            className="text-lg group-hover:translate-x-1 transition-transform"
+          />
         </a>
-        <a href={`/${lang}/#contact`}
-          class="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-xl font-medium hover:border-primary hover:text-primary transition-all duration-300">
+        <a
+          href={`/${lang}/#contact`}
+          class="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-xl font-medium hover:border-primary hover:text-primary transition-all duration-300"
+        >
           {hero.cta2}
         </a>
       </div>
 
       <!-- Social links -->
       <div class="flex gap-4 pt-4">
-        <a href="https://github.com/salema97" target="_blank" rel="noopener" aria-label="GitHub"
-          class="w-10 h-10 rounded-lg glass-panel flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-primary hover:border-primary/30 transition-colors">
-          <span class="material-symbols-outlined">code</span>
+        <a
+          href="https://github.com/salema97"
+          target="_blank"
+          rel="noopener"
+          aria-label="GitHub"
+          class="w-10 h-10 rounded-lg glass-panel flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-primary hover:border-primary/30 transition-colors"
+        >
+          <FaGithub className="w-6 h-6" />
         </a>
-        <a href="https://linkedin.com/in/salema97" target="_blank" rel="noopener" aria-label="LinkedIn"
-          class="w-10 h-10 rounded-lg glass-panel flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-primary hover:border-primary/30 transition-colors">
-          <span class="material-symbols-outlined">work</span>
+        <a
+          href="https://linkedin.com/in/salema97"
+          target="_blank"
+          rel="noopener"
+          aria-label="LinkedIn"
+          class="w-10 h-10 rounded-lg glass-panel flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-primary hover:border-primary/30 transition-colors"
+        >
+          <FaLinkedin className="w-6 h-6" />
         </a>
-        <a href="mailto:salemavelasquez97@gmail.com" aria-label="Email"
-          class="w-10 h-10 rounded-lg glass-panel flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-primary hover:border-primary/30 transition-colors">
-          <span class="material-symbols-outlined">alternate_email</span>
+        <a
+          href="mailto:salemavelasquez97@gmail.com"
+          aria-label="Email"
+          class="w-10 h-10 rounded-lg glass-panel flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-primary hover:border-primary/30 transition-colors"
+        >
+          <MdEmail className="w-6 h-6" />
+        </a>
+        <a
+          href="https://wa.me/593988237106"
+          target="_blank"
+          rel="noopener"
+          aria-label="WhatsApp"
+          class="w-10 h-10 rounded-lg glass-panel flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-green-500 hover:border-green-500/30 transition-colors"
+        >
+          <FaWhatsapp className="w-6 h-6" />
+        </a>
+        <a
+          href="tel:+593988237106"
+          aria-label="Phone"
+          class="w-10 h-10 rounded-lg glass-panel flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-primary hover:border-primary/30 transition-colors"
+        >
+          <MdCall className="w-6 h-6" />
         </a>
       </div>
     </div>
@@ -71,26 +133,43 @@ const hero = t.hero;
     <div class="relative flex justify-center">
       <div class="relative">
         <!-- Photo container -->
-        <div class="w-72 h-72 md:w-80 md:h-80 rounded-2xl overflow-hidden border-2 border-primary/20 shadow-glow-sm">
-          <img src="/images/PHOTO.webp" alt="Steven Lema" class="w-full h-full object-cover" loading="eager" />
+        <div
+          class="w-72 h-72 md:w-80 md:h-80 rounded-2xl overflow-hidden border-2 border-primary/20 shadow-glow-sm"
+        >
+          <img
+            src="/images/PHOTO.webp"
+            alt="Steven Lema"
+            class="w-full h-full object-cover"
+            loading="eager"
+          />
         </div>
 
         <!-- Status card floating -->
-        <div class="absolute -bottom-6 -left-6 glass-panel rounded-xl p-4 shadow-lg">
+        <div
+          class="absolute -bottom-6 -left-6 glass-panel rounded-xl p-4 shadow-lg"
+        >
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
-              <span class="material-symbols-outlined text-primary">terminal</span>
+            <div
+              class="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center"
+            >
+              <FaTerminal className="text-primary w-6 h-6" />
             </div>
             <div>
-              <p class="text-xs text-gray-500 dark:text-gray-400">{hero.statusTitle}</p>
-              <p class="text-sm font-medium text-gray-900 dark:text-white">{hero.statusText}</p>
+              <p class="text-xs text-gray-500 dark:text-gray-400">
+                {hero.statusTitle}
+              </p>
+              <p class="text-sm font-medium text-gray-900 dark:text-white">
+                {hero.statusText}
+              </p>
             </div>
           </div>
         </div>
 
         <!-- Decorative badge -->
-        <div class="absolute -top-4 -right-4 w-12 h-12 bg-primary rounded-xl flex items-center justify-center shadow-glow-sm rotate-12">
-          <span class="material-symbols-outlined text-white text-2xl">code</span>
+        <div
+          class="absolute -top-4 -right-4 w-12 h-12 bg-primary rounded-xl flex items-center justify-center shadow-glow-sm rotate-12"
+        >
+          <FaCode className="text-white text-2xl" />
         </div>
       </div>
     </div>

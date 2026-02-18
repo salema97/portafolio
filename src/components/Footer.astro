@@ -1,15 +1,22 @@
 ---
-import { getLangFromUrl, getTranslations } from '../i18n';
+import { FaArrowUp, FaGithub, FaLinkedin, FaTerminal } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { getLangFromUrl, getTranslations } from "../i18n";
 
 const lang = getLangFromUrl(Astro.url);
 const t = getTranslations(lang);
 ---
 
 <footer class="py-10 px-4 border-t border-gray-200 dark:border-gray-800">
-  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+  <div
+    class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4"
+  >
     <!-- Logo -->
-    <a href={`/${lang}/`} class="flex items-center gap-2 text-lg font-bold text-gray-900 dark:text-white hover:text-primary transition-colors">
-      <span class="material-symbols-outlined text-primary">terminal</span>
+    <a
+      href={`/${lang}/`}
+      class="flex items-center gap-2 text-lg font-bold text-gray-900 dark:text-white hover:text-primary transition-colors"
+    >
+      <FaTerminal className="text-primary text-xl" />
       Steven Lema
     </a>
 
@@ -18,26 +25,41 @@ const t = getTranslations(lang);
 
     <!-- Social links -->
     <div class="flex gap-3">
-      <a href="https://github.com/salema97" target="_blank" rel="noopener" aria-label="GitHub"
-        class="w-9 h-9 rounded-lg glass-panel flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-primary transition-colors">
-        <span class="material-symbols-outlined" style="font-size:1.1rem;">code</span>
+      <a
+        href="https://github.com/salema97"
+        target="_blank"
+        rel="noopener"
+        aria-label="GitHub"
+        class="w-9 h-9 rounded-lg glass-panel flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-primary transition-colors"
+      >
+        <FaGithub className="text-lg" />
       </a>
-      <a href="https://linkedin.com/in/salema97" target="_blank" rel="noopener" aria-label="LinkedIn"
-        class="w-9 h-9 rounded-lg glass-panel flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-primary transition-colors">
-        <span class="material-symbols-outlined" style="font-size:1.1rem;">work</span>
+      <a
+        href="https://linkedin.com/in/salema97"
+        target="_blank"
+        rel="noopener"
+        aria-label="LinkedIn"
+        class="w-9 h-9 rounded-lg glass-panel flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-primary transition-colors"
+      >
+        <FaLinkedin className="text-lg" />
       </a>
-      <a href="mailto:salemavelasquez97@gmail.com" aria-label="Email"
-        class="w-9 h-9 rounded-lg glass-panel flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-primary transition-colors">
-        <span class="material-symbols-outlined" style="font-size:1.1rem;">alternate_email</span>
+      <a
+        href="mailto:salemavelasquez97@gmail.com"
+        aria-label="Email"
+        class="w-9 h-9 rounded-lg glass-panel flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-primary transition-colors"
+      >
+        <MdEmail className="text-lg" />
       </a>
     </div>
   </div>
 
   <!-- Back to top -->
   <div class="text-center mt-6">
-    <a href="#hero"
-      class="inline-flex items-center gap-1 text-xs text-gray-400 hover:text-primary transition-colors">
-      <span class="material-symbols-outlined" style="font-size:1rem;">arrow_upward</span>
+    <a
+      href="#hero"
+      class="inline-flex items-center gap-1 text-xs text-gray-400 hover:text-primary transition-colors"
+    >
+      <FaArrowUp className="text-base" />
       {t.footer.backToTop}
     </a>
   </div>

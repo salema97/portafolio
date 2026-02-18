@@ -1,5 +1,6 @@
 ---
-import { getLangFromUrl, getTranslations } from '../../i18n';
+import { getLangFromUrl, getTranslations } from "../../i18n";
+import { IconMapper } from "../IconMapper";
 
 const lang = getLangFromUrl(Astro.url);
 const t = getTranslations(lang);
@@ -9,8 +10,13 @@ const exp = t.experience;
 <section id="experience" class="py-20 px-4 w-full max-w-6xl mx-auto">
   <!-- Section Header -->
   <div class="text-center mb-16">
-    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-      <span class="material-symbols-outlined align-middle text-primary mr-2" style="font-size:1.8rem;">{exp.sectionIcon}</span>
+    <h2
+      class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white flex items-center justify-center gap-3"
+    >
+      <IconMapper
+        name={exp.sectionIcon}
+        className="text-primary text-3xl md:text-4xl"
+      />
       {exp.sectionTitle}
     </h2>
     <div class="w-20 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
@@ -19,37 +25,52 @@ const exp = t.experience;
   <!-- Timeline -->
   <div class="relative">
     <!-- Central line -->
-    <div class="absolute left-4 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary-glow to-primary/20"></div>
+    <div
+      class="absolute left-4 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary-glow to-primary/20"
+    >
+    </div>
 
     <div class="space-y-12">
-      {exp.items.map((item: any, i: number) => (
-        <div class={`relative flex flex-col md:flex-row ${i % 2 === 0 ? '' : 'md:flex-row-reverse'} gap-8 md:gap-16`}>
-          {/* Timeline dot */}
-          <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary shadow-glow-sm border-4 border-background-light dark:border-background-dark z-10 mt-6"></div>
+      {
+        exp.items.map((item: any, i: number) => (
+          <div
+            class={`relative flex flex-col md:flex-row ${i % 2 === 0 ? "" : "md:flex-row-reverse"} gap-8 md:gap-16`}
+          >
+            {/* Timeline dot */}
+            <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary shadow-glow-sm border-4 border-background-light dark:border-background-dark z-10 mt-6" />
 
-          {/* Date (mobile: inline, desktop: separate side) */}
-          <div class={`md:w-1/2 ${i % 2 === 0 ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12'} pl-10 md:pl-0`}>
-            <span class="text-sm font-medium text-primary">{item.date}</span>
-          </div>
+            {/* Date (mobile: inline, desktop: separate side) */}
+            <div
+              class={`md:w-1/2 ${i % 2 === 0 ? "md:text-right md:pr-12" : "md:text-left md:pl-12"} pl-10 md:pl-0`}
+            >
+              <span class="text-sm font-medium text-primary">{item.date}</span>
+            </div>
 
-          {/* Card */}
-          <div class="md:w-1/2 pl-10 md:pl-0">
-            <div class={`glass-panel rounded-xl p-6 hover:border-primary/30 transition-all duration-300 ${i % 2 === 0 ? 'md:ml-12' : 'md:mr-12'}`}>
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white">{item.role}</h3>
-              <p class="text-primary font-medium mt-1">{item.title}</p>
-              <p class="text-gray-600 dark:text-gray-400 mt-3 text-sm leading-relaxed">{item.description}</p>
-              {/* Tags */}
-              <div class="flex flex-wrap gap-2 mt-4">
-                {item.tags.map((tag: string) => (
-                  <span class="px-2 py-1 text-xs font-medium rounded-md bg-primary/10 text-primary border border-primary/20">
-                    {tag}
-                  </span>
-                ))}
+            {/* Card */}
+            <div class="md:w-1/2 pl-10 md:pl-0">
+              <div
+                class={`glass-panel rounded-xl p-6 hover:border-primary/30 transition-all duration-300 ${i % 2 === 0 ? "md:ml-12" : "md:mr-12"}`}
+              >
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white">
+                  {item.role}
+                </h3>
+                <p class="text-primary font-medium mt-1">{item.title}</p>
+                <p class="text-gray-600 dark:text-gray-400 mt-3 text-sm leading-relaxed">
+                  {item.description}
+                </p>
+                {/* Tags */}
+                <div class="flex flex-wrap gap-2 mt-4">
+                  {item.tags.map((tag: string) => (
+                    <span class="px-2 py-1 text-xs font-medium rounded-md bg-primary/10 text-primary border border-primary/20">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </div>
 </section>
