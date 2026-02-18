@@ -1,6 +1,6 @@
 ---
+import { MdWorkspacePremium } from "react-icons/md";
 import { getLangFromUrl, getTranslations } from "../../i18n";
-import { IconMapper } from "../IconMapper";
 import CertificationsCarousel from "./Certifications.tsx";
 
 const lang = getLangFromUrl(Astro.url);
@@ -14,10 +14,7 @@ const certs = t.certifications;
     <h2
       class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white flex items-center justify-center gap-3"
     >
-      <IconMapper
-        name={certs.sectionIcon}
-        className="text-primary text-3xl md:text-4xl"
-      />
+      <MdWorkspacePremium className="text-primary text-3xl md:text-4xl" />
       {certs.sectionTitle}
     </h2>
     <div

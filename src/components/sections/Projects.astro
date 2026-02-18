@@ -1,6 +1,6 @@
 ---
+import { FaRocket } from "react-icons/fa";
 import { getLangFromUrl, getTranslations } from "../../i18n";
-import { IconMapper } from "../IconMapper";
 import ProjectGallery from "../ProjectGallery";
 
 const lang = getLangFromUrl(Astro.url);
@@ -14,10 +14,7 @@ const proj = t.projects;
     <h2
       class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white flex items-center justify-center gap-3"
     >
-      <IconMapper
-        name={proj.sectionIcon}
-        className="text-primary text-3xl md:text-4xl"
-      />
+      <FaRocket className="text-primary text-3xl md:text-4xl" />
       {proj.sectionTitle}
     </h2>
     <div class="w-20 h-1 bg-primary mx-auto mt-4 rounded-full"></div>

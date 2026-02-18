@@ -1,12 +1,12 @@
 ---
-import '@fontsource/space-grotesk/300.css';
-import '@fontsource/space-grotesk/400.css';
-import '@fontsource/space-grotesk/500.css';
-import '@fontsource/space-grotesk/600.css';
-import '@fontsource/space-grotesk/700.css';
-import '../styles/global.css';
+import "@fontsource/space-grotesk/300.css";
+import "@fontsource/space-grotesk/400.css";
+import "@fontsource/space-grotesk/500.css";
+import "@fontsource/space-grotesk/600.css";
+import "@fontsource/space-grotesk/700.css";
+import "../styles/global.css";
 
-import { getLangFromUrl, getTranslations } from '../i18n/index';
+import { getLangFromUrl, getTranslations } from "../i18n/index";
 
 interface Props {
   title?: string;
@@ -15,10 +15,7 @@ interface Props {
 
 const lang = getLangFromUrl(Astro.url);
 const t = getTranslations(lang);
-const { 
-  title = t.site.title,
-  description = t.site.description
-} = Astro.props;
+const { title = t.site.title, description = t.site.description } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -41,39 +38,47 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:url" content={canonicalURL.href} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL('/images/PHOTO.webp', Astro.site)} />
-    <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_US'} />
-    <meta property="og:locale:alternate" content={lang === 'es' ? 'en_US' : 'es_ES'} />
+    <meta
+      property="og:image"
+      content={new URL("/images/PHOTO.webp", Astro.site)}
+    />
+    <meta property="og:locale" content={lang === "es" ? "es_ES" : "en_US"} />
+    <meta
+      property="og:locale:alternate"
+      content={lang === "es" ? "en_US" : "es_ES"}
+    />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL('/images/PHOTO.webp', Astro.site)} />
-
-    <!-- Material Symbols -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <meta
+      name="twitter:image"
+      content={new URL("/images/PHOTO.webp", Astro.site)}
+    />
 
     <!-- Theme detection script - runs before paint to avoid FOUC -->
     <script is:inline>
-      (function() {
-        const stored = localStorage.getItem('theme');
-        if (stored === 'light') {
-          document.documentElement.classList.remove('dark');
-        } else if (stored === 'dark') {
-          document.documentElement.classList.add('dark');
+      (function () {
+        const stored = localStorage.getItem("theme");
+        if (stored === "light") {
+          document.documentElement.classList.remove("dark");
+        } else if (stored === "dark") {
+          document.documentElement.classList.add("dark");
         } else {
           // Auto-detect from OS preference
-          if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-            document.documentElement.classList.remove('dark');
+          if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+            document.documentElement.classList.remove("dark");
           } else {
-            document.documentElement.classList.add('dark');
+            document.documentElement.classList.add("dark");
           }
         }
       })();
     </script>
   </head>
-  <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-50 font-display min-h-screen flex flex-col antialiased">
+  <body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-50 font-display min-h-screen flex flex-col antialiased"
+  >
     <slot />
   </body>
 </html>

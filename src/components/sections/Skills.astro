@@ -1,10 +1,16 @@
 ---
+import { FaCloud, FaHtml5, FaServer } from "react-icons/fa";
 import { getLangFromUrl, getTranslations } from "../../i18n";
-import { IconMapper } from "../IconMapper";
 
 const lang = getLangFromUrl(Astro.url);
 const t = getTranslations(lang);
 const skills = t.skills;
+
+const iconMap = {
+  html: FaHtml5,
+  dns: FaServer,
+  settings_system_daydream: FaCloud,
+};
 ---
 
 <section id="skills" class="py-20 px-4 w-full max-w-6xl mx-auto">
@@ -22,46 +28,50 @@ const skills = t.skills;
   <!-- Categories Grid -->
   <div class="grid md:grid-cols-3 gap-8">
     {
-      skills.categories.map((cat: any) => (
-        <div class="glass-panel rounded-xl p-6 hover:border-primary/30 transition-all duration-300 relative overflow-hidden group">
-          {/* Decorative bg icon */}
-          <div class="absolute -bottom-4 -right-4 text-primary/5 group-hover:text-primary/10 transition-colors">
-            <IconMapper name={cat.icon} style={{ fontSize: "6rem" }} />
-          </div>
-
-          <div class="relative">
-            <div class="flex items-center gap-3 mb-6">
-              <div class="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
-                <IconMapper name={cat.icon} className="text-primary text-xl" />
-              </div>
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white">
-                {cat.name}
-              </h3>
+      skills.categories.map((cat: any) => {
+        const Icon = iconMap[cat.icon as keyof typeof iconMap];
+        return (
+          <div class="glass-panel rounded-xl p-6 hover:border-primary/30 transition-all duration-300 relative overflow-hidden group">
+            {/* Decorative bg icon */}
+            <div class="absolute -bottom-4 -right-4 text-primary/5 group-hover:text-primary/10 transition-colors">
+              {Icon && <Icon style={{ fontSize: "6rem" }} />}
             </div>
 
-            <div class="space-y-4">
-              {cat.skills.map((skill: any) => (
-                <div>
-                  <div class="flex justify-between mb-1.5">
-                    <span class="text-sm text-gray-700 dark:text-gray-300">
-                      {skill.name}
-                    </span>
-                    <span class="text-xs text-primary font-medium">
-                      {skill.level}%
-                    </span>
-                  </div>
-                  <div class="w-full h-2 rounded-full bg-gray-200 dark:bg-gray-800 overflow-hidden">
-                    <div
-                      class="h-full rounded-full bg-gradient-to-r from-primary to-primary-glow skill-bar"
-                      style={`width: ${skill.level}%`}
-                    />
-                  </div>
+            <div class="relative">
+              <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
+                  {Icon && <Icon className="text-primary text-xl" />}
                 </div>
-              ))}
+
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white">
+                  {cat.name}
+                </h3>
+              </div>
+
+              <div class="space-y-4">
+                {cat.skills.map((skill: any) => (
+                  <div>
+                    <div class="flex justify-between mb-1.5">
+                      <span class="text-sm text-gray-700 dark:text-gray-300">
+                        {skill.name}
+                      </span>
+                      <span class="text-xs text-primary font-medium">
+                        {skill.level}%
+                      </span>
+                    </div>
+                    <div class="w-full h-2 rounded-full bg-gray-200 dark:bg-gray-800 overflow-hidden">
+                      <div
+                        class="h-full rounded-full bg-gradient-to-r from-primary to-primary-glow skill-bar"
+                        style={`width: ${skill.level}%`}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      ))
+        );
+      })
     }
   </div>
 </section>

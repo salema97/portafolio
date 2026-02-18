@@ -1,8 +1,13 @@
 ---
 import { FaCheck } from "react-icons/fa";
-import { MdBadge, MdEmail, MdLocationOn, MdSchool } from "react-icons/md";
+import {
+  MdBadge,
+  MdEmail,
+  MdLocationOn,
+  MdPerson,
+  MdSchool,
+} from "react-icons/md";
 import { getLangFromUrl, getTranslations } from "../../i18n";
-import { IconMapper } from "../IconMapper";
 
 const lang = getLangFromUrl(Astro.url);
 const t = getTranslations(lang);
@@ -16,10 +21,7 @@ const details = about.details;
     <h2
       class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white flex items-center justify-center gap-3"
     >
-      <IconMapper
-        name={about.sectionIcon}
-        className="text-primary text-3xl md:text-4xl"
-      />
+      <MdPerson className="text-primary text-3xl md:text-4xl" />
       {about.sectionTitle}
     </h2>
     <div class="w-20 h-1 bg-primary mx-auto mt-4 rounded-full"></div>

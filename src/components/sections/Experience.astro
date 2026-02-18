@@ -1,6 +1,6 @@
 ---
+import { FaHistory } from "react-icons/fa";
 import { getLangFromUrl, getTranslations } from "../../i18n";
-import { IconMapper } from "../IconMapper";
 
 const lang = getLangFromUrl(Astro.url);
 const t = getTranslations(lang);
@@ -13,10 +13,7 @@ const exp = t.experience;
     <h2
       class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white flex items-center justify-center gap-3"
     >
-      <IconMapper
-        name={exp.sectionIcon}
-        className="text-primary text-3xl md:text-4xl"
-      />
+      <FaHistory className="text-primary text-3xl md:text-4xl" />
       {exp.sectionTitle}
     </h2>
     <div class="w-20 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
