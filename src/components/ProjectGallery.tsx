@@ -57,20 +57,30 @@ export default function ProjectGallery({ projects, labels }: ProjectGalleryProps
   return (
     <div className="space-y-8">
       {/* Filter Tabs */}
-      <div className="flex flex-wrap justify-center gap-2">
+      <div className="flex overflow-x-auto pb-4 md:pb-0 md:flex-wrap justify-start md:justify-center gap-2 max-w-full scrollbar-none">
         <Button
-          variant={filter === 'All' ? "default" : "outline"}
+          variant="outline"
+          size="sm"
           onClick={() => { setFilter('All'); setVisibleCount(6); }}
-          className="rounded-full"
+          className={`rounded-full min-w-fit border transition-colors ${
+            filter === 'All' 
+              ? "bg-primary text-white border-primary hover:bg-primary-glow hover:text-white" 
+              : "border-primary/20 text-gray-600 dark:text-gray-400 hover:border-primary hover:text-primary bg-transparent"
+          }`}
         >
           {labels.filterAll}
         </Button>
         {allTags.map(tag => (
           <Button
             key={tag}
-            variant={filter === tag ? "default" : "outline"}
+            variant="outline"
+            size="sm"
             onClick={() => { setFilter(tag); setVisibleCount(6); }}
-            className="rounded-full"
+            className={`rounded-full min-w-fit border transition-colors ${
+              filter === tag 
+                ? "bg-primary text-white border-primary hover:bg-primary-glow hover:text-white" 
+                : "border-primary/20 text-gray-600 dark:text-gray-400 hover:border-primary hover:text-primary bg-transparent"
+            }`}
           >
             {tag}
           </Button>
@@ -92,7 +102,7 @@ export default function ProjectGallery({ projects, labels }: ProjectGalleryProps
               transition={{ duration: 0.2 }}
               key={project.title}
             >
-              <Card className="h-full flex flex-col glass-panel overflow-hidden border-transparent hover:border-primary/30 transition-all duration-300 hover:-translate-y-1">
+              <Card className="h-full flex flex-col glass-panel overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-sm">
                 <div className="relative aspect-video overflow-hidden">
                   <img 
                     src={project.image} 
@@ -106,7 +116,7 @@ export default function ProjectGallery({ projects, labels }: ProjectGalleryProps
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-3 bg-white/10 rounded-full hover:bg-primary hover:text-white transition-colors backdrop-blur-sm"
+                        className="p-3 bg-white/10 rounded-full hover:bg-primary hover:text-white transition-colors backdrop-blur-sm border border-white/20"
                         aria-label="View Code"
                       >
                         <FaGithub className="text-xl" />
@@ -117,7 +127,7 @@ export default function ProjectGallery({ projects, labels }: ProjectGalleryProps
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-3 bg-white/10 rounded-full hover:bg-primary hover:text-white transition-colors backdrop-blur-sm"
+                        className="p-3 bg-white/10 rounded-full hover:bg-primary hover:text-white transition-colors backdrop-blur-sm border border-white/20"
                         aria-label="View Project"
                       >
                         <FaExternalLinkAlt className="text-xl" />
@@ -127,7 +137,7 @@ export default function ProjectGallery({ projects, labels }: ProjectGalleryProps
                 </div>
 
                 <CardHeader>
-                  <CardTitle className="text-xl">{project.title}</CardTitle>
+                  <CardTitle className="text-xl text-gray-900 dark:text-white">{project.title}</CardTitle>
                 </CardHeader>
 
                 <CardContent className="flex-grow">
@@ -138,7 +148,7 @@ export default function ProjectGallery({ projects, labels }: ProjectGalleryProps
 
                 <CardFooter className="flex flex-wrap gap-2 pt-0">
                   {project.tags.map(tag => (
-                    <Badge key={tag} variant="secondary" className="bg-primary/5 text-primary hover:bg-primary/10 border-transparent">
+                    <Badge key={tag} variant="secondary" className="bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors">
                       {tag}
                     </Badge>
                   ))}
