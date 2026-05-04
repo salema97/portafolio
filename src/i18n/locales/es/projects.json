@@ -14,6 +14,25 @@
       "tags": ["Vite", "React", "TypeScript"]
     },
     {
+      "title": "TikTok TTS - Generador de Voz y Gestión de Audio",
+      "description": "Plataforma integral para la generación, gestión y distribución de audio con voz sintética (Text-to-Speech) para creadores de contenido y marketing digital, usando la tecnología TTS de TikTok y bibliotecas de audio multicanal.",
+      "image": "/projects/TikTok_TTS.png",
+      "tags": ["Next.js", "React", "NestJS", "Flutter", "TypeScript", "TTS"]
+    },
+    {
+      "title": "MedLink - Dashboard Médico (Web + App)",
+      "description": "Plataforma integral para la gestión de clínicas que combina un dashboard web y una app móvil nativa: citas y pacientes, notificaciones en tiempo real, marca blanca y seguridad de grado médico.",
+      "image": "/projects/Medlink.png",
+      "link": "https://medlink.kaizensoftware.com.ec/",
+      "tags": ["Next.js", "React", "NestJS", "Flutter"]
+    },
+    {
+      "title": "Plataforma de Bingo Interactivo Bingo593",
+      "description": "Plataforma de bingo interactivo en vivo con más de 4 años en el mercado. Permite comprar cartillas digitales, participar en sorteos en tiempo real con premios garantizados y pagos mediante transferencia bancaria.",
+      "image": "/projects/Bingo593.png",
+      "tags": ["Next.js", "React", "TypeScript"]
+    },
+    {
       "title": "Panel Administrativo",
       "description": "Panel de administración para la gestión de usuarios, productos y pedidos de una tienda en línea.",
       "image": "/projects/Panel.webp",

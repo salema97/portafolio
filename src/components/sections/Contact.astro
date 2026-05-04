@@ -1,6 +1,6 @@
 ---
-import { MdSend } from "react-icons/md";
 import { getLangFromUrl, getTranslations } from "../../i18n";
+import ContactForm from "../ContactForm";
 
 const lang = getLangFromUrl(Astro.url);
 const t = getTranslations(lang);
@@ -20,87 +20,22 @@ const contact = t.contact;
   </div>
 
   <div class="max-w-2xl mx-auto">
-    <form class="glass-panel rounded-2xl p-8 space-y-6">
-      <div class="grid sm:grid-cols-2 gap-6">
-        <!-- Name -->
-        <div>
-          <label
-            for="name"
-            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-            >{contact.nameLabel}</label
-          >
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder={contact.namePlaceholder}
-            class="w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-white/5 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white placeholder:text-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
-          />
-        </div>
-        <!-- Email -->
-        <div>
-          <label
-            for="email"
-            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-            >{contact.emailLabel}</label
-          >
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder={contact.emailPlaceholder}
-            class="w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-white/5 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white placeholder:text-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
-          />
-        </div>
-      </div>
-
-      <!-- Subject -->
-      <div>
-        <label
-          for="subject"
-          class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-          >{contact.subjectLabel}</label
-        >
-        <select
-          id="subject"
-          name="subject"
-          class="w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-white/5 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
-        >
-          <option value="" disabled selected
-            >{contact.subjectPlaceholder}</option
-          >
-          {
-            contact.subjectOptions.map((opt: string) => (
-              <option value={opt}>{opt}</option>
-            ))
-          }
-        </select>
-      </div>
-
-      <!-- Message -->
-      <div>
-        <label
-          for="message"
-          class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-          >{contact.messageLabel}</label
-        >
-        <textarea
-          id="message"
-          name="message"
-          rows={5}
-          placeholder={contact.messagePlaceholder}
-          class="w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-white/5 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white placeholder:text-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none"
-        ></textarea>
-      </div>
-
-      <!-- Submit -->
-      <button
-        type="submit"
-        class="w-full py-3 px-6 bg-primary text-white rounded-xl font-medium hover:bg-primary-glow transition-all duration-300 shadow-glow-sm hover:shadow-glow flex items-center justify-center gap-2"
-      >
-        <MdSend className="text-xl" />
-        {contact.submit}
-      </button>
-    </form>
+    <ContactForm
+      client:visible
+      labels={{
+        name: contact.nameLabel,
+        email: contact.emailLabel,
+        subject: contact.subjectLabel,
+        message: contact.messageLabel,
+        submit: contact.submit,
+      }}
+      placeholders={{
+        name: contact.namePlaceholder,
+        email: contact.emailPlaceholder,
+        subject: contact.subjectPlaceholder,
+        message: contact.messagePlaceholder,
+      }}
+      subjectOptions={contact.subjectOptions}
+    />
   </div>
 </section>
