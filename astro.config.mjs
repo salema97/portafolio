@@ -5,9 +5,16 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 
-// https://astro.build/config
+// https://docs.astro.build/en/guides/configuring-astro/
 export default defineConfig({
   site: 'https://salema.dev',
+
+  compressHTML: true,
+
+  prefetch: {
+    defaultStrategy: 'viewport',
+    prefetchAll: false,
+  },
 
   vite: {
     plugins: [tailwindcss()],
@@ -22,5 +29,20 @@ export default defineConfig({
     },
   },
 
-  integrations: [react(), sitemap()],
+  integrations: [
+    react(),
+    sitemap({
+      i18n: {
+        defaultLocale: 'en',
+        locales: {
+          en: 'en-US',
+          es: 'es-ES',
+        },
+      },
+    }),
+  ],
+
+  build: {
+    inlineStylesheets: 'auto',
+  },
 });

@@ -33,9 +33,9 @@ interface CertificationsProps {
   verifyText: string
 }
 
-export default function Certifications({ items, title, verifyText }: CertificationsProps) {
+export default function Certifications({ items, verifyText }: CertificationsProps) {
   return (
-    <div className="w-full max-w-5xl mx-auto px-4">
+    <div className="relative mx-auto w-full max-w-5xl px-0 sm:px-2">
       <Carousel
         className="w-full"
       >
@@ -43,19 +43,19 @@ export default function Certifications({ items, title, verifyText }: Certificati
           {items.map((cert, index) => (
             <CarouselItem key={index}>
               <div className="p-1">
-                <Card className="glass-panel rounded-xl overflow-hidden hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 h-[500px] border-transparent">
+                <Card className="card-premium min-h-0 overflow-hidden transition-[transform,box-shadow] duration-300 hover:-translate-y-1 md:min-h-[420px] lg:min-h-[480px]">
                   <CardContent className="p-0 h-full">
                     <div className="flex flex-col md:flex-row h-full">
                       {/* Left: Image (wrapped in Dialog) */}
                       <Dialog>
-                        <div className="w-full md:w-2/5 h-64 md:h-full relative bg-neutral-950 flex items-center justify-center overflow-hidden cursor-pointer group">
+                        <div className="relative flex h-52 w-full cursor-pointer items-center justify-center overflow-hidden bg-neutral-950 group sm:h-64 md:h-full md:w-2/5">
                           <DialogTrigger asChild>
                             <div className="w-full h-full relative">
                               <img
                                 src={cert.image}
                                 alt={cert.name}
                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                loading="lazy"
+                                loading={index === 0 ? "eager" : "lazy"}
                               />
                               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
                                 <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 text-white text-xs px-2 py-1 rounded">
@@ -78,16 +78,16 @@ export default function Certifications({ items, title, verifyText }: Certificati
                       </Dialog>
 
                       {/* Right: Info */}
-                      <div className="w-full md:w-3/5 p-6 md:p-8 flex flex-col justify-center h-full overflow-y-auto custom-scrollbar">
+                      <div className="flex h-full w-full flex-col justify-center overflow-y-auto p-5 custom-scrollbar sm:p-6 md:w-3/5 md:p-8">
                         <div className="mb-2">
-                          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2 line-clamp-2">
+                          <h3 className="font-display mb-2 line-clamp-2 text-xl font-bold text-foreground sm:text-2xl md:text-3xl">
                             {cert.name}
                           </h3>
-                          <div className="flex items-center text-gray-400 mb-1">
+                          <div className="flex items-center text-muted-foreground mb-1">
                              <FaBuilding className="w-4 h-4 mr-2 text-primary" />
                              <span className="text-sm font-medium">{cert.issuer}</span>
                           </div>
-                           <div className="flex flex-wrap gap-4 text-sm text-gray-500 mb-4">
+                           <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-4">
                               <div className="flex items-center">
                                 <FaCalendarAlt className="w-3.5 h-3.5 mr-1.5" />
                                 {cert.date}
@@ -102,7 +102,7 @@ export default function Certifications({ items, title, verifyText }: Certificati
                         </div>
                         
                         {cert.description && (
-                           <p className="text-gray-400 mb-6 text-sm leading-relaxed line-clamp-4">
+                           <p className="text-muted-foreground mb-6 text-sm leading-relaxed line-clamp-4">
                             {cert.description}
                            </p>
                         )}
@@ -127,7 +127,7 @@ export default function Certifications({ items, title, verifyText }: Certificati
                               href={cert.url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center px-5 py-2.5 rounded-lg bg-primary hover:bg-blue-600 text-white text-sm font-medium transition-colors shadow-glow-sm hover:shadow-glow"
+                              className="inline-flex min-h-11 items-center rounded-xl bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-[filter,transform] duration-150 hover:brightness-110 active:scale-[0.98]"
                             >
                               <FaExternalLinkAlt className="w-4 h-4 mr-2" />
                               {verifyText}
@@ -142,8 +142,8 @@ export default function Certifications({ items, title, verifyText }: Certificati
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="hidden md:flex -left-12 bg-surface-dark border-primary/30 hover:bg-primary hover:text-white" />
-        <CarouselNext className="hidden md:flex -right-12 bg-surface-dark border-primary/30 hover:bg-primary hover:text-white" />
+        <CarouselPrevious className="left-1 top-[42%] flex min-h-11 min-w-11 -translate-y-1/2 border-border bg-card/95 shadow-md hover:bg-primary hover:text-primary-foreground sm:left-2 md:-left-12 md:top-1/2" />
+        <CarouselNext className="right-1 top-[42%] flex min-h-11 min-w-11 -translate-y-1/2 border-border bg-card/95 shadow-md hover:bg-primary hover:text-primary-foreground sm:right-2 md:-right-12 md:top-1/2" />
       </Carousel>
     </div>
   )

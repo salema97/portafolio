@@ -1,0 +1,21 @@
+---
+interface Props {
+  variant?: "hero";
+}
+
+const { variant } = Astro.props;
+const sceneClass = variant === "hero" ? "parallax-scene parallax-scene--hero" : "parallax-scene";
+---
+
+<div class={sceneClass} aria-hidden="true">
+  <div class="orb orb-1" data-parallax="0.35"></div>
+  <div class="orb orb-2" data-parallax="0.55"></div>
+  {variant !== "hero" && (
+    <>
+      <div class="orb orb-3" data-parallax="0.25"></div>
+      <div class="orb orb-4" data-parallax="0.45"></div>
+      <div class="parallax-line parallax-line-1" data-parallax="0.15"></div>
+      <div class="parallax-line parallax-line-2" data-parallax="0.3"></div>
+    </>
+  )}
+</div>

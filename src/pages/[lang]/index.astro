@@ -21,21 +21,41 @@ export function getStaticPaths() {
 
 <Layout>
   <Header />
-  <main class="flex-grow flex flex-col items-center w-full pt-16">
+  <main id="main-content" class="flex-grow flex flex-col items-center w-full">
     <Hero />
-    <Stats />
-    <Experience />
-    <Projects />
-    <Skills />
-    <Certifications />
-    <About />
-    <Contact />
+
+    <div class="page-container relative z-20 mt-10 sm:mt-12 md:mt-6 md:-mt-10 lg:-mt-14">
+      <Stats />
+    </div>
+
+    <div class="section-band section-band--alt w-full">
+      <Experience />
+    </div>
+
+    <div class="section-band section-band--glow w-full">
+      <Projects />
+    </div>
+
+    <div class="section-band section-band--alt w-full">
+      <Skills />
+    </div>
+
+    <div class="section-band w-full">
+      <Certifications />
+    </div>
+
+    <div class="section-band section-band--alt w-full">
+      <About />
+    </div>
+
+    <div class="section-band section-band--glow w-full pb-8">
+      <Contact />
+    </div>
   </main>
   <Footer />
 </Layout>
 
 <script>
-  // Save language preference when visiting a locale page
   const lang = document.documentElement.lang;
   if (lang) {
     localStorage.setItem('preferred-lang', lang);

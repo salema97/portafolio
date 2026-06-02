@@ -1,6 +1,7 @@
 ---
 import { FaCloud, FaHtml5, FaServer } from "react-icons/fa";
 import { getLangFromUrl, getTranslations } from "../../i18n";
+import SectionHeader from "../SectionHeader.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = getTranslations(lang);
@@ -13,63 +14,61 @@ const iconMap = {
 };
 ---
 
-<section id="skills" class="py-20 px-4 w-full max-w-6xl mx-auto">
-  <!-- Section Header -->
-  <div class="text-center mb-16">
-    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-      {skills.sectionTitle}
-    </h2>
-    <div class="w-20 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
-    <p class="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">
-      {skills.sectionSubtitle}
-    </p>
-  </div>
+<section id="skills" class="section-shell">
+  <SectionHeader title={skills.sectionTitle} subtitle={skills.sectionSubtitle} />
 
-  <!-- Categories Grid -->
-  <div class="grid md:grid-cols-3 gap-8">
+  <div class="grid gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
     {
-      skills.categories.map((cat: any) => {
+      skills.categories.map((cat: any, i: number) => {
         const Icon = iconMap[cat.icon as keyof typeof iconMap];
         return (
-          <div class="glass-panel rounded-xl p-6 hover:border-primary/30 transition-all duration-300 relative overflow-hidden group">
-            {/* Decorative bg icon */}
-            <div class="absolute -bottom-4 -right-4 text-primary/5 group-hover:text-primary/10 transition-colors">
-              {Icon && <Icon style={{ fontSize: "6rem" }} />}
+          <article
+            class="card-premium p-6 md:p-8 relative overflow-hidden group"
+            data-reveal
+            data-reveal-delay={String((i % 3) + 1)}
+          >
+            <div
+              class="absolute -bottom-8 -right-8 text-primary/5 group-hover:text-primary/15 transition-colors duration-500 pointer-events-none"
+              aria-hidden="true"
+            >
+              {Icon && <Icon style={{ fontSize: "8rem" }} />}
             </div>
 
             <div class="relative">
-              <div class="flex items-center gap-3 mb-6">
-                <div class="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
-                  {Icon && <Icon className="text-primary text-xl" />}
+              <div class="flex items-center gap-3 mb-8">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/25 to-primary/5 flex items-center justify-center shrink-0 border border-primary/20">
+                  {Icon && <Icon className="text-primary text-xl" aria-hidden="true" />}
                 </div>
-
-                <h3 class="text-xl font-bold text-gray-900 dark:text-white">
-                  {cat.name}
-                </h3>
+                <h3 class="font-display text-xl font-bold text-foreground">{cat.name}</h3>
               </div>
 
-              <div class="space-y-4">
+              <ul class="space-y-5">
                 {cat.skills.map((skill: any) => (
-                  <div>
-                    <div class="flex justify-between mb-1.5">
-                      <span class="text-sm text-gray-700 dark:text-gray-300">
-                        {skill.name}
-                      </span>
-                      <span class="text-xs text-primary font-medium">
+                  <li>
+                    <div class="flex justify-between mb-2">
+                      <span class="text-sm font-medium text-foreground">{skill.name}</span>
+                      <span class="text-xs text-primary font-mono font-bold tabular-nums">
                         {skill.level}%
                       </span>
                     </div>
-                    <div class="w-full h-2 rounded-full bg-gray-200 dark:bg-gray-800 overflow-hidden">
+                    <div
+                      class="w-full h-2.5 rounded-full bg-muted/80 overflow-hidden"
+                      role="progressbar"
+                      aria-valuenow={skill.level}
+                      aria-valuemin={0}
+                      aria-valuemax={100}
+                      aria-label={`${skill.name} proficiency`}
+                    >
                       <div
-                        class="h-full rounded-full bg-gradient-to-r from-primary to-primary-glow skill-bar"
+                        class="h-full rounded-full bg-gradient-to-r from-primary via-primary-glow to-accent-warm skill-bar"
                         style={`width: ${skill.level}%`}
                       />
                     </div>
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
-          </div>
+          </article>
         );
       })
     }

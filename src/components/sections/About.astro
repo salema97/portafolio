@@ -1,13 +1,7 @@
 ---
-import { FaCheck } from "react-icons/fa";
-import {
-  MdBadge,
-  MdEmail,
-  MdLocationOn,
-  MdPerson,
-  MdSchool,
-} from "react-icons/md";
 import { getLangFromUrl, getTranslations } from "../../i18n";
+import SectionHeader from "../SectionHeader.astro";
+import { MdBadge, MdEmail, MdLocationOn, MdSchool } from "react-icons/md";
 
 const lang = getLangFromUrl(Astro.url);
 const t = getTranslations(lang);
@@ -15,112 +9,91 @@ const about = t.about;
 const details = about.details;
 ---
 
-<section id="about" class="py-20 px-4 w-full max-w-6xl mx-auto">
-  <!-- Section Header -->
-  <div class="text-center mb-16">
-    <h2
-      class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white flex items-center justify-center gap-3"
-    >
-      <MdPerson className="text-primary text-3xl md:text-4xl" />
-      {about.sectionTitle}
-    </h2>
-    <div class="w-20 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
-  </div>
+<section id="about" class="section-shell">
+  <SectionHeader title={about.sectionTitle} align="left" />
 
-  <div class="grid md:grid-cols-3 gap-10 items-start">
-    <!-- Profile Photo -->
-    <div class="flex flex-col items-center gap-6">
-      <div class="relative">
+  <div class="grid items-start gap-10 sm:gap-12 lg:grid-cols-[minmax(260px,320px)_1fr] lg:gap-16">
+    <aside class="mx-auto flex w-full max-w-[320px] flex-col gap-6 lg:mx-0" data-reveal>
+      <div class="relative w-full">
+        <div class="hero-photo-glow absolute inset-2 -z-10" aria-hidden="true"></div>
         <div
-          class="w-52 h-52 rounded-2xl overflow-hidden border-4 border-primary/30 shadow-glow"
+          class="hero-photo-frame relative aspect-square overflow-hidden rounded-[1.75rem] bg-background"
         >
           <img
             src="/images/PHOTO.webp"
             alt="Steven Lema"
-            class="w-full h-full object-cover"
+            class="h-full w-full object-cover object-top"
+            width="320"
+            height="320"
             loading="lazy"
           />
-        </div>
-        <div
-          class="absolute -bottom-3 -right-3 w-10 h-10 bg-green-500 rounded-full border-4 border-background-light dark:border-background-dark flex items-center justify-center"
-        >
-          <FaCheck className="text-white text-base" />
+          <div
+            class="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent"
+            aria-hidden="true"
+          >
+          </div>
         </div>
       </div>
 
-      <!-- Interests -->
-      <div class="glass-panel rounded-xl p-4 w-full">
-        <h3
-          class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3"
-        >
+      <div class="card-premium w-full p-5 sm:p-6">
+        <h3 class="mb-4 font-mono text-xs font-semibold uppercase tracking-widest text-primary">
           {about.interestsTitle}
         </h3>
-        <div class="flex flex-wrap gap-2">
+        <ul class="flex flex-wrap gap-2">
           {
             about.interests.map((interest: string) => (
-              <span class="px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20">
-                {interest}
-              </span>
+              <li>
+                <span class="rounded-full border border-primary/25 bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary">
+                  {interest}
+                </span>
+              </li>
             ))
           }
-        </div>
+        </ul>
       </div>
-    </div>
+    </aside>
 
-    <!-- Bio -->
-    <div class="md:col-span-2 space-y-6">
-      <div class="space-y-4 text-gray-600 dark:text-gray-300 leading-relaxed">
-        <p class="text-lg">{about.bio1}</p>
+    <div class="space-y-10" data-reveal data-reveal-delay="2">
+      <div class="space-y-5 text-base leading-relaxed text-muted-foreground md:text-lg">
+        <p class="text-pretty font-display text-xl font-semibold leading-snug text-foreground/90 md:text-2xl">
+          {about.bio1}
+        </p>
         <p>{about.bio2}</p>
-        <p class="font-medium text-primary">{about.bio3}</p>
+        <p class="border-l-2 border-primary pl-4 font-semibold text-primary">{about.bio3}</p>
       </div>
 
-      <!-- Details Grid -->
-      <div class="grid sm:grid-cols-2 gap-4 mt-8">
-        <div class="glass-panel rounded-xl p-4 flex items-center gap-3">
-          <MdLocationOn className="text-primary text-2xl" />
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div class="card-surface flex items-center gap-4 p-5">
+          <MdLocationOn className="shrink-0 text-2xl text-primary" aria-hidden="true" />
           <div>
-            <p class="text-xs text-gray-500 dark:text-gray-400">
-              {details.locationLabel}
-            </p>
-            <p class="text-sm font-medium text-gray-900 dark:text-white">
-              {details.location}
-            </p>
+            <p class="font-mono text-xs uppercase tracking-wider text-muted-foreground">{details.locationLabel}</p>
+            <p class="mt-1 text-sm font-semibold text-foreground">{details.location}</p>
           </div>
         </div>
-        <div class="glass-panel rounded-xl p-4 flex items-center gap-3">
-          <MdSchool className="text-primary text-2xl" />
+        <div class="card-surface flex items-center gap-4 p-5">
+          <MdSchool className="shrink-0 text-2xl text-primary" aria-hidden="true" />
           <div>
-            <p class="text-xs text-gray-500 dark:text-gray-400">
-              {details.universityLabel}
-            </p>
-            <p class="text-sm font-medium text-gray-900 dark:text-white">
-              {details.university}
-            </p>
+            <p class="font-mono text-xs uppercase tracking-wider text-muted-foreground">{details.universityLabel}</p>
+            <p class="mt-1 text-sm font-semibold text-foreground">{details.university}</p>
           </div>
         </div>
-        <div class="glass-panel rounded-xl p-4 flex items-center gap-3">
-          <MdBadge className="text-primary text-2xl" />
+        <div class="card-surface flex items-center gap-4 p-5">
+          <MdBadge className="shrink-0 text-2xl text-primary" aria-hidden="true" />
           <div>
-            <p class="text-xs text-gray-500 dark:text-gray-400">
-              {details.degreeLabel}
-            </p>
-            <p class="text-sm font-medium text-gray-900 dark:text-white">
-              {details.degree}
-            </p>
+            <p class="font-mono text-xs uppercase tracking-wider text-muted-foreground">{details.degreeLabel}</p>
+            <p class="mt-1 text-sm font-semibold text-foreground">{details.degree}</p>
           </div>
         </div>
-        <div class="glass-panel rounded-xl p-4 flex items-center gap-3">
-          <MdEmail className="text-primary text-2xl" />
+        <div class="card-surface flex items-center gap-4 p-5">
+          <MdEmail className="shrink-0 text-2xl text-primary" aria-hidden="true" />
           <div>
-            <p class="text-xs text-gray-500 dark:text-gray-400">
-              {details.emailLabel}
-            </p>
+            <p class="font-mono text-xs uppercase tracking-wider text-muted-foreground">{details.emailLabel}</p>
             <a
               href={`mailto:${details.email}`}
-              class="text-sm font-medium text-primary hover:underline"
-              >{details.email}</a
+              class="mt-1 inline-block text-sm font-semibold text-primary hover:underline"
             >
+              {details.email}
+            </a>
           </div>
         </div>
       </div>

@@ -32,56 +32,68 @@ export default function ContactForm({ labels, placeholders, subjectOptions }: Co
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Add submission logic here (e.g., mailto or API call)
-    alert("Mensaje enviado (simulación)");
+    const mailto = `mailto:contactos@salema.dev?subject=${encodeURIComponent(formData.subject || "Portfolio contact")}&body=${encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
+    )}`;
+    window.location.href = mailto;
   };
 
+  const fieldClass =
+    "min-h-11 bg-background/80 border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-primary";
+
   return (
-    <form onSubmit={handleSubmit} className="glass-panel rounded-2xl p-8 space-y-6 border border-white/10">
+    <form
+      onSubmit={handleSubmit}
+      className="card-premium p-6 md:p-10 space-y-6"
+      aria-label="Contact form"
+    >
       <div className="grid sm:grid-cols-2 gap-6">
-        {/* Name */}
         <div className="space-y-2">
-          <Label htmlFor="name" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+          <Label htmlFor="name" className="text-sm font-medium text-foreground">
             {labels.name}
           </Label>
           <Input
             id="name"
+            name="name"
+            required
+            autoComplete="name"
             placeholder={placeholders.name}
-            className="bg-white/50 dark:bg-white/5 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white placeholder:text-gray-400 focus-visible:ring-primary"
+            className={fieldClass}
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           />
         </div>
 
-        {/* Email */}
         <div className="space-y-2">
-           <Label htmlFor="email" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+          <Label htmlFor="email" className="text-sm font-medium text-foreground">
             {labels.email}
           </Label>
           <Input
             id="email"
+            name="email"
             type="email"
+            required
+            autoComplete="email"
             placeholder={placeholders.email}
-            className="bg-white/50 dark:bg-white/5 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white placeholder:text-gray-400 focus-visible:ring-primary"
-             value={formData.email}
+            className={fieldClass}
+            value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           />
         </div>
       </div>
 
-      {/* Subject */}
       <div className="space-y-2">
-        <Label htmlFor="subject" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+        <Label htmlFor="subject" className="text-sm font-medium text-foreground">
           {labels.subject}
         </Label>
-        <Select 
-          value={formData.subject} 
+        <input type="hidden" name="subject" value={formData.subject} readOnly />
+        <Select
+          value={formData.subject}
           onValueChange={(value) => setFormData({ ...formData, subject: value })}
         >
-          <SelectTrigger className="w-full bg-white/50 dark:bg-white/5 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-primary">
+          <SelectTrigger id="subject" className={`w-full ${fieldClass}`}>
             <SelectValue placeholder={placeholders.subject} />
           </SelectTrigger>
           <SelectContent>
@@ -97,27 +109,27 @@ export default function ContactForm({ labels, placeholders, subjectOptions }: Co
         </Select>
       </div>
 
-      {/* Message */}
       <div className="space-y-2">
-        <Label htmlFor="message" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+        <Label htmlFor="message" className="text-sm font-medium text-foreground">
           {labels.message}
         </Label>
         <Textarea
           id="message"
+          name="message"
+          required
           placeholder={placeholders.message}
-          className="min-h-[120px] bg-white/50 dark:bg-white/5 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white placeholder:text-gray-400 focus-visible:ring-primary resize-none"
-           value={formData.message}
-            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+          className={`min-h-[140px] resize-y ${fieldClass}`}
+          value={formData.message}
+          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
         />
       </div>
 
-      {/* Submit Button */}
-      <Button 
-        type="submit" 
-        className="w-full bg-primary text-white hover:bg-primary-glow hover:shadow-glow transition-all duration-300 gap-2"
+      <Button
+        type="submit"
+        className="w-full min-h-11 gap-2 bg-primary text-primary-foreground hover:brightness-110 active:scale-[0.98]"
         size="lg"
       >
-        <MdSend className="text-xl" />
+        <MdSend className="text-xl" aria-hidden />
         {labels.submit}
       </Button>
     </form>

@@ -5,113 +5,231 @@
   "filterAll": "Todos",
   "showMore": "Ver Todos",
   "showLess": "Ver Menos",
+  "filterByTech": "Filtrar por tecnología",
+  "projectCount": "{count} proyectos",
+  "emptyState": "No hay proyectos con estos filtros.",
+  "viewDetails": "Ver detalle",
+  "demoAvailable": "Demo en vivo",
+  "demoUnavailable": "Sin demo pública",
+  "demoPrivate": "Proyecto privado",
+  "viewDemo": "Abrir demo",
+  "close": "Cerrar",
+  "sourceKinds": {
+    "web": "Web",
+    "backend": "Backend",
+    "app": "App",
+    "repo": "Repositorio"
+  },
+  "galleryLabel": "Galería del proyecto",
+  "videoLabel": "Video",
+  "imageCount": "{count} imágenes",
+  "platformKinds": {
+    "web": "Web",
+    "crossplatform": "Multiplataforma",
+    "app": "App"
+  },
+  "categories": {
+    "all": "Todos",
+    "web": "Web",
+    "mobile": "Móvil",
+    "research": "Academia y seguridad"
+  },
   "items": [
     {
-      "title": "Pagina Web Empresarial",
-      "description": "Pagina web empresarial para una empresa de desarrollo de software, con información de la empresa, servicios, portafolio y contacto.",
+      "title": "Página Web Empresarial Kaizen",
+      "description": "Sitio corporativo de Kaizen Software: servicios, portafolio, equipo y contacto.",
+      "descriptionLong": "Sitio corporativo de Kaizen Software construido como SPA con Vite, React 18 y TypeScript. La arquitectura separa páginas por dominio (inicio, servicios, portafolio, nosotros, equipo, contacto) con carga diferida de secciones pesadas y componentes reutilizables sobre Radix UI y Tailwind.\n\nIncluye internacionalización completa (español e inglés), tema claro/oscuro/sistema, portafolio filtrable con modal de detalle, y formulario de contacto integrado con validación y protección anti-bots (Cloudflare Turnstile). El SEO se apoya en metadatos, sitemap y estructura semántica orientada a conversión B2B sin sacrificar rendimiento en móvil.",
       "image": "/projects/Kaizen.webp",
       "link": "https://kaizensoftware.com.ec",
-      "tags": ["Vite", "React", "TypeScript"]
+      "tags": [
+        "Vite",
+        "React",
+        "TypeScript"
+      ]
     },
     {
       "title": "Plataforma de Bingo Interactivo Bingo593",
-      "description": "Plataforma de bingo interactivo en vivo con más de 4 años en el mercado. Permite comprar cartillas digitales, participar en sorteos en tiempo real con premios garantizados y pagos mediante transferencia bancaria.",
+      "description": "Bingo en vivo con cartillas digitales, red de agentes y pagos por transferencia.",
+      "descriptionLong": "Plataforma de bingo en vivo sobre Next.js (App Router) con PostgreSQL y Prisma. El núcleo modela partidas con estados (borrador, en curso, finalizada), precio por cartilla, URL de streaming, ganador y tiempos de reclamo automático.\n\nA nivel operativo cubre venta y asignación de cartillas digitales, árbol jerárquico de agentes con códigos de referido, comisiones, solicitudes de retiro y revisión de pagos por transferencia. Los archivos (comprobantes, recursos) van a AWS S3; la autenticación y los roles distinguen jugador, agente y administrador con permisos acotados por módulo.",
       "image": "/projects/Bingo593.png",
-      "tags": ["Next.js", "React", "TypeScript"]
+      "tags": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Prisma",
+        "PostgreSQL"
+      ]
     },
     {
       "title": "Sistema de Gestión Educativa Lexcard",
-      "description": "Plataforma integral de educación para estudiantes de derecho con panel administrativo, sistema de evaluaciones especializadas por categorías jurídicas, seguimiento académico y versión demo gratuita.",
+      "description": "Plataforma educativa con tests, flashcards y panel admin (acceso privado).",
+      "descriptionLong": "Plataforma educativa multi-tenant para estudio de derecho y medicina. La app principal usa Next.js 16 (App Router), Prisma, MySQL, NextAuth v5 y shadcn/ui: tests con varios tipos de pregunta, flashcards con seguimiento de progreso, ebooks por categoría y casos clínicos interactivos.\n\nEl panel administrativo (React + Vite) gestiona usuarios, contenido, categorías y pagos. La monetización pasa por planes de suscripción con Flow.cl; hay gamificación (rankings, medallas, referidos), verificación de correo y recuperación de contraseña vía SMTP. Proyecto privado: sin demo pública en el portafolio.",
       "image": "/projects/Lexcard.png",
-      "tags": ["React", "TypeScript"]
+      "access": "private",
+      "tags": [
+        "Next.js",
+        "Prisma",
+        "TypeScript",
+        "MySQL"
+      ]
     },
     {
-      "title": "MedLink - Dashboard Médico (Web + App)",
-      "description": "Plataforma integral para la gestión de clínicas que combina un dashboard web y una app móvil nativa: citas y pacientes, notificaciones en tiempo real, marca blanca y seguridad de grado médico.",
+      "title": "MedLink - Dashboard Médico",
+      "description": "Gestión clínica web y móvil: citas, pacientes, historial y notificaciones.",
+      "descriptionLong": "Suite clínica full-stack desplegada en medlink.kaizensoftware.com.ec. Tres capas: panel web Next.js para staff, API NestJS con arquitectura modular (TypeORM, DTOs, guards JWT y roles) y app Flutter con Riverpod para pacientes y médicos.\n\nFuncionalidades: agendas y citas con estados, fichas de pacientes y médicos, historial clínico, prescripciones, mensajería, reseñas, pagos Stripe, subida de archivos a S3, colas con BullMQ/Redis, correo transaccional y notificaciones push Firebase. Pensado para operación diaria de clínicas con trazabilidad y separación clara entre rol médico y paciente.",
       "image": "/projects/Medlink.png",
       "link": "https://medlink.kaizensoftware.com.ec/",
-      "tags": ["Next.js", "React", "NestJS", "Flutter"]
+      "platform": "crossplatform",
+      "tags": [
+        "Next.js",
+        "NestJS",
+        "Flutter",
+        "TypeScript"
+      ]
     },
     {
-      "title": "TikTok TTS - Generador de Voz y Gestión de Audio",
-      "description": "Plataforma integral para la generación, gestión y distribución de audio con voz sintética (Text-to-Speech) para creadores de contenido y marketing digital, usando la tecnología TTS de TikTok y bibliotecas de audio multicanal.",
+      "title": "TikTok Suite — Live, TTS y gestión de audio",
+      "description": "Monorepo para TikTok Live: web, API, app móvil y generación de voz TTS.",
+      "descriptionLong": "Monorepo pnpm + Turbo (tiktok-suite v2): API NestJS 11, dashboard Next.js 16 y app React Native 0.79, más paquete shared con tipos y esquemas Zod compartidos. Infraestructura local con PostgreSQL y Redis; despliegue dockerizable por app.\n\nEl dominio central es TikTok Live: conexión a streams, panel de control y generación de voz Text-to-Speech con historial paginado por usuario y vista admin global. Autenticación JWT/OAuth, almacenamiento en la nube y validación en boundaries (class-validator en API, Zod en shared). La app móvil expone pantallas Live y TTS con toggles y personalización de voz.",
       "image": "/projects/TikTok_TTS.png",
-      "tags": ["Next.js", "React", "NestJS", "Flutter", "TypeScript", "TTS"]
+      "platform": "crossplatform",
+      "tags": [
+        "Next.js",
+        "NestJS",
+        "React Native",
+        "TypeScript",
+        "TTS"
+      ]
     },
     {
-      "title": "Panel Administrativo",
-      "description": "Panel de administración para la gestión de usuarios, productos y pedidos de una tienda en línea.",
+      "title": "Corazón de Diamante",
+      "description": "E-commerce MLM con panel admin, red de bonos, pedidos y API REST documentada.",
+      "descriptionLong": "Ecosistema e-commerce y red de mercadeo para Corazón de Diamante. Panel administrativo en React + Vite + TypeScript: dashboard con métricas (ApexCharts), CRUD de usuarios, productos, pedidos, eventos, paquetes y rangos; visualización de red con ReactFlow y mapas con Leaflet.\n\nEl motor de compensación incluye bonos de matriz 3×3, red, recompra e infinity, más billetera y notificaciones en tiempo real vía Socket.io. La API Node.js (api-corazon) centraliza autenticación, autorización por roles, reglas de negocio y documentación Swagger para integraciones y el front de escritorio.",
       "image": "/projects/Panel.webp",
-      "tags": ["Vite", "React", "TypeScript"]
-    },
-    {
-      "title": "API - Node.js",
-      "description": "API documentada de un sistema que maneja compras de productos de una tienda en línea, con autenticación de usuarios y roles.",
-      "image": "/projects/API_Corazon.webp",
-      "tags": ["Node.js", "JavaScript", "API REST"]
+      "images": [
+        "/projects/Panel.webp",
+        "/projects/API_Corazon.webp"
+      ],
+      "sources": [
+        {
+          "kind": "web",
+          "url": "https://github.com/KaizenSoftwareEC/panel-corazon"
+        },
+        {
+          "kind": "backend",
+          "url": "https://github.com/KaizenSoftwareEC/api-corazon"
+        }
+      ],
+      "tags": [
+        "React",
+        "Vite",
+        "TypeScript",
+        "Node.js",
+        "API REST"
+      ]
     },
     {
       "title": "CopyXpress",
-      "description": "Aplicación Móvil para la tienda en línea CopyXpress, que permite a los usuarios realizar compras de productos de papelería y servicios de impresión.",
+      "description": "App Flutter, API y panel web para pedidos de papelería e impresión por sucursal.",
+      "descriptionLong": "Cadena CopyXpress: app Flutter para cliente final y backend Express + Sequelize sobre MySQL. La app permite explorar catálogo, configurar trabajos de impresión (tipos, acabados, sucursal), armar carrito, elegir entrega y pagar por transferencia, Payphone o PagoMedios; usa SQLite local, OneSignal y control de versión por sucursal.\n\nLa API modela sucursales, productos, categorías, pedidos, facturación, dispositivos y notificaciones. El panel React/Vite da a cada sucursal herramientas para procesar pedidos, anuncios y métodos de pago configurables sin redeploy de la app móvil.",
       "image": "/projects/CopyXpress.webp",
-      "tags": ["Flutter", "Dart", "Android", "iOS"]
+      "platform": "app",
+      "tags": [
+        "Flutter",
+        "Dart",
+        "Express",
+        "Node.js"
+      ]
     },
     {
       "title": "Re-Identificación de Personas",
-      "description": "Proyecto de tesis para la re-identificación de personas basada en características biométricas y softbiométricas, mediante el uso de arquitecturas de altas prestaciones.",
+      "description": "Tesis ESPE: re-ID con YOLOv8, OpenCV y procesamiento en GPU.",
+      "descriptionLong": "Trabajo de titulación (ESPE) sobre re-identificación de personas en video vigilancia. Pipeline en Python: captura de frames, detección con YOLOv8 exportado a ONNX, procesamiento OpenCV y paralelización con multiprocessing en CUDA para sostener tiempo real en secuencias de prueba.\n\nSe combinan descriptores biométricos y soft-biométricos (vestimenta, contexto) para asociar identidades entre cámaras o tomas. El repositorio incluye scripts de entrenamiento/inferencia y matrices de evaluación; la memoria formal está en el repositorio institucional ESPE.",
       "image": "/projects/ProyectoTesis_1.webp",
+      "images": [
+        "/projects/ProyectoTesis_1.webp",
+        "/projects/ProyectoTesis_2.webp"
+      ],
       "link": "https://repositorio.espe.edu.ec/handle/21000/37249",
-      "github": "https://github.com/salema97/RE-ID",
-      "tags": ["Python", "YOLO", "Seguridad", "Tesis"]
+      "sources": [
+        {
+          "kind": "repo",
+          "url": "https://github.com/salema97/RE-ID"
+        }
+      ],
+      "tags": [
+        "Python",
+        "YOLO",
+        "Seguridad",
+        "Tesis"
+      ]
     },
     {
       "title": "Consulta de Datos Personales",
-      "description": "API para la consulta de datos personales de páginas web públicas de entidades del Ecuador mediante WebScraping.",
+      "description": "API Node.js con Playwright para consultas en portales públicos del Ecuador.",
+      "descriptionLong": "API REST en Node.js y Express que encapsula scraping automatizado con Playwright (Chromium headless). Cada integración responde a un portal público ecuatoriano: por ejemplo cupos aduaneros (Aduana), datos societarios (Supercías), predial y consultas ELEPCO, devolviendo JSON normalizado a partir de cédula u otros inputs.\n\nEl diseño contempla reutilización de instancia de navegador, timeouts por consulta, cierre de páginas y respuestas de error estructuradas para que sistemas externos no dependan de RPA manual. Útil como capa de integración cuando no existe API oficial estable.",
       "image": "/projects/ProyectoWebScraping_2.webp",
-      "github": "https://github.com/salema97/API-WebScraping",
-      "tags": ["API", "Python", "Web Scraping"]
-    },
-    {
-      "title": "Practica con SQLMap",
-      "description": "Página web para pruebas de vulnerabilidad con SQLMap y otras técnicas de auditoría de seguridad.",
-      "image": "/projects/ProyectoSeguridadWeb_2.webp",
-      "github": "https://github.com/salema97/DSS_injectionSQL",
-      "tags": ["HTML", "CSS", "JavaScript", "SQL", "Seguridad"]
-    },
-    {
-      "title": "Sala de Chat",
-      "description": "Página web para una sala de chat con Socket.io, una aplicación web en tiempo real que permite a múltiples usuarios comunicarse entre sí en un entorno de chat en vivo.",
-      "image": "/projects/ProyectoChat_2.webp",
-      "github": "https://github.com/salema97/SocketsChatRoom",
-      "tags": ["Node.js", "HTML", "CSS", "JavaScript"]
+      "sources": [
+        {
+          "kind": "backend",
+          "url": "https://github.com/salema97/API-WebScraping"
+        }
+      ],
+      "tags": [
+        "Node.js",
+        "Express",
+        "Playwright",
+        "API"
+      ]
     },
     {
       "title": "Servicio de Fotografía e Ilustración",
-      "description": "Página web estática para la prestación de servicios de fotografía e ilustración.",
+      "description": "Sitio web con Express y Handlebars para portafolio de fotografía e ilustración.",
+      "descriptionLong": "Sitio de presentación de servicios de fotografía e ilustración (proyecto académico DWAP2). Servidor Express sirve vistas Handlebars con partials (cabecera, pie, secciones) y assets estáticos en /public; rutas simples para home y contenido modular de productos y contacto.\n\nEnfocado en demostrar SSR ligero con plantillas, organización de vistas y CSS responsive sin framework SPA. Despliegue directo sobre Node con variables de entorno para puerto.",
       "image": "/projects/ProyectoWeb_1.webp",
-      "github": "https://github.com/salema97/dwap2-lema-steven",
-      "tags": ["Node.js", "HTML", "CSS", "JavaScript"]
+      "sources": [
+        {
+          "kind": "web",
+          "url": "https://github.com/salema97/dwap2-lema-steven"
+        }
+      ],
+      "tags": [
+        "Node.js",
+        "Express",
+        "Handlebars",
+        "CSS"
+      ]
     },
     {
-      "title": "SCAFEL ECommerce",
-      "description": "Página web en desarrollo para la tienda de zapatos artesanales tejidos de la marca SCAFEL.",
-      "image": "/projects/ProyectoSeguridadWeb_1.webp",
-      "github": "https://github.com/salema97/ECommerceSCAFEL",
-      "tags": ["Angular", "Spring Boot", "Java", "PostgreSQL"]
-    },
-    {
-      "title": "App - Kaizen Novel",
-      "description": "Aplicación Móvil para lectura y publicación de novelas o de libros, con la opción de elegir el idioma.",
+      "title": "Kaizen Novel",
+      "description": "App Flutter de novelas con Firebase Auth, Firestore y Cloud Functions.",
+      "descriptionLong": "Lector y publicador de novelas ligeras. Cliente Flutter (Android) con navegación por rutas, estado local y soporte multi-idioma para catálogo y lectura. El backend son Firebase Cloud Functions: autenticación, reglas de Firestore y funciones para registrar obras, metadatos y sincronizar progreso entre dispositivos.\n\nArquitectura desacoplada en dos repos (frontend móvil y functions). Firestore actúa como fuente de verdad del catálogo; las functions concentran lógica que no debe vivir en el cliente por seguridad y consistencia.",
       "image": "/projects/ProyectoMovil_1.webp",
-      "github": "https://github.com/salema97/novelkaizen-frontend",
-      "tags": ["Flutter", "Dart", "Android"]
-    },
-    {
-      "title": "Backend - Kaizen Novel",
-      "description": "Cloud functions para la identificación de las novelas o libros.",
-      "image": "/projects/ProyectoBackendMovil_1.webp",
-      "github": "https://github.com/salema97/novelkaizen-backend",
-      "tags": ["Node.js", "Firebase", "Firestore"]
+      "images": [
+        "/projects/ProyectoMovil_1.webp",
+        "/projects/ProyectoMovil_2.webp",
+        "/projects/ProyectoMovil_3.webp",
+        "/projects/ProyectoBackendMovil_1.webp",
+        "/projects/ProyectoBackendMovil_2.webp",
+        "/projects/ProyectoBackendMovil_3.webp"
+      ],
+      "platform": "app",
+      "sources": [
+        {
+          "kind": "app",
+          "url": "https://github.com/salema97/novelkaizen-frontend"
+        },
+        {
+          "kind": "backend",
+          "url": "https://github.com/salema97/novelkaizen-backend"
+        }
+      ],
+      "tags": [
+        "Flutter",
+        "Dart",
+        "Firebase",
+        "Cloud Functions"
+      ]
     }
   ]
 }

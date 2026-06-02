@@ -6,34 +6,37 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "check": "astro check",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
-    "@astrojs/sitemap": "^3.7.0",
-    "@fontsource/space-grotesk": "^5.2.10",
-    "@types/react": "^19.2.14",
+    "@astrojs/sitemap": "^3.7.3",
+    "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
-    "astro": "^5.17.1",
+    "astro": "^5.18.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.6.0",
-    "framer-motion": "^12.34.2",
+    "framer-motion": "^12.40.0",
     "lucide-react": "^0.574.0",
     "radix-ui": "^1.4.3",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
     "react-icons": "^5.5.0",
-    "tailwind-merge": "^3.4.1",
+    "tailwind-merge": "^3.6.0",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.1.18",
+    "@astrojs/check": "^0.9.9",
+    "@tailwindcss/vite": "^4.3.0",
     "shadcn": "^3.8.5",
-    "tailwindcss": "^4.1.18"
+    "tailwindcss": "^4.3.0",
+    "typescript": "^5.9.3"
   },
   "packageManager": "pnpm@10.30.1",
   "engines": {
+    "node": ">=20.0.0",
     "pnpm": ">=10.0.0"
   }
 }

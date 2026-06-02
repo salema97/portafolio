@@ -4,245 +4,220 @@ import {
   getTranslations,
   getAlternateLocaleUrl,
 } from "../i18n";
-import { FaTerminal } from "react-icons/fa";
-import {
-  MdDarkMode,
-  MdLightMode,
-  MdMenu,
-  MdClose,
-  MdDownload,
-} from "react-icons/md";
+import { MdDarkMode, MdLightMode, MdMenu, MdClose, MdDownload } from "react-icons/md";
 
 const lang = getLangFromUrl(Astro.url);
 const t = getTranslations(lang);
 const nav = t.nav;
 const altLang = lang === "en" ? "es" : "en";
 const altUrl = getAlternateLocaleUrl(Astro.url, altLang as "en" | "es");
+
+const navItems = [
+  { id: "hero", label: nav.home },
+  { id: "experience", label: nav.experience },
+  { id: "work", label: nav.work },
+  { id: "skills", label: nav.skills },
+  { id: "certifications", label: nav.certifications },
+  { id: "about", label: nav.about },
+  { id: "contact", label: nav.contact },
+];
 ---
 
 <header
-  class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-white/5"
+  class="fixed top-0 left-0 right-0 z-50 border-b border-transparent bg-background/50 backdrop-blur-2xl transition-[background,box-shadow,border-color] duration-300"
   id="main-header"
 >
-  <nav class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-    <!-- Logo -->
+  <nav
+    class="mx-auto flex h-[4.5rem] max-w-6xl items-center justify-between gap-2 px-4 sm:gap-4 sm:px-6 lg:px-8"
+    aria-label="Main navigation"
+  >
     <a
       href={`/${lang}/`}
-      class="flex items-center gap-2 text-lg font-bold text-gray-900 dark:text-white hover:text-primary transition-colors"
+      class="font-display text-lg font-bold tracking-tight text-foreground hover:text-primary transition-colors shrink-0"
     >
-      <FaTerminal className="text-primary text-xl" />
-      Steven Lema
+      <span class="text-primary">SL</span>
+      <span class="hidden sm:inline text-muted-foreground font-normal mx-1.5">/</span>
+      <span class="hidden sm:inline">Steven Lema</span>
     </a>
 
-    <!-- Desktop nav -->
-    <div class="hidden md:flex items-center gap-6">
-      <a
-        href={`/${lang}/#hero`}
-        class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
-        >{nav.home}</a
-      >
-      <a
-        href={`/${lang}/#experience`}
-        class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
-        >{nav.experience}</a
-      >
-      <a
-        href={`/${lang}/#work`}
-        class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
-        >{nav.work}</a
-      >
-      <a
-        href={`/${lang}/#skills`}
-        class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
-        >{nav.skills}</a
-      >
-      <a
-        href={`/${lang}/#certifications`}
-        class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
-        >{nav.certifications}</a
-      >
-      <a
-        href={`/${lang}/#about`}
-        class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
-        >{nav.about}</a
-      >
-      <a
-        href={`/${lang}/#contact`}
-        class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
-        >{nav.contact}</a
-      >
+    <div
+      class="hidden min-w-0 flex-1 items-center justify-center gap-0.5 overflow-x-auto px-1 [-ms-overflow-style:none] [scrollbar-width:none] md:flex lg:hidden [&::-webkit-scrollbar]:hidden"
+      aria-label="Section navigation"
+    >
+      {
+        navItems.map((item) => (
+          <a
+            href={`/${lang}/`}
+            class="nav-link shrink-0 !px-2.5 !text-xs"
+            data-scroll-to={item.id}
+            data-nav={item.id}
+          >
+            {item.label}
+          </a>
+        ))
+      }
     </div>
 
-    <!-- Right controls -->
-    <div class="hidden md:flex items-center gap-3">
-      <!-- Language toggle -->
+    <div class="hidden items-center gap-1 lg:flex">
+      {
+        navItems.map((item) => (
+          <a
+            href={`/${lang}/`}
+            class="nav-link"
+            data-scroll-to={item.id}
+            data-nav={item.id}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </div>
+
+    <div class="hidden shrink-0 items-center gap-2 sm:flex">
       <a
         href={altUrl}
-        class="px-3 py-1.5 rounded-lg text-sm font-medium glass-panel text-gray-600 dark:text-gray-400 hover:text-primary hover:border-primary/30 transition-colors"
+        class="btn-outline !min-h-9 !px-3 !py-1.5 !text-sm"
+        hreflang={altLang}
       >
         {nav.switchLang}
       </a>
 
-      <!-- Theme toggle -->
       <button
         id="theme-toggle"
+        type="button"
         aria-label="Toggle theme"
-        class="group w-9 h-9 rounded-lg glass-panel flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-primary transition-colors cursor-pointer ring-0 focus:outline-none"
+        class="icon-btn !min-w-10 !min-h-10 cursor-pointer"
       >
-        <div
-          class="relative w-5 h-5 flex items-center justify-center overflow-hidden"
-        >
+        <span class="relative w-5 h-5 flex items-center justify-center">
           <MdDarkMode
-            className="absolute transition-all duration-300 rotate-0 scale-100 dark:-rotate-90 dark:scale-0 w-5 h-5"
+            className="absolute w-5 h-5 transition-all duration-300 dark:-rotate-90 dark:scale-0"
           />
           <MdLightMode
-            className="absolute transition-all duration-300 rotate-90 scale-0 dark:rotate-0 dark:scale-100 text-yellow-400 w-5 h-5"
+            className="absolute w-5 h-5 text-accent-warm transition-all duration-300 rotate-90 scale-0 dark:rotate-0 dark:scale-100"
           />
-        </div>
+        </span>
       </button>
 
-      <!-- Resume -->
       <a
         href="/files/CV - Steven Lema Velásquez.pdf"
         target="_blank"
-        rel="noopener"
-        class="inline-flex items-center gap-1.5 px-4 py-2 bg-primary text-white text-sm rounded-lg font-medium hover:bg-primary-glow transition-colors shadow-glow-sm"
+        rel="noopener noreferrer"
+        class="btn-primary !min-h-9 !px-4 !text-sm"
       >
         {nav.resume}
-        <MdDownload className="text-xl" />
+        <MdDownload className="text-lg" aria-hidden="true" />
       </a>
     </div>
 
-    <!-- Mobile hamburger -->
     <button
       id="mobile-menu-btn"
-      aria-label="Menu"
-      class="md:hidden w-9 h-9 rounded-lg glass-panel flex items-center justify-center text-gray-600 dark:text-gray-400 cursor-pointer"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      class="icon-btn cursor-pointer md:hidden"
     >
       <MdMenu id="menu-icon-open" className="w-6 h-6" />
       <MdClose id="menu-icon-close" className="w-6 h-6 hidden" />
     </button>
   </nav>
 
-  <!-- Mobile menu overlay -->
   <div
     id="mobile-menu"
-    class="hidden md:hidden fixed inset-0 top-16 glass-panel z-40"
+    class="border-t border-border/60 bg-background/95 backdrop-blur-xl md:hidden hidden"
+    role="dialog"
+    aria-modal="true"
   >
-    <div class="flex flex-col items-center gap-6 pt-10 text-lg">
-      <a
-        href={`/${lang}/#hero`}
-        class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors mobile-link"
-        >{nav.home}</a
-      >
-      <a
-        href={`/${lang}/#experience`}
-        class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors mobile-link"
-        >{nav.experience}</a
-      >
-      <a
-        href={`/${lang}/#work`}
-        class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors mobile-link"
-        >{nav.work}</a
-      >
-      <a
-        href={`/${lang}/#skills`}
-        class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors mobile-link"
-        >{nav.skills}</a
-      >
-      <a
-        href={`/${lang}/#certifications`}
-        class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors mobile-link"
-        >{nav.certifications}</a
-      >
-      <a
-        href={`/${lang}/#about`}
-        class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors mobile-link"
-        >{nav.about}</a
-      >
-      <a
-        href={`/${lang}/#contact`}
-        class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors mobile-link"
-        >{nav.contact}</a
-      >
-      <div class="flex items-center gap-4 mt-4">
-        <a
-          href={altUrl}
-          class="px-4 py-2 rounded-lg glass-panel text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary"
-          >{nav.switchLang}</a
-        >
+    <div class="flex flex-col px-4 py-6 gap-1 max-w-6xl mx-auto">
+      {
+        navItems.map((item) => (
+          <a
+            href={`/${lang}/`}
+            class="mobile-link nav-link !min-h-12 !text-base !px-3 rounded-xl hover:bg-muted/50"
+            data-scroll-to={item.id}
+            data-nav={item.id}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <div class="flex items-center gap-3 mt-6 pt-6 border-t border-border">
+        <a href={altUrl} class="btn-outline flex-1 justify-center" hreflang={altLang}>
+          {nav.switchLang}
+        </a>
         <button
           id="theme-toggle-mobile"
+          type="button"
           aria-label="Toggle theme"
-          class="w-10 h-10 rounded-lg glass-panel flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-primary cursor-pointer"
+          class="icon-btn cursor-pointer"
         >
-          <div
-            class="relative w-6 h-6 flex items-center justify-center overflow-hidden"
-          >
-            <MdDarkMode
-              className="absolute transition-all duration-300 rotate-0 scale-100 dark:-rotate-90 dark:scale-0 w-6 h-6"
-            />
-            <MdLightMode
-              className="absolute transition-all duration-300 rotate-90 scale-0 dark:rotate-0 dark:scale-100 text-yellow-400 w-6 h-6"
-            />
-          </div>
+          <MdDarkMode className="w-5 h-5 dark:hidden" />
+          <MdLightMode className="w-5 h-5 hidden dark:block text-accent-warm" />
         </button>
       </div>
       <a
         href="/files/CV - Steven Lema Velásquez.pdf"
         target="_blank"
-        rel="noopener"
-        class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-xl font-medium hover:bg-primary-glow transition-colors shadow-glow-sm mt-2"
+        rel="noopener noreferrer"
+        class="btn-primary w-full justify-center mt-3"
       >
         {nav.resume}
-        <MdDownload className="text-xl" />
+        <MdDownload className="text-lg" aria-hidden="true" />
       </a>
     </div>
   </div>
 </header>
 
 <script>
-  // Mobile menu toggle
   const menuBtn = document.getElementById("mobile-menu-btn");
   const mobileMenu = document.getElementById("mobile-menu");
   const menuIconOpen = document.getElementById("menu-icon-open");
   const menuIconClose = document.getElementById("menu-icon-close");
 
+  function setMenuOpen(open: boolean) {
+    mobileMenu?.classList.toggle("hidden", !open);
+    menuBtn?.setAttribute("aria-expanded", String(open));
+    menuBtn?.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    menuIconOpen?.classList.toggle("hidden", open);
+    menuIconClose?.classList.toggle("hidden", !open);
+  }
+
   menuBtn?.addEventListener("click", () => {
-    mobileMenu?.classList.toggle("hidden");
-    if (menuIconOpen && menuIconClose) {
-      const isHidden = mobileMenu?.classList.contains("hidden");
-      if (isHidden) {
-        menuIconOpen.classList.remove("hidden");
-        menuIconClose.classList.add("hidden");
-      } else {
-        menuIconOpen.classList.add("hidden");
-        menuIconClose.classList.remove("hidden");
-      }
-    }
+    const isOpen = mobileMenu?.classList.contains("hidden") === false;
+    setMenuOpen(!isOpen);
   });
 
-  // Close mobile menu on link click
   document.querySelectorAll(".mobile-link").forEach((link) => {
-    link.addEventListener("click", () => {
-      mobileMenu?.classList.add("hidden");
-      if (menuIconOpen && menuIconClose) {
-        menuIconOpen.classList.remove("hidden");
-        menuIconClose.classList.add("hidden");
-      }
-    });
+    link.addEventListener("click", () => setMenuOpen(false));
   });
 
-  // Theme toggle
   function toggleTheme() {
     const isDark = document.documentElement.classList.toggle("dark");
     localStorage.setItem("theme", isDark ? "dark" : "light");
   }
 
-  document
-    .getElementById("theme-toggle")
-    ?.addEventListener("click", toggleTheme);
-  document
-    .getElementById("theme-toggle-mobile")
-    ?.addEventListener("click", toggleTheme);
+  document.getElementById("theme-toggle")?.addEventListener("click", toggleTheme);
+  document.getElementById("theme-toggle-mobile")?.addEventListener("click", toggleTheme);
+
+  const sectionIds = ["hero", "experience", "work", "skills", "certifications", "about", "contact"];
+
+  function updateActiveNav() {
+    let current = "hero";
+    const offset = 120;
+
+    for (const id of sectionIds) {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= offset) {
+        current = id;
+      }
+    }
+
+    document.querySelectorAll("[data-nav]").forEach((link) => {
+      const href = link.getAttribute("data-nav");
+      link.setAttribute("data-active", href === current ? "true" : "false");
+    });
+  }
+
+  window.addEventListener("scroll", updateActiveNav, { passive: true });
+  updateActiveNav();
 </script>

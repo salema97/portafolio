@@ -1,0 +1,33 @@
+---
+interface Props {
+  label?: string;
+  title: string;
+  subtitle?: string;
+  align?: "center" | "left";
+}
+
+const { label, title, subtitle, align = "center" } = Astro.props;
+const alignClass = align === "left" ? "text-left items-start" : "text-center items-center";
+---
+
+<div class:list={["mb-10 flex flex-col gap-3 sm:mb-14 sm:gap-4 md:mb-20", alignClass]} data-reveal>
+  {
+    label && (
+      <span class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary/90">
+        {label}
+      </span>
+    )
+  }
+  <h2
+    class="font-display max-w-3xl text-2xl font-bold tracking-tight text-foreground text-balance text-pretty sm:text-3xl md:text-5xl lg:text-[3.25rem]"
+  >
+    {title}
+  </h2>
+  {
+    subtitle && (
+      <p class="max-w-2xl text-base leading-relaxed text-muted-foreground text-pretty md:text-lg">
+        {subtitle}
+      </p>
+    )
+  }
+</div>

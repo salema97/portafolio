@@ -1,25 +1,17 @@
 ---
 import { getLangFromUrl, getTranslations } from "../../i18n";
 import ContactForm from "../ContactForm";
+import SectionHeader from "../SectionHeader.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = getTranslations(lang);
 const contact = t.contact;
 ---
 
-<section id="contact" class="py-20 px-4 w-full max-w-6xl mx-auto">
-  <!-- Section Header -->
-  <div class="text-center mb-16">
-    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-      {contact.sectionTitle}
-    </h2>
-    <div class="w-20 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
-    <p class="text-gray-600 dark:text-gray-400 mt-4 max-w-xl mx-auto">
-      {contact.sectionSubtitle}
-    </p>
-  </div>
+<section id="contact" class="section-shell">
+  <SectionHeader title={contact.sectionTitle} subtitle={contact.sectionSubtitle} />
 
-  <div class="max-w-2xl mx-auto">
+  <div class="max-w-2xl mx-auto w-full" data-reveal data-reveal-delay="2">
     <ContactForm
       client:visible
       labels={{

@@ -1,6 +1,6 @@
 ---
-import { MdWorkspacePremium } from "react-icons/md";
 import { getLangFromUrl, getTranslations } from "../../i18n";
+import SectionHeader from "../SectionHeader.astro";
 import CertificationsCarousel from "./Certifications.tsx";
 
 const lang = getLangFromUrl(Astro.url);
@@ -8,26 +8,15 @@ const t = getTranslations(lang);
 const certs = t.certifications;
 ---
 
-<section id="certifications" class="py-20 w-full max-w-7xl mx-auto">
-  <!-- Section Header -->
-  <div class="text-center mb-16 px-4">
-    <h2
-      class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white flex items-center justify-center gap-3"
-    >
-      <MdWorkspacePremium className="text-primary text-3xl md:text-4xl" />
-      {certs.sectionTitle}
-    </h2>
-    <div
-      class="w-20 h-1 bg-primary mx-auto mt-4 rounded-full shadow-[0_0_10px_var(--color-primary)]"
-    >
-    </div>
-  </div>
+<section id="certifications" class="section-shell max-w-7xl">
+  <SectionHeader title={certs.sectionTitle} align="left" />
 
-  <!-- Certifications Carousel -->
-  <CertificationsCarousel
-    client:visible
-    items={certs.items}
-    title={certs.sectionTitle}
-    verifyText={certs.verify}
-  />
+  <div data-reveal data-reveal-delay="2">
+    <CertificationsCarousel
+      client:visible
+      items={certs.items}
+      title={certs.sectionTitle}
+      verifyText={certs.verify}
+    />
+  </div>
 </section>

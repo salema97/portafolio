@@ -6,17 +6,21 @@ const t = getTranslations(lang);
 const stats = t.stats;
 ---
 
-<section class="py-10 px-4 w-full">
-  <div class="max-w-6xl mx-auto glass-panel rounded-2xl p-8">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-      {stats.items.map((stat: any) => (
-        <div class="text-center">
-          <p class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent text-glow">
+<section class="w-full max-w-6xl mx-auto" aria-label="Statistics">
+  <div class="card-premium grid grid-cols-2 gap-6 p-6 sm:gap-8 sm:p-8 md:grid-cols-4 md:gap-8 md:p-10">
+    {
+      stats.items.map((stat: { value: string; label: string }, i: number) => (
+        <div
+          class="text-center md:text-left group"
+          data-reveal
+          data-reveal-delay={String((i % 4) + 1)}
+        >
+          <p class="font-display text-3xl font-bold hero-gradient-text tabular-nums transition-transform duration-300 group-hover:scale-105 origin-left sm:text-4xl md:text-5xl">
             {stat.value}
           </p>
-          <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">{stat.label}</p>
+          <p class="text-sm text-muted-foreground mt-2 font-medium">{stat.label}</p>
         </div>
-      ))}
-    </div>
+      ))
+    }
   </div>
 </section>

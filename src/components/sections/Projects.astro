@@ -1,34 +1,39 @@
 ---
-import { FaRocket } from "react-icons/fa";
 import { getLangFromUrl, getTranslations } from "../../i18n";
 import ProjectGallery from "../ProjectGallery";
+import SectionHeader from "../SectionHeader.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = getTranslations(lang);
 const proj = t.projects;
 ---
 
-<section id="work" class="py-20 px-4 w-full max-w-6xl mx-auto">
-  <!-- Section Header -->
-  <div class="text-center mb-16">
-    <h2
-      class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white flex items-center justify-center gap-3"
-    >
-      <FaRocket className="text-primary text-3xl md:text-4xl" />
-      {proj.sectionTitle}
-    </h2>
-    <div class="w-20 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
-  </div>
+<section id="work" class="section-shell">
+  <SectionHeader title={proj.sectionTitle} />
 
-  <!-- Interactive React Gallery with filtering -->
   <ProjectGallery
-    client:load
+    client:visible
     projects={proj.items}
     labels={{
       viewAll: proj.viewAll,
       filterAll: proj.filterAll,
       showMore: proj.showMore,
       showLess: proj.showLess,
+      categories: proj.categories,
+      platformKinds: proj.platformKinds,
+      filterByTech: proj.filterByTech,
+      projectCount: proj.projectCount,
+      emptyState: proj.emptyState,
+      viewDetails: proj.viewDetails,
+      demoAvailable: proj.demoAvailable,
+      demoUnavailable: proj.demoUnavailable,
+      demoPrivate: proj.demoPrivate,
+      viewDemo: proj.viewDemo,
+      sourceKinds: proj.sourceKinds,
+      close: proj.close,
+      galleryLabel: proj.galleryLabel,
+      videoLabel: proj.videoLabel,
+      imageCount: proj.imageCount,
     }}
   />
 </section>

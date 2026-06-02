@@ -1,46 +1,51 @@
-# Astro Starter Kit: Basics
+# Steven Lema — Portfolio
+
+Static portfolio at [salema.dev](https://salema.dev). Built with Astro 5, React islands, Tailwind CSS v4, and bilingual routing (`en` / `es`).
+
+## Stack
+
+| Layer | Technology |
+|-------|------------|
+| Framework | [Astro](https://docs.astro.build/) 5.x |
+| UI islands | React 19 (`client:visible` where possible) |
+| Styling | Tailwind CSS v4 (`@tailwindcss/vite`) |
+| Components | shadcn/ui + Radix |
+| i18n | Manual locale routes + Astro `i18n` config + sitemap alternates |
+| Deploy | Docker → nginx (static `dist/`) |
+
+## Commands
 
 ```sh
-pnpm create astro@latest -- --template basics
+pnpm install
+pnpm dev          # http://localhost:4321
+pnpm build        # output → dist/
+pnpm preview      # preview production build
+pnpm check        # TypeScript + Astro diagnostics (@astrojs/check)
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+## Project structure
 
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+src/
+├── components/       # Astro + React (ui/, sections/)
+├── i18n/locales/     # en/es JSON content
+├── layouts/          # Layout.astro (SEO, hreflang, theme)
+├── pages/
+│   ├── index.astro   # locale redirect
+│   └── [lang]/       # main page per language
+└── styles/global.css # design tokens + Tailwind v4
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Performance notes
 
-## 🧞 Commands
+- **Project gallery** hydrates with `client:visible` (below the fold).
+- **Certifications / contact** use `client:visible`.
+- **Prefetch** uses Astro `viewport` strategy for in-view links.
+- Prefer `pnpm check` before shipping changes.
 
-All commands are run from the root of the project, from a terminal:
+## Docker
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```sh
+docker build -t portafolio .
+docker run -p 8080:80 portafolio
+```

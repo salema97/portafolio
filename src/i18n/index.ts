@@ -9,6 +9,7 @@ import projectsEn from './locales/en/projects.json';
 import siteEn from './locales/en/site.json';
 import skillsEn from './locales/en/skills.json';
 import statsEn from './locales/en/stats.json';
+import sectionsEn from './locales/en/sections.json';
 
 import aboutEs from './locales/es/about.json';
 import certificationsEs from './locales/es/certifications.json';
@@ -21,9 +22,11 @@ import projectsEs from './locales/es/projects.json';
 import siteEs from './locales/es/site.json';
 import skillsEs from './locales/es/skills.json';
 import statsEs from './locales/es/stats.json';
+import sectionsEs from './locales/es/sections.json';
 
 const en = {
   site: siteEn,
+  sections: sectionsEn,
   nav: navEn,
   hero: heroEn,
   about: aboutEn,
@@ -38,6 +41,7 @@ const en = {
 
 const es = {
   site: siteEs,
+  sections: sectionsEs,
   nav: navEs,
   hero: heroEs,
   about: aboutEs,
