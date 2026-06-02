@@ -19,6 +19,11 @@ export type GalleryVideoSlide = {
 
 export type GallerySlide = GalleryImageSlide | GalleryVideoSlide;
 
+export function getGallerySlideKey(slide: GallerySlide): string {
+  if (slide.type === "image") return `image:${slide.src}`;
+  return `video:${slide.video.url}`;
+}
+
 function extractYouTubeId(url: string): string | null {
   try {
     const parsed = new URL(url);

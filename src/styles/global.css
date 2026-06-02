@@ -305,7 +305,10 @@
   #work [data-reveal],
   #work [data-astro-cid],
   #work astro-island,
-  #work astro-island * {
+  #work astro-island *,
+  #certifications [data-reveal],
+  #certifications astro-island,
+  #certifications astro-island * {
     opacity: 1 !important;
     transform: none !important;
   }
@@ -403,6 +406,91 @@
   .card-premium {
     @apply rounded-2xl border border-primary/20 bg-gradient-to-br from-card/90 to-card/50 backdrop-blur-xl;
     box-shadow: var(--shadow-card), inset 0 1px 0 color-mix(in oklab, white 8%, transparent);
+  }
+
+  /* Certifications carousel — fixed card + full-bleed certificate media */
+  .cert-card {
+    height: clamp(26rem, 72vh, 30rem);
+    max-height: 30rem;
+  }
+
+  @media (min-width: 768px) {
+    .cert-card {
+      height: 28rem;
+      max-height: 28rem;
+      min-height: 28rem;
+    }
+  }
+
+  .cert-card__layout {
+    min-height: 0;
+    height: 100%;
+    align-items: stretch;
+  }
+
+  .cert-card__media {
+    position: relative;
+    width: 100%;
+    min-height: 13rem;
+    flex: 0 0 clamp(13rem, 38vw, 16rem);
+  }
+
+  @media (min-width: 768px) {
+    .cert-card__media {
+      flex: 0 0 42%;
+      width: 42%;
+      min-height: 0;
+      height: 100%;
+      align-self: stretch;
+    }
+  }
+
+  .cert-card__trigger {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    border: 0;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  .cert-card__bg {
+    position: absolute;
+    inset: 0;
+    background-repeat: no-repeat;
+    transition: transform 500ms var(--ease-out);
+  }
+
+  /* Portrait: full width edge-to-edge, anchored to top (crop bottom only if needed) */
+  .cert-card__trigger--portrait .cert-card__bg {
+    background-size: 100% auto;
+    background-position: top center;
+    transform-origin: top center;
+  }
+
+  /* Landscape: full height edge-to-edge, centered (crop sides only if needed) */
+  .cert-card__trigger--landscape .cert-card__bg {
+    background-size: auto 100%;
+    background-position: center center;
+    transform-origin: center center;
+  }
+
+  .cert-card__media:hover .cert-card__trigger--portrait .cert-card__bg {
+    transform: scale(1.02);
+  }
+
+  .cert-card__media:hover .cert-card__trigger--landscape .cert-card__bg {
+    transform: scale(1.02);
+  }
+
+  .cert-card__body {
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
   .project-card {

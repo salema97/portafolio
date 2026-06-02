@@ -1,7 +1,8 @@
 import ProjectGalleryVideoThumb from "@/components/ProjectGalleryVideoThumb";
 import ProjectVideoEmbed from "@/components/ProjectVideoEmbed";
 import { Badge } from "@/components/ui/badge";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button-variants";
 import {
   Carousel,
   CarouselContent,
@@ -24,7 +25,11 @@ import {
   type ProjectAccess,
 } from "@/lib/project-demo-status";
 import { type ProjectSource } from "@/lib/project-sources";
-import { type GallerySlide, type GalleryVideoSlide } from "@/lib/project-video";
+import {
+  getGallerySlideKey,
+  type GallerySlide,
+  type GalleryVideoSlide,
+} from "@/lib/project-video";
 import { cn } from "@/lib/utils";
 import { ExternalLink, Github } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
@@ -59,12 +64,14 @@ interface ProjectDetailModalProps {
   labels: ProjectModalLabels;
 }
 
-export default function ProjectDetailModal({
+/** Carousel + thumbnails; remounts when `project.title` changes so slide index resets without an effect. */
+function ProjectModalGallery({
   project,
-  open,
-  onOpenChange,
   labels,
-}: ProjectDetailModalProps) {
+}: {
+  project: ProjectModalData;
+  labels: ProjectModalLabels;
+}) {
   const [api, setApi] = useState<CarouselApi>();
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -84,15 +91,6 @@ export default function ProjectDetailModal({
     };
   }, [api, onSelect]);
 
-  useEffect(() => {
-    if (open) {
-      setActiveIndex(0);
-      api?.scrollTo(0, true);
-    }
-  }, [open, project?.title, api]);
-
-  if (!project) return null;
-
   const slideCount = project.gallerySlides.length;
   const hasMultipleSlides = slideCount > 1;
   const firstImage = project.gallerySlides.find((s) => s.type === "image");
@@ -103,6 +101,113 @@ export default function ProjectDetailModal({
     (firstImage?.type === "image" ? firstImage.src : undefined) ?? videoSlide?.video.thumbnailUrl;
 
   return (
+    <div className="project-modal-gallery">
+      <div className="project-modal-carousel">
+        <Carousel
+          setApi={setApi}
+          className="h-full min-h-0 flex-1"
+          opts={{ loop: hasMultipleSlides }}
+        >
+          <CarouselContent className="-ml-2 h-full">
+            {project.gallerySlides.map((slide, index) => (
+              <CarouselItem key={getGallerySlideKey(slide)} className="pl-2">
+                <div
+                  className={cn(
+                    "project-modal-viewport",
+                    slide.type === "video" && "project-modal-viewport--video"
+                  )}
+                >
+                  {slide.type === "image" ? (
+                    <img
+                      src={slide.src}
+                      alt={`${project.title} ${index + 1} of ${slideCount}`}
+                      className="project-modal-image"
+                      width={1280}
+                      height={800}
+                      decoding="async"
+                    />
+                  ) : activeIndex === index ? (
+                    <ProjectVideoEmbed video={slide.video} title={project.title} />
+                  ) : (
+                    <div className="project-modal-video-poster" aria-hidden>
+                      {slide.video.thumbnailUrl ? (
+                        <img
+                          src={slide.video.thumbnailUrl}
+                          alt=""
+                          className="h-full w-full object-cover opacity-60"
+                        />
+                      ) : null}
+                      <span className="project-modal-video-poster-play">{labels.videoLabel}</span>
+                    </div>
+                  )}
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          {hasMultipleSlides && (
+            <>
+              <CarouselPrevious className="left-2 size-10 border-border/80 bg-card/95 sm:left-4" />
+              <CarouselNext className="right-2 size-10 border-border/80 bg-card/95 sm:right-4" />
+            </>
+          )}
+        </Carousel>
+      </div>
+
+      {hasMultipleSlides && (
+        <div
+          className="mt-3 flex gap-2 overflow-x-auto pb-1"
+          role="tablist"
+          aria-label={labels.galleryLabel}
+        >
+          {project.gallerySlides.map((slide, index) =>
+            slide.type === "image" ? (
+              <button
+                key={`thumb-${getGallerySlideKey(slide)}`}
+                type="button"
+                role="tab"
+                aria-selected={activeIndex === index}
+                aria-label={`${project.title} image ${index + 1}`}
+                onClick={() => api?.scrollTo(index)}
+                className={cn(
+                  "project-modal-thumb shrink-0",
+                  activeIndex === index && "project-modal-thumb--active"
+                )}
+              >
+                <img src={slide.src} alt="" className="h-full w-full object-cover" loading="lazy" />
+              </button>
+            ) : (
+              <button
+                key={`thumb-${getGallerySlideKey(slide)}`}
+                type="button"
+                role="tab"
+                aria-selected={activeIndex === index}
+                aria-label={`${project.title} ${labels.videoLabel}`}
+                onClick={() => api?.scrollTo(index)}
+                className="shrink-0"
+              >
+                <ProjectGalleryVideoThumb
+                  posterSrc={slide.video.thumbnailUrl ?? posterForVideo}
+                  label={labels.videoLabel}
+                  active={activeIndex === index}
+                />
+              </button>
+            )
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default function ProjectDetailModal({
+  project,
+  open,
+  onOpenChange,
+  labels,
+}: ProjectDetailModalProps) {
+  if (!project) return null;
+
+  return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         showCloseButton
@@ -111,103 +216,7 @@ export default function ProjectDetailModal({
       >
         <div className="project-modal-layout">
           <div className="flex min-h-0 flex-col border-b border-border/60 md:border-b-0 md:border-r">
-            <div className="project-modal-gallery">
-              <div className="project-modal-carousel">
-                <Carousel
-                  setApi={setApi}
-                  className="h-full min-h-0 flex-1"
-                  opts={{ loop: hasMultipleSlides }}
-                >
-                  <CarouselContent className="-ml-2 h-full">
-                    {project.gallerySlides.map((slide, index) => (
-                      <CarouselItem key={`slide-${index}`} className="pl-2">
-                        <div
-                          className={cn(
-                            "project-modal-viewport",
-                            slide.type === "video" && "project-modal-viewport--video"
-                          )}
-                        >
-                          {slide.type === "image" ? (
-                            <img
-                              src={slide.src}
-                              alt={`${project.title} ${index + 1} of ${slideCount}`}
-                              className="project-modal-image"
-                              width={1280}
-                              height={800}
-                              decoding="async"
-                            />
-                          ) : activeIndex === index ? (
-                            <ProjectVideoEmbed video={slide.video} title={project.title} />
-                          ) : (
-                            <div className="project-modal-video-poster" aria-hidden>
-                              {slide.video.thumbnailUrl ? (
-                                <img
-                                  src={slide.video.thumbnailUrl}
-                                  alt=""
-                                  className="h-full w-full object-cover opacity-60"
-                                />
-                              ) : null}
-                              <span className="project-modal-video-poster-play">
-                                {labels.videoLabel}
-                              </span>
-                            </div>
-                          )}
-                        </div>
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                  {hasMultipleSlides && (
-                    <>
-                      <CarouselPrevious className="left-2 size-10 border-border/80 bg-card/95 sm:left-4" />
-                      <CarouselNext className="right-2 size-10 border-border/80 bg-card/95 sm:right-4" />
-                    </>
-                  )}
-                </Carousel>
-              </div>
-
-              {hasMultipleSlides && (
-                <div
-                  className="mt-3 flex gap-2 overflow-x-auto pb-1"
-                  role="tablist"
-                  aria-label={labels.galleryLabel}
-                >
-                  {project.gallerySlides.map((slide, index) =>
-                    slide.type === "image" ? (
-                      <button
-                        key={`thumb-img-${slide.src}-${index}`}
-                        type="button"
-                        role="tab"
-                        aria-selected={activeIndex === index}
-                        aria-label={`${project.title} image ${index + 1}`}
-                        onClick={() => api?.scrollTo(index)}
-                        className={cn(
-                          "project-modal-thumb shrink-0",
-                          activeIndex === index && "project-modal-thumb--active"
-                        )}
-                      >
-                        <img src={slide.src} alt="" className="h-full w-full object-cover" loading="lazy" />
-                      </button>
-                    ) : (
-                      <button
-                        key={`thumb-video-${index}`}
-                        type="button"
-                        role="tab"
-                        aria-selected={activeIndex === index}
-                        aria-label={`${project.title} ${labels.videoLabel}`}
-                        onClick={() => api?.scrollTo(index)}
-                        className="shrink-0"
-                      >
-                        <ProjectGalleryVideoThumb
-                          posterSrc={slide.video.thumbnailUrl ?? posterForVideo}
-                          label={labels.videoLabel}
-                          active={activeIndex === index}
-                        />
-                      </button>
-                    )
-                  )}
-                </div>
-              )}
-            </div>
+            <ProjectModalGallery key={project.title} project={project} labels={labels} />
           </div>
 
           <div className="flex min-h-0 flex-col overflow-y-auto p-4 sm:p-5 md:p-6">
