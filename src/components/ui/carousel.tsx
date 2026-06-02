@@ -175,7 +175,8 @@ function CarouselPrevious({
   size = "icon",
   ...props
 }: React.ComponentProps<typeof Button>) {
-  const { orientation, scrollPrev, canScrollPrev } = useCarousel()
+  const { orientation, scrollPrev, canScrollPrev, opts } = useCarousel()
+  const isLooping = opts?.loop === true
 
   return (
     <Button
@@ -189,9 +190,12 @@ function CarouselPrevious({
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
         className
       )}
-      disabled={!canScrollPrev}
-      onClick={scrollPrev}
       {...props}
+      disabled={isLooping ? false : !canScrollPrev}
+      onClick={(event) => {
+        if (props.onClick) props.onClick(event)
+        else scrollPrev()
+      }}
     >
       <ArrowLeft />
       <span className="sr-only">Previous slide</span>
@@ -205,7 +209,8 @@ function CarouselNext({
   size = "icon",
   ...props
 }: React.ComponentProps<typeof Button>) {
-  const { orientation, scrollNext, canScrollNext } = useCarousel()
+  const { orientation, scrollNext, canScrollNext, opts } = useCarousel()
+  const isLooping = opts?.loop === true
 
   return (
     <Button
@@ -219,9 +224,12 @@ function CarouselNext({
           : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
         className
       )}
-      disabled={!canScrollNext}
-      onClick={scrollNext}
       {...props}
+      disabled={isLooping ? false : !canScrollNext}
+      onClick={(event) => {
+        if (props.onClick) props.onClick(event)
+        else scrollNext()
+      }}
     >
       <ArrowRight />
       <span className="sr-only">Next slide</span>

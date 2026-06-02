@@ -1,45 +1,57 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaAward, FaBuilding, FaCalendarAlt, FaExternalLinkAlt, FaTerminal } from "react-icons/fa";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 import { Card, CardContent } from "../ui/card";
+import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-} from "../ui/carousel";
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogTitle,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
 } from "../ui/dialog";
 
 export interface CertificationItem {
-  name: string
-  issuer: string
-  date: string
-  credentialId?: string
-  description?: string
-  image: string
-  tags: string[]
-  url?: string
+  name: string;
+  issuer: string;
+  date: string;
+  credentialId?: string;
+  description?: string;
+  image: string;
+  tags: string[];
+  url?: string;
 }
 
 interface CertificationsProps {
-  items: CertificationItem[]
-  title: string
-  verifyText: string
+  items: CertificationItem[];
+  title: string;
+  verifyText: string;
 }
-
-type CertOrientation = "portrait" | "landscape";
 
 function getCertificationKey(cert: CertificationItem): string {
   if (cert.credentialId) return `cred:${cert.credentialId}`;
   if (cert.url) return `url:${cert.url}`;
   return `img:${cert.image}`;
+}
+
+type CertOrientation = "portrait" | "landscape";
+
+function useCertOrientation(src: string): CertOrientation {
+  const [orientation, setOrientation] = useState<CertOrientation>("landscape");
+
+  useEffect(() => {
+    if (!src) return;
+    const probe = new Image();
+    probe.onload = () => {
+      setOrientation(
+        probe.naturalHeight > probe.naturalWidth ? "portrait" : "landscape"
+      );
+    };
+    probe.src = src;
+  }, [src]);
+
+  return orientation;
 }
 
 function CertificationMedia({
@@ -53,22 +65,15 @@ function CertificationMedia({
   eager?: boolean;
   onOpen: () => void;
 }) {
-  const [orientation, setOrientation] = useState<CertOrientation>("landscape");
-
-  useEffect(() => {
-    const probe = new Image();
-    probe.onload = () => {
-      setOrientation(
-        probe.naturalHeight > probe.naturalWidth ? "portrait" : "landscape"
-      );
-    };
-    probe.src = src;
-  }, [src]);
+  const orientation = useCertOrientation(src);
 
   return (
     <button
       type="button"
-      onClick={onOpen}
+      onClick={(e) => {
+        e.stopPropagation();
+        onOpen();
+      }}
       className={cn(
         "cert-card__trigger",
         orientation === "portrait"
@@ -93,74 +98,162 @@ function CertificationMedia({
   );
 }
 
-/** Let clicks on the cert image open the dialog instead of starting a carousel drag. */
-function shouldStartCarouselDrag(_api: unknown, event: MouseEvent | TouchEvent): boolean {
-  const target = event.target;
-  if (!(target instanceof Element)) return true;
-  return !target.closest(".cert-card__trigger");
+function CertPreviewImage({
+  cert,
+  orientation,
+}: {
+  cert: CertificationItem;
+  orientation: CertOrientation;
+}) {
+  return (
+    <img
+      src={cert.image}
+      alt={cert.name}
+      className={cn(
+        "cert-preview__img",
+        orientation === "portrait"
+          ? "cert-preview__img--portrait"
+          : "cert-preview__img--landscape"
+      )}
+    />
+  );
+}
+
+function CertificationPreviewDialog({
+  preview,
+  onOpenChange,
+}: {
+  preview: CertificationItem | null;
+  onOpenChange: (open: boolean) => void;
+}) {
+  const orientation = useCertOrientation(preview?.image ?? "");
+
+  return (
+    <Dialog open={preview !== null} onOpenChange={onOpenChange}>
+      <DialogContent
+        className={cn(
+          "cert-preview-dialog z-[100] border-none bg-transparent p-3 sm:p-4",
+          orientation === "landscape"
+            ? "cert-preview-dialog--landscape"
+            : "cert-preview-dialog--portrait"
+        )}
+      >
+        {preview ? (
+          <>
+            <DialogTitle className="sr-only">{preview.name}</DialogTitle>
+            <DialogDescription className="sr-only">
+              Image of {preview.name} certification
+            </DialogDescription>
+            <CertPreviewImage cert={preview} orientation={orientation} />
+          </>
+        ) : null}
+      </DialogContent>
+    </Dialog>
+  );
 }
 
 export default function Certifications({ items, verifyText }: CertificationsProps) {
   const [preview, setPreview] = useState<CertificationItem | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [slideWidth, setSlideWidth] = useState(0);
+  const viewportRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const node = viewportRef.current;
+    if (!node) return;
+
+    const measure = () => setSlideWidth(node.clientWidth);
+    measure();
+
+    const observer = new ResizeObserver(measure);
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    setActiveIndex(0);
+  }, [items]);
+
+  const goPrev = () => {
+    setActiveIndex((index) => (index <= 0 ? items.length - 1 : index - 1));
+  };
+
+  const goNext = () => {
+    setActiveIndex((index) => (index >= items.length - 1 ? 0 : index + 1));
+  };
 
   return (
     <>
-    <div className="relative mx-auto w-full max-w-5xl px-0 sm:px-2">
-      <Carousel
-        opts={{ loop: true, watchDrag: shouldStartCarouselDrag }}
-        className="w-full"
-      >
-        <CarouselContent>
-          {items.map((cert) => (
-            <CarouselItem key={getCertificationKey(cert)} className="basis-full">
-                <Card className="card-premium cert-card gap-0 overflow-hidden py-0 shadow-none transition-[transform,box-shadow] duration-300 hover:-translate-y-1">
+      <div className="cert-carousel relative mx-auto w-full max-w-5xl px-10 sm:px-12 md:px-14">
+        <div
+          ref={viewportRef}
+          className="cert-carousel__viewport overflow-hidden"
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="Certifications"
+        >
+          <div
+            className="cert-carousel__track flex transition-transform duration-300 ease-out"
+            style={{
+              transform:
+                slideWidth > 0
+                  ? `translate3d(-${activeIndex * slideWidth}px, 0, 0)`
+                  : undefined,
+            }}
+          >
+            {items.map((cert, index) => (
+              <article
+                key={getCertificationKey(cert)}
+                className="cert-carousel__slide shrink-0 grow-0"
+                style={{ width: slideWidth > 0 ? slideWidth : "100%" }}
+                aria-hidden={activeIndex !== index}
+              >
+                <Card className="card-premium cert-card gap-0 overflow-hidden py-0 shadow-none transition-shadow duration-300 hover:shadow-lg">
                   <CardContent className="flex h-full min-h-0 flex-col p-0">
                     <div className="cert-card__layout flex min-h-0 flex-1 flex-col md:flex-row">
                       <div className="cert-card__media group relative shrink-0 overflow-hidden md:flex-[0_0_42%]">
                         <CertificationMedia
                           src={cert.image}
                           label={`View ${cert.name} certificate`}
-                          eager={items[0] === cert}
+                          eager={index === 0}
                           onOpen={() => setPreview(cert)}
                         />
                       </div>
 
-                      {/* Right: Info */}
                       <div className="cert-card__body flex min-h-0 w-full flex-1 flex-col justify-center overflow-y-auto p-5 custom-scrollbar sm:p-6 md:p-8">
                         <div className="mb-2">
                           <h3 className="font-display mb-2 line-clamp-2 text-xl font-bold text-foreground sm:text-2xl md:text-3xl">
                             {cert.name}
                           </h3>
-                          <div className="flex items-center text-muted-foreground mb-1">
-                             <FaBuilding className="mr-2 size-4 text-primary" />
-                             <span className="text-sm font-medium">{cert.issuer}</span>
+                          <div className="mb-1 flex items-center text-muted-foreground">
+                            <FaBuilding className="mr-2 size-4 text-primary" />
+                            <span className="text-sm font-medium">{cert.issuer}</span>
                           </div>
-                           <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-4">
+                          <div className="mb-4 flex flex-wrap gap-4 text-sm text-muted-foreground">
+                            <div className="flex items-center">
+                              <FaCalendarAlt className="mr-1.5 size-3.5" />
+                              {cert.date}
+                            </div>
+                            {cert.credentialId && (
                               <div className="flex items-center">
-                                <FaCalendarAlt className="mr-1.5 size-3.5" />
-                                {cert.date}
+                                <FaAward className="mr-1.5 size-3.5" />
+                                ID: {cert.credentialId}
                               </div>
-                              {cert.credentialId && (
-                                <div className="flex items-center">
-                                  <FaAward className="mr-1.5 size-3.5" />
-                                  ID: {cert.credentialId}
-                                </div>
-                              )}
-                           </div>
+                            )}
+                          </div>
                         </div>
-                        
+
                         {cert.description && (
-                           <p className="text-muted-foreground mb-6 text-sm leading-relaxed line-clamp-4">
+                          <p className="mb-6 line-clamp-4 text-sm leading-relaxed text-muted-foreground">
                             {cert.description}
-                           </p>
+                          </p>
                         )}
 
-                        {/* Tags */}
-                        <div className="flex flex-wrap gap-2 mb-6 mt-auto">
+                        <div className="mb-6 mt-auto flex flex-wrap gap-2">
                           {cert.tags.map((tag) => (
                             <span
                               key={`${getCertificationKey(cert)}-tag-${tag}`}
-                              className="px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary border border-primary/20 flex items-center"
+                              className="flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary"
                             >
                               <FaTerminal className="mr-1.5 size-3" />
                               {tag}
@@ -168,7 +261,6 @@ export default function Certifications({ items, verifyText }: CertificationsProp
                           ))}
                         </div>
 
-                        {/* Button */}
                         {cert.url && (
                           <div className="mt-4">
                             <a
@@ -186,31 +278,41 @@ export default function Certifications({ items, verifyText }: CertificationsProp
                     </div>
                   </CardContent>
                 </Card>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious className="left-1 top-1/2 flex min-h-11 min-w-11 -translate-y-1/2 border-border bg-card/95 shadow-md hover:bg-primary hover:text-primary-foreground sm:left-2 md:-left-12" />
-        <CarouselNext className="right-1 top-1/2 flex min-h-11 min-w-11 -translate-y-1/2 border-border bg-card/95 shadow-md hover:bg-primary hover:text-primary-foreground sm:right-2 md:-right-12" />
-      </Carousel>
-    </div>
+              </article>
+            ))}
+          </div>
+        </div>
 
-    <Dialog open={preview !== null} onOpenChange={(open) => !open && setPreview(null)}>
-      <DialogContent className="z-[100] max-w-[90vw] border-none bg-transparent p-0 text-center md:max-w-[60vw]">
-        {preview ? (
+        {!preview && (
           <>
-            <DialogTitle className="sr-only">{preview.name}</DialogTitle>
-            <DialogDescription className="sr-only">
-              Image of {preview.name} certification
-            </DialogDescription>
-            <img
-              src={preview.image}
-              alt={preview.name}
-              className="mx-auto h-auto max-h-[80vh] w-full rounded-lg object-contain"
-            />
+            <Button
+              type="button"
+              variant="outline"
+              size="icon"
+              className="absolute left-0 top-1/2 z-20 size-11 -translate-y-1/2 rounded-full border-border bg-card/95 shadow-md hover:bg-primary hover:text-primary-foreground"
+              onClick={goPrev}
+              aria-label="Previous certification"
+            >
+              <ArrowLeft className="size-4" />
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              size="icon"
+              className="absolute right-0 top-1/2 z-20 size-11 -translate-y-1/2 rounded-full border-border bg-card/95 shadow-md hover:bg-primary hover:text-primary-foreground"
+              onClick={goNext}
+              aria-label="Next certification"
+            >
+              <ArrowRight className="size-4" />
+            </Button>
           </>
-        ) : null}
-      </DialogContent>
-    </Dialog>
+        )}
+      </div>
+
+      <CertificationPreviewDialog
+        preview={preview}
+        onOpenChange={(open) => !open && setPreview(null)}
+      />
     </>
-  )
+  );
 }

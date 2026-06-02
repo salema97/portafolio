@@ -301,14 +301,12 @@
     transform: translateY(20px);
   }
 
-  /* React islands must stay visible once hydrated */
+  /* React islands: only neutralize reveal wrapper — not every descendant (breaks carousels) */
   #work [data-reveal],
   #work [data-astro-cid],
   #work astro-island,
-  #work astro-island *,
   #certifications [data-reveal],
-  #certifications astro-island,
-  #certifications astro-island * {
+  #certifications astro-island {
     opacity: 1 !important;
     transform: none !important;
   }
@@ -408,6 +406,19 @@
     box-shadow: var(--shadow-card), inset 0 1px 0 color-mix(in oklab, white 8%, transparent);
   }
 
+  /* Certifications — CSS track carousel (viewport-sized slides) */
+  .cert-carousel__viewport {
+    width: 100%;
+  }
+
+  .cert-carousel__track {
+    will-change: transform;
+  }
+
+  .cert-carousel__slide {
+    min-width: 0;
+  }
+
   /* Certifications carousel — fixed card + full-bleed certificate media */
   .cert-card {
     height: clamp(26rem, 72vh, 30rem);
@@ -491,6 +502,36 @@
   .cert-card__body {
     flex: 1 1 auto;
     min-width: 0;
+  }
+
+  .cert-preview-dialog {
+    width: min(92vw, 36rem);
+    max-width: min(92vw, 36rem);
+  }
+
+  .cert-preview-dialog--landscape {
+    width: min(96vw, 56rem);
+    max-width: min(96vw, 56rem);
+  }
+
+  .cert-preview__img {
+    display: block;
+    margin-inline: auto;
+    border-radius: 0.5rem;
+    object-fit: contain;
+    box-shadow: 0 12px 40px rgb(0 0 0 / 0.45);
+  }
+
+  .cert-preview__img--portrait {
+    max-height: min(85dvh, 880px);
+    width: auto;
+    max-width: 100%;
+  }
+
+  .cert-preview__img--landscape {
+    max-height: min(78dvh, 520px);
+    width: auto;
+    max-width: 100%;
   }
 
   .project-card {
