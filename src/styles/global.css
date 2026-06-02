@@ -504,44 +504,37 @@
     min-width: 0;
   }
 
-  /* Beat shadcn DialogContent sm:max-w-lg (32rem) on cert previews */
+  /* Dialog hugs the image — no empty bars left/right on landscape certs */
   .cert-preview-dialog[data-slot="dialog-content"] {
     display: block;
-    width: auto;
+    width: fit-content !important;
+    max-width: min(96vw, 72rem) !important;
     gap: 0;
   }
 
   .cert-preview-dialog--portrait[data-slot="dialog-content"] {
-    width: min(94vw, 36rem) !important;
     max-width: min(94vw, 36rem) !important;
   }
 
   .cert-preview-dialog--landscape[data-slot="dialog-content"] {
-    width: min(96vw, 72rem) !important;
     max-width: min(96vw, 72rem) !important;
   }
 
   .cert-preview__img {
     display: block;
-    margin-inline: auto;
+    width: auto;
+    height: auto;
+    max-width: 100%;
     border-radius: 0.5rem;
     object-fit: contain;
     box-shadow: 0 12px 40px rgb(0 0 0 / 0.45);
   }
 
-  /* Tall certs (SENESCYT, ESPE): limit height, auto width */
   .cert-preview__img--portrait {
-    width: auto;
-    max-width: 100%;
-    height: auto;
     max-height: min(90dvh, 920px);
   }
 
-  /* Wide certs (HackerRank): fill modal width */
   .cert-preview__img--landscape {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
     max-height: min(88dvh, 720px);
   }
 

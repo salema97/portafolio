@@ -132,7 +132,7 @@ function CertificationPreviewDialog({
     <Dialog open={preview !== null} onOpenChange={onOpenChange}>
       <DialogContent
         className={cn(
-          "cert-preview-dialog z-[100] w-auto max-w-[calc(100%-1rem)] gap-0 border-none bg-transparent p-2 sm:max-w-none sm:p-3",
+          "cert-preview-dialog z-[100] w-fit max-w-[calc(100%-1rem)] gap-0 border-none bg-transparent p-2 sm:max-w-none sm:p-3",
           orientation === "landscape"
             ? "cert-preview-dialog--landscape"
             : "cert-preview-dialog--portrait"
