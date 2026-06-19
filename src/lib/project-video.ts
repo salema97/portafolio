@@ -89,13 +89,19 @@ export function parseProjectVideo(url: string): ParsedProjectVideo | null {
   return null;
 }
 
-export function buildGallerySlides(images: string[], videoUrl?: string): GallerySlide[] {
+export function buildGallerySlides(
+  images: string[],
+  videoUrl?: string | string[]
+): GallerySlide[] {
   const slides: GallerySlide[] = images.map((src) => ({ type: "image", src }));
 
   if (!videoUrl) return slides;
 
-  const video = parseProjectVideo(videoUrl);
-  if (!video) return slides;
+  const urls = Array.isArray(videoUrl) ? videoUrl : [videoUrl];
+  for (const url of urls) {
+    const video = parseProjectVideo(url);
+    if (video) slides.push({ type: "video", video });
+  }
 
-  return [...slides, { type: "video", video }];
+  return slides;
 }

@@ -31,7 +31,7 @@ export function resolveProjectSources(
     legacy.push({
       url: project.github,
       kind: "repo",
-      label: getSourceLabel({ url: project.github, kind: "repo" }, kindLabels),
+      label: getSourceLabel({ kind: "repo" }, kindLabels),
     });
   }
 
@@ -39,7 +39,7 @@ export function resolveProjectSources(
     legacy.push({
       url: project.githubBackend,
       kind: "backend",
-      label: getSourceLabel({ url: project.githubBackend, kind: "backend" }, kindLabels),
+      label: getSourceLabel({ kind: "backend" }, kindLabels),
     });
   }
 

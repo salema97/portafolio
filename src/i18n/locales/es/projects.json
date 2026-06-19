@@ -36,6 +36,55 @@
   },
   "items": [
     {
+      "title": "VisionPI — Detección de Fallas Textiles",
+      "description": "Sistema de visión industrial con YOLOv11 para detectar y clasificar fallas en tejidos textiles en tiempo real.",
+      "descriptionLong": "Sistema completo de control de calidad textil por visión artificial. El modelo de detección y segmentación se entrena con YOLOv11 para reconocer hasta 8 tipos de fallas (enganche, faltante, nudo, quemadura, retención, suciedad, tejido y trama) en imágenes y video en tiempo real.\n\nEn el edge, un servicio de inferencia optimizado para Raspberry Pi 5 ejecuta modelos YOLO con soporte NCNN, captura desde cámaras USB/CSI y expone una API REST local con SQLite. Las detecciones se consultan de forma remota, se clasifican como fallo/no fallo y se almacenan tras validación.\n\nEl backend central, construido con FastAPI y MySQL, gestiona dispositivos Raspberry Pi, autenticación JWT con cookies HTTP-only, clasificación inteligente de inferencias y estadísticas avanzadas. El panel administrativo, desarrollado con React 18, TypeScript y Vite, ofrece dashboard en tiempo real, gestión de inferencias, sistema de etiquetado, monitoreo de dispositivos y soporte para tema claro/oscuro.\n\nLa arquitectura conecta planta de producción (edge), backend de gestión y panel web, orientada a reducir defectos textiles y trazabilidad de clasificaciones.",
+      "image": "/projects/Inference-1.png",
+      "images": [
+        "/projects/Inference-1.png",
+        "/projects/Inference-2.png",
+        "/projects/Inference-3.png",
+        "/projects/Inference-4.png"
+      ],
+      "video": [
+        "https://s3.salema.dev/public/detections.mp4",
+        "https://s3.salema.dev/public/inferences.mp4"
+      ],
+      "access": "private",
+      "platform": "web",
+      "tags": [
+        "Python",
+        "YOLOv11",
+        "OpenCV",
+        "FastAPI",
+        "React",
+        "Raspberry Pi"
+      ]
+    },
+    {
+      "title": "Steam Leak Detection — Visión Industrial OPC UA",
+      "description": "PoC de detección de fugas de vapor/humo cobrizo con visión por computadora, PLC vía OPC UA y dashboard web.",
+      "descriptionLong": "Proof of Concept para entornos industriales que detecta fugas de vapor/humo cobrizo en tiempo real combinando visión artificial e integración con PLC. El pipeline de visión, optimizado para CPU, usa sustracción de fondo MOG2 y filtrado HSV sobre un stream RTSP para identificar la magnitud de la fuga.\n\nEl backend en Flask actúa como motor central: ejecuta el pipeline de OpenCV, sirve un stream MJPEG de ultrabaja latencia, emite telemetría en vivo por Server-Sent Events, escribe métricas en SQL Server y graba clips de evidencia en disco. A través de OPC UA, envía al PLC el conteo de píxeles de vapor y un heartbeat de watchdog para integrarse con SCADA o sistemas de alarma.\n\nEl dashboard, desarrollado con Next.js 16, React 19 y Tailwind CSS, incluye monitor en vivo, gráficas de historial, galería de evidencias y una herramienta visual de calibración en caliente (HSV, ROI y umbral) que ajusta el detector sin reiniciar el servicio.\n\nTodo el stack puede levantarse con Docker Compose e incluye simuladores de PLC OPC UA y cámara RTSP para desarrollo sin hardware real.",
+      "image": "/projects/Vapor-1.png",
+      "images": [
+        "/projects/Vapor-1.png",
+        "/projects/Vapor-2.png",
+        "/projects/Vapor-3.png",
+        "/projects/Vapor-4.png"
+      ],
+      "video": "https://s3.salema.dev/public/vapor.mp4",
+      "access": "private",
+      "platform": "web",
+      "tags": [
+        "Python",
+        "OpenCV",
+        "OPC UA",
+        "Next.js",
+        "Flask",
+        "SQL Server"
+      ]
+    },
+    {
       "title": "Página Web Empresarial Kaizen",
       "description": "Sitio corporativo de Kaizen Software: servicios, portafolio, equipo y contacto.",
       "descriptionLong": "Sitio corporativo de Kaizen Software construido como SPA con Vite, React 18 y TypeScript. La arquitectura separa páginas por dominio (inicio, servicios, portafolio, nosotros, equipo, contacto) con carga diferida de secciones pesadas y componentes reutilizables sobre Radix UI y Tailwind.\n\nIncluye internacionalización completa (español e inglés), tema claro/oscuro/sistema, portafolio filtrable con modal de detalle, y formulario de contacto integrado con validación y protección anti-bots (Cloudflare Turnstile). El SEO se apoya en metadatos, sitemap y estructura semántica orientada a conversión B2B sin sacrificar rendimiento en móvil.",

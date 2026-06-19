@@ -36,6 +36,55 @@
   },
   "items": [
     {
+      "title": "VisionPI — Textile Defect Detection",
+      "description": "Industrial vision system using YOLOv11 to detect and classify fabric defects in real time.",
+      "descriptionLong": "End-to-end quality-control system powered by computer vision. The detection and segmentation model is trained with YOLOv11 to recognize up to 8 fabric defect types (hook, missing, knot, burn, retention, dirt, weave, and warp) on images and live video.\n\nOn the edge, an inference service optimized for Raspberry Pi 5 runs YOLO models with NCNN support, captures from USB/CSI cameras, and exposes a local REST API backed by SQLite. Detections are queried remotely, classified as failure/no-failure, and stored only after validation.\n\nThe central backend, built with FastAPI and MySQL, manages Raspberry Pi devices, JWT authentication via HTTP-only cookies, intelligent inference classification, and advanced statistics. The admin panel, developed with React 18, TypeScript, and Vite, provides a real-time dashboard, inference management, a labeling system, device monitoring, and light/dark theme support.\n\nThe architecture connects the production floor (edge), management backend, and web panel, aimed at reducing textile defects and tracking every classification.",
+      "image": "/projects/Inference-1.png",
+      "images": [
+        "/projects/Inference-1.png",
+        "/projects/Inference-2.png",
+        "/projects/Inference-3.png",
+        "/projects/Inference-4.png"
+      ],
+      "video": [
+        "https://s3.salema.dev/public/detections.mp4",
+        "https://s3.salema.dev/public/inferences.mp4"
+      ],
+      "access": "private",
+      "platform": "web",
+      "tags": [
+        "Python",
+        "YOLOv11",
+        "OpenCV",
+        "FastAPI",
+        "React",
+        "Raspberry Pi"
+      ]
+    },
+    {
+      "title": "Steam Leak Detection — Industrial Vision OPC UA",
+      "description": "PoC for detecting copper-tinted steam/smoke leaks using computer vision, PLC via OPC UA, and a web dashboard.",
+      "descriptionLong": "Industrial proof of concept that detects steam/copper-tinted smoke leaks in real time by combining computer vision and PLC integration. The CPU-optimized vision pipeline uses MOG2 background subtraction and HSV filtering over an RTSP stream to measure leak magnitude.\n\nThe Flask backend serves as the central engine: it runs the OpenCV pipeline, serves an ultra-low-latency MJPEG stream, pushes live telemetry via Server-Sent Events, writes metrics to SQL Server, and records evidence clips to disk. Through OPC UA, it sends the vapor pixel count and a watchdog heartbeat to the PLC for integration with SCADA or alarm systems.\n\nThe dashboard, built with Next.js 16, React 19, and Tailwind CSS, includes a live monitor, historical charts, an evidence gallery, and a visual hot-calibration tool (HSV, ROI, and threshold) that tunes the detector without restarting the service.\n\nThe full stack can be launched with Docker Compose and includes OPC UA PLC and RTSP camera simulators for development without physical hardware.",
+      "image": "/projects/Vapor-1.png",
+      "images": [
+        "/projects/Vapor-1.png",
+        "/projects/Vapor-2.png",
+        "/projects/Vapor-3.png",
+        "/projects/Vapor-4.png"
+      ],
+      "video": "https://s3.salema.dev/public/vapor.mp4",
+      "access": "private",
+      "platform": "web",
+      "tags": [
+        "Python",
+        "OpenCV",
+        "OPC UA",
+        "Next.js",
+        "Flask",
+        "SQL Server"
+      ]
+    },
+    {
       "title": "Kaizen Corporate Website",
       "description": "Kaizen Software corporate site: services, portfolio, team, and contact.",
       "descriptionLong": "Corporate website for Kaizen Software built as a Vite + React 18 + TypeScript SPA. Architecture splits pages by domain (home, services, portfolio, about, team, contact) with lazy-loaded heavy sections and reusable components on Radix UI and Tailwind.\n\nFull i18n (Spanish and English), light/dark/system theme, filterable portfolio with a detail modal, and a contact form with validation and bot protection (Cloudflare Turnstile). SEO uses metadata, sitemap, and semantic structure aimed at B2B conversion without hurting mobile performance.",

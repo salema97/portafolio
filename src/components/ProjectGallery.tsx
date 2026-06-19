@@ -30,13 +30,13 @@ const FILTER_ALL = "__all__";
 
 type ProjectCategory = "web" | "mobile" | "research";
 
-interface Project extends ProjectSourceInput {
+export interface Project extends ProjectSourceInput {
   title: string;
   description: string;
   descriptionLong?: string;
   image: string;
   images?: string[];
-  video?: string;
+  video?: string | string[];
   link?: string;
   access?: ProjectAccess;
   hasDemo?: boolean;

@@ -1,11 +1,12 @@
 ---
 import { getLangFromUrl, getTranslations } from "../../i18n";
-import ProjectGallery from "../ProjectGallery";
+import ProjectGallery, { type Project } from "../ProjectGallery";
 import SectionHeader from "../SectionHeader.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = getTranslations(lang);
 const proj = t.projects;
+const projects = proj.items as unknown as Project[];
 ---
 
 <section id="work" class="section-shell">
@@ -13,7 +14,7 @@ const proj = t.projects;
 
   <ProjectGallery
     client:visible
-    projects={proj.items}
+    projects={projects}
     labels={{
       viewAll: proj.viewAll,
       filterAll: proj.filterAll,
