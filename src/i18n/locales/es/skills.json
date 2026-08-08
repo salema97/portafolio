@@ -30,7 +30,7 @@
     },
     {
       "name": "Bases de Datos",
-      "icon": "storage",
+      "icon": "database",
       "skills": [
         { "name": "MySQL", "level": 85 },
         { "name": "PostgreSQL", "level": 80 },
@@ -42,7 +42,7 @@
     },
     {
       "name": "IA & Visión",
-      "icon": "visibility",
+      "icon": "eye",
       "skills": [
         { "name": "YOLOv8/v11", "level": 85 },
         { "name": "OpenCV", "level": 85 },
@@ -66,7 +66,7 @@
     },
     {
       "name": "Integraciones",
-      "icon": "link",
+      "icon": "plug",
       "skills": [
         { "name": "Stripe", "level": 80 },
         { "name": "Payphone", "level": 85 },
