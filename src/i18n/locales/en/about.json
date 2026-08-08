@@ -1,8 +1,8 @@
 {
   "sectionTitle": "About Me",
   "sectionIcon": "person",
-  "bio1": "Although I'm a Full-Stack developer, my passion lies especially in Back-End development. However, this doesn't limit me at all from working in other areas of development.",
-  "bio2": "My passion for Software drives me to continuously develop my skills and keep up with the latest technologies. I'm committed to delivering innovative, high-quality solutions in every project I participate in.",
+  "bio1": "Full-Stack Software Engineer with 3+ years of experience and 12+ production projects delivered. Co-founder of Kaizen Software, a software development company with clients in retail, education and commerce.",
+  "bio2": "Specialized in React/Next.js, Node.js/NestJS, TypeScript and React Native, with a differential in industrial computer vision (YOLO, OpenCV, edge AI on Raspberry Pi). My passion for Software drives me to continuously develop my skills and keep up with the latest technologies.",
   "bio3": "I'd love to collaborate with you to take your ideas to the next level!",
   "details": {
     "locationLabel": "Location",

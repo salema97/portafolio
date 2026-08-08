@@ -4,19 +4,33 @@
   "items": [
     {
       "date": "Noviembre 2023 - Actualidad",
-      "title": "Freelance",
-      "role": "Desarrollador de Software",
-      "description": "He desarrollado diversos proyectos en varias áreas, incluyendo el desarrollo web utilizando Vite, aplicaciones de comercio electrónico en Flutter y APIs en Node.js que integran estas aplicaciones con bases de datos MySQL. Siguiendo todo el proceso de desarrollo, desde la toma de requisitos hasta el despliegue final de cada proyecto.",
+      "title": "Kaizen Software",
+      "role": "Co-fundador & Desarrollador Full-Stack",
+      "description": "Empresa de desarrollo de software fundada con socios. Desarrollo a medida para clientes en retail, educación y comercio: desde levantamiento de requisitos hasta despliegue en producción y soporte. Entregué 12+ proyectos web y móviles, construí plataformas transaccionales con pasarelas de pago, notificaciones en tiempo real y consultas automatizadas con web scraping.",
       "tags": [
-        "Flutter",
-        "Dart",
-        "Node.js",
-        "API REST",
-        "JavaScript",
-        "MySQL",
         "React",
-        "Vite",
-        "TypeScript"
+        "Next.js",
+        "Node.js",
+        "NestJS",
+        "TypeScript",
+        "Flutter",
+        "MySQL",
+        "PostgreSQL"
+      ]
+    },
+    {
+      "date": "Octubre 2024 - Actualidad",
+      "title": "Independiente",
+      "role": "Desarrollador Full-Stack - Proyectos Industriales",
+      "description": "Sistemas de visión artificial e IoT industrial para plantas de producción. Diseñé y desplegué soluciones edge-to-cloud para control de calidad y seguridad industrial, integrando software con hardware de planta: cámaras RTSP/USB, inferencia en Raspberry Pi 5, PLCs vía OPC UA y sistemas SCADA.",
+      "tags": [
+        "Python",
+        "YOLOv11",
+        "OpenCV",
+        "Raspberry Pi",
+        "OPC UA",
+        "FastAPI",
+        "Next.js"
       ]
     },
     {
