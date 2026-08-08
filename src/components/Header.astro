@@ -21,6 +21,10 @@ const navItems = [
   { id: "about", label: nav.about },
   { id: "contact", label: nav.contact },
 ];
+
+const resumeUrl = lang === "en"
+  ? "/files/CV - Steven Lema Velásquez - EN.pdf"
+  : "/files/CV - Steven Lema Velásquez.pdf";
 ---
 
 <header
@@ -99,7 +103,7 @@ const navItems = [
       </button>
 
       <a
-        href="/files/CV - Steven Lema Velásquez.pdf"
+        href={resumeUrl}
         target="_blank"
         rel="noopener noreferrer"
         class="btn-primary !min-h-9 !px-4 !text-sm"
@@ -156,7 +160,7 @@ const navItems = [
         </button>
       </div>
       <a
-        href="/files/CV - Steven Lema Velásquez.pdf"
+        href={resumeUrl}
         target="_blank"
         rel="noopener noreferrer"
         class="btn-primary w-full justify-center mt-3"
